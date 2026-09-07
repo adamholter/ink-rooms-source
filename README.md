@@ -32,6 +32,9 @@ npm run preview    # serve the production build locally
 - WASD or arrow keys to move and push. Touch devices have directional buttons.
 - Z to undo, R to restart, H for a hint, V for the full-platform view.
 - Drag to orbit and scroll to zoom.
+- Use Levels to visit the level world. Walk into a door beneath its miniature to enter that room. The dropdown remains available.
+- The area buttons take you to themed islands. One crate push opens the bridge island; the cube gate takes you onto the walkable cube.
+- Use Levels again to resume your unfinished room. Finishing room 48 returns to the level world.
 - Walk into raised ledges to climb automatically. There is no jump button.
 - The speaker and theme buttons toggle sound and the white or black background.
 

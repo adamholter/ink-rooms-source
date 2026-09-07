@@ -1,4 +1,6 @@
 import './style.css';
+import {createHubView} from './hub-view';
+import {HUB_AREAS,type HubState} from './hub-world';
 import {createCubeView,cubeWorldPoint,type CubeMotion} from './cube-view';
 import {cubeFace} from './cube-topology';
 import * as THREE from 'three';
@@ -21,6 +23,10 @@ const camera = new THREE.PerspectiveCamera(38, innerWidth / innerHeight, .1, 180
 const room = new THREE.Group(), player = new THREE.Group(); scene.add(room, player);
 let dark = false, ready = false, state: State = createState(0), history: State[] = [];
 let crates: THREE.Group[] = [], pads: (PadArt & { point: Point; authoredPoint?:Point })[] = [], exit: PadArt;
+let hub:ReturnType<typeof createHubView>|null=null;
+let hubFrame:ReturnType<ReturnType<typeof createHubView>['update']>|null=null;
+let rememberedHub:HubState|undefined;
+let suspended:{state:State;history:State[];facing:Point}|null=null;
 let cubeView:ReturnType<typeof createCubeView>|null=null;
 let rotatorArt: {content:THREE.Group;art:ReturnType<typeof createRotatorArt>;center:THREE.Vector3}[]=[];
 type ComplexPhase={kind:'move'|'machines'|'rotate';before:State;after:State;duration:number};
@@ -97,15 +103,48 @@ function updateHUD() {
 }
 function clearInput() { pressed.clear(); touchDir = null; }
 function cancelHint() { hintId++; hintWorker?.terminate(); hintWorker = null; $<HTMLButtonElement>('hint').disabled = false; }
+function clearRoom() {
+  cubeView?.dispose();cubeView=null;
+  rotatorArt.forEach(r=>r.art.dispose());rotatorArt=[];
+  robotArt.forEach(a=>a.dispose());robotArt=[];robotPushWeights=[];robotMileage=[];robotLast=[];
+  room.clear();disposeRoomArt();disposeMachineryArt();switchArt=[];machineArt=[];crates=[];pads=[];
+}
+function hubUI(active:boolean) {
+  document.body.classList.toggle('in-hub',active);camera.far=active?600:180;camera.updateProjectionMatrix();
+  $('hub-toggle').setAttribute('aria-pressed',String(active));
+  $('hub-toggle').setAttribute('aria-label',active?'Return to current room':'Open level world');
+  $('hub-nav').hidden=!active;
+  window.history.replaceState(null,'',location.pathname+location.search+(active?'#levels':''));
+}
+function openHub(areaId?:string) {
+  if(!ready||hub)return;
+  const saved=state.fall&&history.length?history.at(-1)!:state;
+  suspended={state:structuredClone(saved),history:structuredClone(state.fall?history.slice(0,-1):history),facing:{...facing}};
+  clearInput();cancelHint();motion=null;fallingTime=0;sound.stop();setMoving(false);rest?.reset(simulationTime);
+  $('win').hidden=true;$('lesson').hidden=true;$('toast').classList.remove('visible');
+  clearRoom();
+  hub=createHubView(room,player,levelCompleted,areaId||HUB_AREAS.find(a=>a.levels.includes(state.level))?.id,rememberedHub);
+  hubFrame=hub.update(0,simulationTime);hubUI(true);overview=false;zoom=1;yaw=.12;pitch=.82;
+  $('overview').setAttribute('aria-pressed','false');document.querySelector('h1 small')!.textContent='World';
+}
+function resumeRoom() {
+  if(!suspended)return;
+  const saved=suspended;loadLevel(saved.state.level);state=saved.state;history=saved.history;facing=saved.facing;
+  player.position.copy(point(state.player));player.rotation.set(0,Math.atan2(facing.x,facing.z),0);
+  crates.forEach((c,i)=>c.position.copy(point(state.boxes[i])));
+  robotArt.forEach((a,i)=>{a.root.position.copy(point(state.robots![i]));a.root.rotation.y=robotAngle(state.robots![i].direction);robotLast[i].copy(a.root.position);});
+  cubeView?.sync(state,player,crates,facing);syncMachinery();syncRotators();updateHUD();if(state.won)win();
+}
+$('hub-toggle').onclick=()=>{if(hub)resumeRoom();else openHub();};
+for(const area of HUB_AREAS){const button=document.createElement('button');button.textContent=area.name;button.dataset.area=area.id;button.onclick=()=>{clearInput();hub?.travel(area.id);overview=false;zoom=1;pitch=.82;yaw=.12;$('overview').setAttribute('aria-pressed','false');button.blur();};$('hub-nav').append(button);}
+window.addEventListener('hashchange',()=>{if(location.hash==='#levels')openHub('courtyard');else if(hub)resumeRoom();});
 function loadLevel(index: number) {
+  if(hub)rememberedHub=hub.snapshot().state;hub?.dispose();hub=null;hubFrame=null;suspended=null;hubUI(false);
   sound.stop(); rest?.reset(simulationTime);
   state = createState(index); history = []; motion = null; fallingTime = 0; clearInput(); hintId++;
   hintWorker?.terminate(); hintWorker = null; $<HTMLButtonElement>('hint').disabled = false;
   setMoving(false); $('win').hidden = true; $('toast').classList.remove('visible');
-  cubeView?.dispose();cubeView=null;
-  rotatorArt.forEach(r=>r.art.dispose());rotatorArt=[];
-  robotArt.forEach(a=>a.dispose()); robotArt=[];robotPushWeights=[];robotMileage=[];robotLast=[];
-  room.clear(); disposeRoomArt(); disposeMachineryArt(); switchArt=[];machineArt=[];crates = []; pads = []; const level = LEVELS[index]; const staticArt = new THREE.Group();room.add(staticArt);
+  clearRoom(); const level = LEVELS[index]; const staticArt = new THREE.Group();room.add(staticArt);
   if(level.cube){
     cubeView=createCubeView(level,room);pads=cubeView.pads;exit=cubeView.exit;
   }else{
@@ -148,7 +187,7 @@ function win() {
   if (!levelCompleted.includes(state.level)) { levelCompleted.push(state.level); try { localStorage.setItem('ink-rooms-v2-completed', JSON.stringify(levelCompleted)); } catch {} }
   $('win-title').textContent = state.level === LEVELS.length - 1 ? 'A clean finish.' : 'Room cleared.';
   $('win-stats').textContent = `${state.moves} moves · ${state.pushes} pushes`;
-  $('next').textContent = state.level === LEVELS.length - 1 ? 'Back to the first room →' : 'Next room →';
+  $('next').textContent = state.level === LEVELS.length - 1 ? 'Level world →' : 'Next room →';
   $('win').hidden = false; $('next').focus(); clearInput();
 }
 function cameraDirection(dir:Point):Point {
@@ -156,6 +195,7 @@ function cameraDirection(dir:Point):Point {
   return {x:Math.abs(x)>Math.abs(z)?Math.sign(x):0,z:Math.abs(x)>Math.abs(z)?0:Math.sign(z)};
 }
 function cameraStep(dir: Point) {
+  if(hub){const d=cameraDirection(dir);if(hub.step(d.x,d.z))sound.play('step');return;}
   if(LEVELS[state.level].cube&&pitch<.35)pitch=.64;
   const d=cameraDirection(dir);takeStep(d.x,d.z);
 }
@@ -222,6 +262,7 @@ function animateComplexTurn(m:NonNullable<typeof motion>) {
 }
 
 function takeStep(dx: number, dz: number) {
+  if(hub){hub.step(dx,dz);return;}
   if (!ready || motion || state.won || state.fall) return;
   const before = state, next = attemptMove(state, dx, dz); facing={x:dx,z:dz}; player.rotation.y = Math.atan2(dx, dz);
   if (!next) {
@@ -280,7 +321,7 @@ function takeStep(dx: number, dz: number) {
   setMoving(!jump); updateHUD();
 }
 function undo() {
-  if (!history.length || !ready) return;
+  if (hub || !history.length || !ready) return;
   sound.stop(); rest?.reset(simulationTime);
   state = history.pop()!; motion = null; fallingTime = 0; cancelHint(); clearInput(); setMoving(false);
   player.position.copy(point(state.player)); player.rotation.x = player.rotation.z = 0;
@@ -290,7 +331,7 @@ function undo() {
   syncMachinery(); syncRotators(); $('win').hidden = true; updateHUD();
 }
 function hint() {
-  if (!ready || state.won || state.fall) return;
+  if (hub || !ready || state.won || state.fall) return;
   hintWorker?.terminate(); const id = ++hintId; $<HTMLButtonElement>('hint').disabled = true;
   hintWorker = new Worker(new URL('./hint-worker.ts', import.meta.url), { type: 'module' });
   hintWorker.onmessage = event => {
@@ -311,19 +352,19 @@ function hint() {
 function toggleOverview() { overview = !overview; $('overview').setAttribute('aria-pressed', String(overview)); $('overview').setAttribute('aria-label', overview ? 'Return to close camera' : 'Show full platform'); }
 $('theme').onclick = () => { dark = !dark; theme(); }; $('overview').onclick = toggleOverview;
 $('reset').onclick = () => { if (ready) loadLevel(state.level); }; $('undo').onclick = undo; $('hint').onclick = hint;
-$('next').onclick = () => loadLevel((state.level + 1) % LEVELS.length); $('replay').onclick = () => loadLevel(state.level);
+$('next').onclick = () => state.level===LEVELS.length-1?openHub():loadLevel(state.level+1); $('replay').onclick = () => loadLevel(state.level);
 levelSelect.onchange = () => { if (ready) loadLevel(Number(levelSelect.value)); levelSelect.blur(); };
 const directions: Record<string, Point> = { KeyW: { x: 0, z: -1 }, ArrowUp: { x: 0, z: -1 }, KeyS: { x: 0, z: 1 }, ArrowDown: { x: 0, z: 1 }, KeyA: { x: -1, z: 0 }, ArrowLeft: { x: -1, z: 0 }, KeyD: { x: 1, z: 0 }, ArrowRight: { x: 1, z: 0 } };
 window.addEventListener('keydown', e => {
   if ((e.target as HTMLElement).tagName === 'SELECT') return;
   if (directions[e.code]) { e.preventDefault(); pressed.add(e.code); if (!e.repeat && !motion) { cameraStep(directions[e.code]); repeatAt = performance.now() + 240; } }
   if (e.repeat) return;
-  if (e.code === 'KeyZ') { e.preventDefault(); undo(); } if (e.code === 'KeyR' && ready) loadLevel(state.level); if (e.code === 'KeyH') hint();
+  if (e.code === 'KeyZ') { e.preventDefault(); undo(); } if (e.code === 'KeyR' && ready && !hub) loadLevel(state.level); if (e.code === 'KeyH') hint();
   if (e.code === 'KeyV') toggleOverview();
 });
 window.addEventListener('keyup', e => pressed.delete(e.code)); window.addEventListener('blur', clearInput);
 renderer.domElement.addEventListener('pointerdown', e => { drag = true; lastX = e.clientX; lastY = e.clientY; renderer.domElement.setPointerCapture(e.pointerId); });
-renderer.domElement.addEventListener('pointermove', e => { if (!drag) return; yaw -= (e.clientX - lastX) * .005; pitch = THREE.MathUtils.clamp(pitch + (e.clientY - lastY) * .004, LEVELS[state.level].cube ? -1.3 : .48, 1.3); lastX = e.clientX; lastY = e.clientY; });
+renderer.domElement.addEventListener('pointermove', e => { if (!drag) return; yaw -= (e.clientX - lastX) * .005; pitch = THREE.MathUtils.clamp(pitch + (e.clientY - lastY) * .004, !hub&&LEVELS[state.level].cube ? -1.3 : .48, 1.3); lastX = e.clientX; lastY = e.clientY; });
 renderer.domElement.addEventListener('pointerup', () => drag = false); renderer.domElement.addEventListener('pointercancel', () => drag = false);
 renderer.domElement.addEventListener('wheel', e => { e.preventDefault(); zoom = THREE.MathUtils.clamp(zoom + e.deltaY * .001, .55, 1.7); }, { passive: false });
 for (const button of document.querySelectorAll<HTMLButtonElement>('#touch button[data-dir]')) {
@@ -344,7 +385,7 @@ new GLTFLoader().loadAsync('/character.glb', e => { if (e.total) $('progress').t
   for(const [name,angle] of [['LeftUpLeg',-.3],['RightUpLeg',-.3],['LeftLeg',.65],['RightLeg',.65],['LeftForeArm',-.25],['RightForeArm',-.25]] as const){const bone=character.scene.getObjectByName(name);if(bone)jumpBones.push({bone,base:bone.quaternion.clone(),angle});}
   mixer = new THREE.AnimationMixer(character.scene);
   run = mixer.clipAction(character.animations.find(c => /run/i.test(c.name))!); idle = mixer.clipAction(character.animations.find(c => /idle/i.test(c.name))!);
-  run.play().setEffectiveWeight(0); idle.play(); ready = true; loadLevel(0); $('loading').remove();
+  run.play().setEffectiveWeight(0); idle.play(); ready = true; if(location.hash==='#levels')openHub('courtyard');else loadLevel(0); $('loading').remove();
   rest=createRestAnimation(character.scene,{strength:1.8});rest.reset(simulationTime);
 }).catch(() => { $('progress').textContent = 'Could not load the character. Refresh to try again.'; });
 function robotAngle(direction:number){return [Math.PI,Math.PI/2,0,-Math.PI/2][direction];}
@@ -399,6 +440,12 @@ function render(now: number) {
   if(!filming)frameHandle=requestAnimationFrame(render); const dt = Math.min((now - previous) / 1000, .04); previous = now;
   simulationTime+=dt;
   if (ready) {
+    if(hub){
+      if(!hub.busy()&&now>repeatAt){const dir=touchDir??directions[[...pressed].at(-1)||''];if(dir){cameraStep(dir);repeatAt=now+100;}}
+      const wasCube=hubFrame?.cube;hubFrame=hub.update(dt,simulationTime);if(hubFrame.cube&&!wasCube){pitch=.57;yaw=.5;}setMoving(hubFrame.moving);
+      for(const button of document.querySelectorAll<HTMLButtonElement>('#hub-nav button'))button.setAttribute('aria-current',String(button.dataset.area===hubFrame.area));
+      if(hubFrame.enterLevel!==null)loadLevel(hubFrame.enterLevel);
+    }else{
     if (motion) {
       motion.time += dt; const t = Math.min(motion.time / motion.moveDuration, 1);
       const m=motion;
@@ -448,14 +495,22 @@ function render(now: number) {
       robotPushWeights[i]+=THREE.MathUtils.clamp(targetPush-robotPushWeights[i],-dt*9,dt*9);
       art.update({time:simulationTime,distance:robotMileage[i],moving:motion?.complex&&complexPhase(motion).phase.kind==='rotate'?0:Math.min(1,delta/Math.max(.001,dt)/3),pushing:robotPushWeights[i],blocked:!!state.robots![i].blocked});
     });
+    }
     for(const pose of jumpBones)pose.bone.quaternion.copy(pose.base);
     rest?.restore();
     mixer.update(dt);
-    rest?.update({time:simulationTime,delta:dt,standing:!moving&&!motion&&!state.fall});
+    rest?.update({time:simulationTime,delta:dt,standing:!moving&&!motion&&(!!hub||!state.fall)});
     for(const pose of jumpBones){pose.base.copy(pose.bone.quaternion);if(motion?.jump){const t=Math.min(motion.time/motion.moveDuration,1);pose.bone.rotateX(pose.angle*Math.sin(Math.PI*t));}}
   }
   cubeView?.update(simulationTime,state.fall?fallingTime/1.25:0);
-  if(LEVELS[state.level].cube){
+  if(hub&&hubFrame){
+    const cubeApproach=hubFrame.area==='cube'&&!hubFrame.cube;
+    const target=overview?new THREE.Vector3(0,0,0):hubFrame.target.clone().add(cubeApproach?new THREE.Vector3(0,2,-8):new THREE.Vector3());
+    const distance=(overview?175:hubFrame.cube?32:cubeApproach?34:24)*zoom/(Math.min(1,overview||hubFrame.cube?camera.aspect:Math.max(.75,camera.aspect))*.9);
+    lookAt.lerp(target,1-Math.exp(-5*dt));
+    desired.set(Math.sin(yaw)*Math.cos(pitch)*distance,Math.sin(pitch)*distance,Math.cos(yaw)*Math.cos(pitch)*distance).add(lookAt);
+    camera.position.lerp(desired,1-Math.exp(-5*dt));camera.lookAt(lookAt);
+  }else if(LEVELS[state.level].cube){
     const span=LEVELS[state.level].cube!.size*CELL;
     const distance=(span*1.8+2)/(Math.min(1,camera.aspect)*.66)*zoom*(overview?1.18:1)*(camera.aspect<.8?1:1.15);
     lookAt.lerp(new THREE.Vector3(0,.6,0),1-Math.exp(-4*dt));
@@ -481,4 +536,4 @@ function render(now: number) {
 }
 camera.position.set(0, 15, 13); frameHandle=requestAnimationFrame(render);
 window.addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); });
-(window as any).__INK_GAME__ = { state: () => JSON.parse(JSON.stringify(state)), ready: () => ready, animating: () => !!motion || !!state.fall, loadLevel, step: takeStep, undo, playerWorld:()=>player.position.toArray(), robotsWorld:()=>robotArt.map(a=>a.root.position.toArray()), robotRotations:()=>robotArt.map(a=>a.root.rotation.y), cratesWorld:()=>crates.map(c=>c.position.toArray()), solved: () => solved(state), theme: () => dark ? 'black' : 'white', restWeight:()=>rest?.weight??0, soundReady:()=>sound.ready, soundMuted:()=>sound.muted, captureStart:()=>{filming=true;cancelAnimationFrame(frameHandle);clearInput();sound.stop();renderer.setPixelRatio(1);document.body.classList.add('filming');}, captureTick:(dt:number)=>render(previous+dt*1000), captureCamera:(c:typeof filmCamera)=>{filmCamera=c;}, captureTheme:(value:boolean)=>{dark=value;theme();}, capturePose:(rotation:number)=>{player.rotation.y=rotation;}, captureRestBones:()=>['Spine02','Spine01','Spine','Head','LeftFoot','RightFoot'].map(name=>{const b=player.getObjectByName(name)!;return {name,q:b.quaternion.toArray(),position:b.getWorldPosition(new THREE.Vector3()).toArray()};}), captureBones:()=>jumpBones.map(p=>({name:p.bone.name,q:p.bone.quaternion.toArray()})), machinery:()=>({switches:switchArt.map(s=>({channel:s.channel,active:channelActive(LEVELS[state.level],s.channel,state)})),devices:machineArt.length}), levelCount: LEVELS.length, cubeWorld:()=>cubeView?{quaternion:cubeView.root.quaternion.toArray(),face:cubeFace(LEVELS[state.level].cube!.size,state.player),playerQuaternion:player.quaternion.toArray(),crateQuaternions:crates.map(c=>c.quaternion.toArray()),playerScale:player.scale.toArray(),crateScales:crates.map(c=>c.scale.toArray())}:null, iceTiles:()=>(LEVELS[state.level].ice||[]).map(p=>rotationPoint(LEVELS[state.level],p,state)), rotatorsWorld:()=>rotatorArt.map(r=>({position:r.content.position.toArray(),angle:r.content.rotation.y})),padsWorld:()=>pads.map(p=>({point:p.point,world:p.root.getWorldPosition(new THREE.Vector3()).toArray()})), falls: () => falls, art: () => ({ pads: pads.map(p => ({ point: p.point, active: state.boxes.some(b => b.x === p.point.x && b.z === p.point.z) })), exit: solved(state), meshes: renderer.info.render.calls }) };
+(window as any).__INK_GAME__ = { openHub, resumeRoom, hub:()=>hub?.snapshot()??null, hubTravel:(id:string)=>hub?.travel(id), state: () => JSON.parse(JSON.stringify(state)), ready: () => ready, animating: () => !!motion || !!state.fall, loadLevel, step: takeStep, undo, playerWorld:()=>player.position.toArray(), robotsWorld:()=>robotArt.map(a=>a.root.position.toArray()), robotRotations:()=>robotArt.map(a=>a.root.rotation.y), cratesWorld:()=>crates.map(c=>c.position.toArray()), solved: () => solved(state), theme: () => dark ? 'black' : 'white', restWeight:()=>rest?.weight??0, soundReady:()=>sound.ready, soundMuted:()=>sound.muted, captureStart:()=>{filming=true;cancelAnimationFrame(frameHandle);clearInput();sound.stop();renderer.setPixelRatio(1);document.body.classList.add('filming');}, captureTick:(dt:number)=>render(previous+dt*1000), captureCamera:(c:typeof filmCamera)=>{filmCamera=c;}, captureTheme:(value:boolean)=>{dark=value;theme();}, capturePose:(rotation:number)=>{player.rotation.y=rotation;}, captureRestBones:()=>['Spine02','Spine01','Spine','Head','LeftFoot','RightFoot'].map(name=>{const b=player.getObjectByName(name)!;return {name,q:b.quaternion.toArray(),position:b.getWorldPosition(new THREE.Vector3()).toArray()};}), captureBones:()=>jumpBones.map(p=>({name:p.bone.name,q:p.bone.quaternion.toArray()})), machinery:()=>({switches:switchArt.map(s=>({channel:s.channel,active:channelActive(LEVELS[state.level],s.channel,state)})),devices:machineArt.length}), levelCount: LEVELS.length, cubeWorld:()=>cubeView?{quaternion:cubeView.root.quaternion.toArray(),face:cubeFace(LEVELS[state.level].cube!.size,state.player),playerQuaternion:player.quaternion.toArray(),crateQuaternions:crates.map(c=>c.quaternion.toArray()),playerScale:player.scale.toArray(),crateScales:crates.map(c=>c.scale.toArray())}:null, iceTiles:()=>(LEVELS[state.level].ice||[]).map(p=>rotationPoint(LEVELS[state.level],p,state)), rotatorsWorld:()=>rotatorArt.map(r=>({position:r.content.position.toArray(),angle:r.content.rotation.y})),padsWorld:()=>pads.map(p=>({point:p.point,world:p.root.getWorldPosition(new THREE.Vector3()).toArray()})), falls: () => falls, art: () => ({ pads: pads.map(p => ({ point: p.point, active: state.boxes.some(b => b.x === p.point.x && b.z === p.point.z) })), exit: solved(state), meshes: renderer.info.render.calls }) };
