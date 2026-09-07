@@ -86,3 +86,6 @@ next-env.d.ts
 !/scripts/audit-data/sources.json
 !/scripts/audit-data/rotation-expansion-audit.json
 !/scripts/audit-data/rotation-expansion-audit.md
+
+!/scripts/fixtures/pre-rotation-difficulty.json
+!/scripts/audit-data/rotation-difficulty.md

@@ -4,7 +4,7 @@ import { LEVELS, attemptMove, createState, solve, solved, tileAt, type State } f
 
 const solutions: Array<{ level: number; name: string; moves: { x: number; z: number }[]; pushes: number }> = [];
 
-assert.equal(LEVELS.length, 43);
+assert.equal(LEVELS.length, 44);
 const acceptedRooms = JSON.parse(readFileSync(new URL("./fixtures/accepted-rooms.json", import.meta.url), "utf8"));
 for (const { index, level } of acceptedRooms.filter((entry: { index: number }) => entry.index < 4)) {
   assert.deepEqual(LEVELS[index], level, `Accepted room ${index + 1} must remain unchanged`);

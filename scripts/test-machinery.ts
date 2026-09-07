@@ -15,7 +15,7 @@ fixture({name:'Bridge release',subtitle:'',hint:'',jumping:true,map:['     ',' @
  const off={...s,player:{x:1,z:2},boxes:[{x:4,z:0}]};assert.equal(attemptMove(off,1,0)?.fall,null);assert.equal(attemptMove({...off,player:{x:1,z:1}},1,0)?.fall?.kind,'player','bridge folds if its only holder steps onto it');
 });
 if(LEVELS.length>17){
- assert.equal(LEVELS.length,43);
+ assert.equal(LEVELS.length,44);
  const output=[];
  for(let i=17;i<27;i++){
   const level=LEVELS[i],initial=createState(i);assert.equal(initial.boxes.length,level.map.join('').split('.').length-1,'one target per crate');

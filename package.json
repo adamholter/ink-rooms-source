@@ -2,7 +2,7 @@
   "name": "ink-rooms",
   "version": "1.0.0",
   "private": true,
-  "description": "A monochrome 3D puzzle game with 43 rooms, built with Three.js.",
+  "description": "A monochrome 3D puzzle game with 44 rooms, built with Three.js.",
   "license": "SEE LICENSE IN LICENSE",
   "type": "module",
   "engines": {

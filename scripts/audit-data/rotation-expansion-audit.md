@@ -1,6 +1,6 @@
 # Ink Rooms originality audit
 
-Generated 2026-09-07T11:37:40.472Z. Compared 43 rooms with 10902 entries (10902 unique complete layouts) from 24 attributed collections.
+Generated 2026-09-07T14:13:48.592Z. Compared 44 rooms with 10902 entries (10902 unique complete layouts) from 24 attributed collections.
 
 Exact comparison removes translation and checks all eight rotations/reflections. Floor matches ignore all pieces. Structure adds targets. Pieces adds crates. Complete adds player start. Near matches use Jaccard overlap after symmetry and translations of up to one cell. Dimensions may differ by up to two cells. The review threshold is an unrounded score of 0.82.
 

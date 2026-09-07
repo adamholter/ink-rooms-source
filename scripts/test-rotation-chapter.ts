@@ -1,10 +1,14 @@
 import assert from 'node:assert/strict';
+import {minimumPushes,permanentGoalProof} from './lib/rotation-quality.ts';
 import {readFileSync} from 'node:fs';
 import {LEVELS,createState,attemptMove,solve,rotorIndex,tileAt,type State,type Level} from '../src/puzzle.ts';
 const read=(name:string)=>JSON.parse(readFileSync(new URL(`./fixtures/${name}.json`,import.meta.url),'utf8'));
 const clean=(v:unknown)=>JSON.parse(JSON.stringify(v));
-assert.equal(LEVELS.length,43);
+assert.equal(LEVELS.length,44);
 assert.deepEqual(LEVELS.slice(0,36),read('pre-rotation-levels'),'earlier 36 rooms remain identical');
+for(const [offset,level] of read('pre-rotation-difficulty').entries()) {
+ if(offset!==2) assert.deepEqual(LEVELS[36+offset],level,'existing rotation tutorials and other rooms remain unchanged');
+}
 assert.equal(new Set(LEVELS.map(l=>l.name)).size,LEVELS.length,'room names are unique');
 const dirs=[{x:1,z:0},{x:-1,z:0},{x:0,z:1},{x:0,z:-1}];
 function exhaust(initial:State){
@@ -18,6 +22,14 @@ function exhaust(initial:State){
 function withLevel(index:number,l:Level,fn:()=>void){const old=LEVELS[index];try{LEVELS[index]=l;fn();}finally{LEVELS[index]=old;}}
 for(const design of read('rotation-room-design')){
  const index=design.id-1,l=LEVELS[index];assert.deepEqual(l,design.level);let s=createState(index);
+ if(index===38||index===43) {
+  assert.ok(design.difficulty,'hard rotation rooms include independent difficulty proofs');
+  const pushes=minimumPushes(s);
+  assert.equal(pushes,design.difficulty.minimumPushes);
+  assert.ok(pushes>=(index===38?8:10),'push requirement cannot be padded by extra walking');
+  assert.ok(design.moves>=44);
+  assert.equal(permanentGoalProof(s).unsolvable,true,'every solution requires repositioning cargo from a filled mark');
+ }
  for(const r of l.rotators||[]){assert.ok(Number.isInteger(r.radius)&&r.radius>=1);assert.ok(l.switches?.some(p=>p.channel===r.channel));
   for(const p of [...l.switches||[],...l.elevators||[],...l.bridges||[]])assert.equal(rotorIndex(l,p),-1,'fixed machinery outside rotator');
   for(let z=r.z-r.radius;z<=r.z+r.radius;z++)for(let x=r.x-r.radius;x<=r.x+r.radius;x++){assert.notEqual(l.map[z]?.[x],undefined);assert.notEqual(l.map[z][x],'E');}

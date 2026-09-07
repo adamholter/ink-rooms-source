@@ -1,6 +1,4 @@
-import type { Level } from "./puzzle.ts";
-// Independently authored additions. Replay and counterfactual proofs are in scripts/fixtures/rotation-room-design.json.
-export const ROTATION_LEVELS: Level[] = [
+[
   {
     "name": "Quarter Cargo",
     "subtitle": "",
@@ -63,15 +61,15 @@ export const ROTATION_LEVELS: Level[] = [
   {
     "name": "Turn Order",
     "subtitle": "",
-    "hint": "The nearest mark may only be a temporary parking spot. Keep a route back onto the square.",
+    "hint": "Stage the crates before the next turn closes their route.",
     "map": [
-      "~~~~~~~~",
-      "~  #  #~",
-      "~.$# . ~",
-      "~# $   ~",
-      "~   #  ~",
-      "~@#  #E~",
-      "~~~~~~~~"
+      "~~~~~~~",
+      "~#    ~",
+      "~. #$#~",
+      "~#$   ~",
+      "~.    ~",
+      "~@#  E~",
+      "~~~~~~~"
     ],
     "rotators": [
       {
@@ -342,34 +340,5 @@ export const ROTATION_LEVELS: Level[] = [
         "channel": 1
       }
     ]
-  },
-  {
-    "name": "Corner Exchange",
-    "subtitle": "",
-    "hint": "Leave room to recover the cargo after each turn. A filled mark may block the next delivery.",
-    "map": [
-      "~~~~~~~",
-      "~##  @~",
-      "~# $# ~",
-      "~ $$ #~",
-      "~  ##.~",
-      "~E# ..~",
-      "~~~~~~~"
-    ],
-    "rotators": [
-      {
-        "x": 3,
-        "z": 3,
-        "radius": 1,
-        "channel": 1
-      }
-    ],
-    "switches": [
-      {
-        "x": 5,
-        "z": 2,
-        "channel": 1
-      }
-    ]
   }
-];
+]

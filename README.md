@@ -1,6 +1,6 @@
 # Ink Rooms
 
-A monochrome 3D puzzle game by Adam Holter, built with help from OpenAI Astra, using Three.js. Push crates onto marks across 43 floating rooms. Later rooms add height, switches, elevators, bridges, robots, ice, and rotating sections.
+A monochrome 3D puzzle game by Adam Holter, built with help from OpenAI Astra, using Three.js. Push crates onto marks across 44 floating rooms. Later rooms add height, switches, elevators, bridges, robots, ice, and rotating sections.
 
 [Play the game](https://adam-ink-playground.vercel.app/) · [Support Adam](https://buymeacoffee.com/adamholter)
 
@@ -58,7 +58,9 @@ A newly activated turntable switch rotates its section clockwise by 90 degrees, 
 - `public/audio/`: music and sound effects.
 - `scripts/test-*.ts` and `scripts/fixtures/`: rules, solution paths, and difficulty checks.
 
-The current layouts replaced early designs that reused public Sokoban puzzles. A finite audit of all 43 current rooms found no exact matches against 10,902 public entries. Rooms 37 through 43 also passed the [near-match checks](scripts/audit-data/rotation-expansion-audit.md). This does not prove worldwide uniqueness. Public puzzle collections are not bundled here. `npm run audit:originality` downloads the attributed collections listed in `scripts/audit-data/sources.json` and runs the comparison.
+The current layouts replaced early designs that reused public Sokoban puzzles. A finite audit of all 44 current rooms found no exact matches against 10,902 public entries. Rooms 37 through 44 also passed the [near-match checks](scripts/audit-data/rotation-expansion-audit.md). This does not prove worldwide uniqueness. Public puzzle collections are not bundled here. `npm run audit:originality` downloads the attributed collections listed in `scripts/audit-data/sources.json` and runs the comparison.
+
+The [rotation difficulty report](scripts/audit-data/rotation-difficulty.md) records the room 39 revision and room 44 addition, with minimum-push and temporary-parking proofs.
 
 ## Credits and license
 

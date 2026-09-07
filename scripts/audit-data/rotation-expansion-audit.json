@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-07T11:37:40.472Z",
+  "generatedAt": "2026-09-07T14:13:48.592Z",
   "method": {
     "symmetry": "translation plus all 8 rotations/reflections",
     "exactModes": {
@@ -1309,7 +1309,7 @@
     {
       "room": 39,
       "name": "Turn Order",
-      "cellCount": 19,
+      "cellCount": 22,
       "exact": {
         "floor": [],
         "structure": [],
@@ -1358,6 +1358,18 @@
       "room": 43,
       "name": "Turning Current",
       "cellCount": 18,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 44,
+      "name": "Corner Exchange",
+      "cellCount": 16,
       "exact": {
         "floor": [],
         "structure": [],
@@ -1466,6 +1478,5 @@
       "floor": 0.919,
       "pieces": 0.732
     }
-  ],
-  "nameOnlyCorrection": "Room 41 renamed after audit. Geometry and pieces unchanged."
+  ]
 }
