@@ -1,0 +1,225 @@
+[
+  {
+    "name": "First Impression",
+    "subtitle": "Bring the crate around to its mark.",
+    "hint": "Walk around the crate before you push.",
+    "map": [
+      "~ . ~",
+      "     ",
+      " $@ E",
+      "~   ~"
+    ]
+  },
+  {
+    "name": "Corner Turn",
+    "subtitle": "A straight push is only the beginning.",
+    "hint": "Push left first, then get underneath.",
+    "map": [
+      "~.   ~",
+      "      ",
+      "  $@  ",
+      "    E ",
+      "~    ~"
+    ]
+  },
+  {
+    "name": "Ink Post",
+    "subtitle": "One obstacle changes the route.",
+    "hint": "Use the open side to get behind the crate twice.",
+    "map": [
+      "~  .  ~",
+      "   #   ",
+      "  $    ",
+      " @   E ",
+      "~     ~"
+    ]
+  },
+  {
+    "name": "Offset Pair",
+    "subtitle": "Two crates, crossed destinations.",
+    "hint": "Move the right crate out of the lower lane first.",
+    "map": [
+      "~.   .~",
+      "   #   ",
+      "  $ $  ",
+      "    @E ",
+      "~     ~"
+    ]
+  },
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  {
+    "name": "First Ascent",
+    "subtitle": "Walk up onto the terrace.",
+    "hint": "Walk into a raised ledge to hop up automatically.",
+    "map": [
+      "~~~~~~~~",
+      "~@  .  ~",
+      "~   $  ~",
+      "~     E~",
+      "~     ~~",
+      "~~~~~~~~"
+    ],
+    "heights": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        2,
+        2,
+        2,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "jumping": true,
+    "lesson": "Walk into a ledge to hop up automatically."
+  },
+  {
+    "name": "Keep One High",
+    "subtitle": "The ramp only carries crates downward.",
+    "hint": "Finish the upper mark before sending the other crate through the low opening.",
+    "map": [
+      "~~~~~~~~",
+      "~ .#   ~",
+      "~  #.$ ~",
+      "~  # $ ~",
+      "~    @E~",
+      "~      ~",
+      "~~~~~~~~"
+    ],
+    "heights": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "jumping": true,
+    "lesson": "Crates can drop to a lower floor. They cannot climb back up."
+  },
+  null,
+  null,
+  null
+]

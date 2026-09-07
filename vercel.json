@@ -1,0 +1,1 @@
+{"framework":null,"buildCommand":"npm run build:game","outputDirectory":"dist-game","headers":[{"source":"/character.glb","headers":[{"key":"Cache-Control","value":"public, max-age=3600"}]}]}

@@ -1,0 +1,79 @@
+{
+  "notation": "U R D L are directional moves. Raised ledges climb automatically.",
+  "levels": [
+    {
+      "room": 13,
+      "name": "First Ascent",
+      "pushes": 1,
+      "actions": [
+        "R",
+        "D",
+        "D",
+        "R",
+        "R",
+        "U",
+        "R",
+        "R",
+        "D"
+      ],
+      "trapActions": null
+    },
+    {
+      "room": 14,
+      "name": "Keep One High",
+      "pushes": 8,
+      "actions": [
+        "L",
+        "U",
+        "U",
+        "U",
+        "R",
+        "R",
+        "D",
+        "D",
+        "L",
+        "R",
+        "U",
+        "U",
+        "L",
+        "L",
+        "D",
+        "D",
+        "R",
+        "R",
+        "U",
+        "L",
+        "D",
+        "D",
+        "L",
+        "L",
+        "D",
+        "L",
+        "U",
+        "U",
+        "U",
+        "D",
+        "D",
+        "R",
+        "R",
+        "R",
+        "R"
+      ],
+      "trapActions": [
+        "L",
+        "U",
+        "U",
+        "U",
+        "R",
+        "R",
+        "D",
+        "L",
+        "U",
+        "L",
+        "D",
+        "D",
+        "D"
+      ]
+    }
+  ]
+}

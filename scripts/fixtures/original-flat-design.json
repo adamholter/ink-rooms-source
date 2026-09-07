@@ -1,0 +1,1705 @@
+{
+  "method": "Blank seeded grids, reverse pulls from random targets, independent exact push search, shortcut removal, manual selection, separate corpus audit. Public layouts were not design input.",
+  "runs": [
+    {
+      "seed": 9052026,
+      "trials": 140000
+    },
+    {
+      "seed": 9052027,
+      "trials": 140000
+    }
+  ],
+  "rejectedForNearSimilarity": [
+    41791,
+    116823,
+    139949
+  ],
+  "levels": [
+    {
+      "room": 5,
+      "name": "Passing Place",
+      "seed": 9052026,
+      "trial": 40216,
+      "removedShortcuts": [],
+      "generatedRows": [
+        ". #   ",
+        "   @$ ",
+        "  #$# ",
+        "    ##",
+        "    ##",
+        "#.    "
+      ],
+      "exit": {
+        "x": 6,
+        "z": 7
+      },
+      "metrics": {
+        "pushes": 18,
+        "lowerBound": 10,
+        "detour": 8,
+        "pushesPerCell": 0.6428571428571429,
+        "crateSwitches": 3,
+        "turns": 4,
+        "revisits": 3,
+        "targetReleases": 0,
+        "states": 212,
+        "expanded": 212,
+        "reachableStates": 212,
+        "solvableStates": 151,
+        "choicePositions": 17,
+        "nonCornerDeadlockChoices": 8,
+        "trapExamples": [
+          [
+            {
+              "boxes": [
+                9,
+                8
+              ],
+              "player": 13,
+              "box": 1,
+              "dir": 0,
+              "from": 13,
+              "to": 8
+            }
+          ],
+          [
+            {
+              "boxes": [
+                8,
+                13
+              ],
+              "player": 9,
+              "box": 0,
+              "dir": 3,
+              "from": 9,
+              "to": 8
+            },
+            {
+              "boxes": [
+                7,
+                13
+              ],
+              "player": 8,
+              "box": 0,
+              "dir": 3,
+              "from": 8,
+              "to": 7
+            },
+            {
+              "boxes": [
+                6,
+                13
+              ],
+              "player": 7,
+              "box": 0,
+              "dir": 3,
+              "from": 7,
+              "to": 6
+            },
+            {
+              "boxes": [
+                5,
+                13
+              ],
+              "player": 6,
+              "box": 0,
+              "dir": 3,
+              "from": 6,
+              "to": 5
+            },
+            {
+              "boxes": [
+                0,
+                13
+              ],
+              "player": 5,
+              "box": 0,
+              "dir": 0,
+              "from": 5,
+              "to": 0
+            }
+          ],
+          [
+            {
+              "boxes": [
+                8,
+                13
+              ],
+              "player": 9,
+              "box": 0,
+              "dir": 3,
+              "from": 9,
+              "to": 8
+            },
+            {
+              "boxes": [
+                7,
+                13
+              ],
+              "player": 8,
+              "box": 0,
+              "dir": 3,
+              "from": 8,
+              "to": 7
+            },
+            {
+              "boxes": [
+                6,
+                13
+              ],
+              "player": 7,
+              "box": 0,
+              "dir": 3,
+              "from": 7,
+              "to": 6
+            },
+            {
+              "boxes": [
+                5,
+                13
+              ],
+              "player": 6,
+              "box": 0,
+              "dir": 3,
+              "from": 6,
+              "to": 5
+            },
+            {
+              "boxes": [
+                11,
+                13
+              ],
+              "player": 5,
+              "box": 0,
+              "dir": 2,
+              "from": 5,
+              "to": 11
+            },
+            {
+              "boxes": [
+                11,
+                8
+              ],
+              "player": 13,
+              "box": 1,
+              "dir": 0,
+              "from": 13,
+              "to": 8
+            },
+            {
+              "boxes": [
+                11,
+                9
+              ],
+              "player": 8,
+              "box": 1,
+              "dir": 1,
+              "from": 8,
+              "to": 9
+            },
+            {
+              "boxes": [
+                11,
+                8
+              ],
+              "player": 9,
+              "box": 1,
+              "dir": 3,
+              "from": 9,
+              "to": 8
+            },
+            {
+              "boxes": [
+                11,
+                7
+              ],
+              "player": 8,
+              "box": 1,
+              "dir": 3,
+              "from": 8,
+              "to": 7
+            },
+            {
+              "boxes": [
+                11,
+                6
+              ],
+              "player": 7,
+              "box": 1,
+              "dir": 3,
+              "from": 7,
+              "to": 6
+            }
+          ],
+          [
+            {
+              "boxes": [
+                8,
+                13
+              ],
+              "player": 9,
+              "box": 0,
+              "dir": 3,
+              "from": 9,
+              "to": 8
+            },
+            {
+              "boxes": [
+                7,
+                13
+              ],
+              "player": 8,
+              "box": 0,
+              "dir": 3,
+              "from": 8,
+              "to": 7
+            },
+            {
+              "boxes": [
+                6,
+                13
+              ],
+              "player": 7,
+              "box": 0,
+              "dir": 3,
+              "from": 7,
+              "to": 6
+            },
+            {
+              "boxes": [
+                5,
+                13
+              ],
+              "player": 6,
+              "box": 0,
+              "dir": 3,
+              "from": 6,
+              "to": 5
+            },
+            {
+              "boxes": [
+                11,
+                13
+              ],
+              "player": 5,
+              "box": 0,
+              "dir": 2,
+              "from": 5,
+              "to": 11
+            },
+            {
+              "boxes": [
+                15,
+                13
+              ],
+              "player": 11,
+              "box": 0,
+              "dir": 2,
+              "from": 11,
+              "to": 15
+            },
+            {
+              "boxes": [
+                15,
+                8
+              ],
+              "player": 13,
+              "box": 1,
+              "dir": 0,
+              "from": 13,
+              "to": 8
+            },
+            {
+              "boxes": [
+                15,
+                9
+              ],
+              "player": 8,
+              "box": 1,
+              "dir": 1,
+              "from": 8,
+              "to": 9
+            },
+            {
+              "boxes": [
+                15,
+                8
+              ],
+              "player": 9,
+              "box": 1,
+              "dir": 3,
+              "from": 9,
+              "to": 8
+            },
+            {
+              "boxes": [
+                15,
+                7
+              ],
+              "player": 8,
+              "box": 1,
+              "dir": 3,
+              "from": 8,
+              "to": 7
+            },
+            {
+              "boxes": [
+                15,
+                6
+              ],
+              "player": 7,
+              "box": 1,
+              "dir": 3,
+              "from": 7,
+              "to": 6
+            },
+            {
+              "boxes": [
+                15,
+                5
+              ],
+              "player": 6,
+              "box": 1,
+              "dir": 3,
+              "from": 6,
+              "to": 5
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "room": 6,
+      "name": "Three-Way Junction",
+      "seed": 9052026,
+      "trial": 49847,
+      "removedShortcuts": [
+        {
+          "x": 1,
+          "z": 5
+        },
+        {
+          "x": 4,
+          "z": 5
+        }
+      ],
+      "generatedRows": [
+        " .  # #",
+        "  # $ #",
+        "  #  $ ",
+        "#.  ## ",
+        "  $   .",
+        " #@ #  "
+      ],
+      "exit": {
+        "x": 7,
+        "z": 7
+      },
+      "metrics": {
+        "pushes": 19,
+        "lowerBound": 9,
+        "detour": 10,
+        "pushesPerCell": 0.59375,
+        "crateSwitches": 12,
+        "turns": 2,
+        "revisits": 0,
+        "targetReleases": 1,
+        "states": 1168,
+        "expanded": 1168,
+        "reachableStates": 1168,
+        "solvableStates": 332,
+        "choicePositions": 20,
+        "nonCornerDeadlockChoices": 42,
+        "trapExamples": [
+          [
+            {
+              "boxes": [
+                9,
+                14,
+                22
+              ],
+              "player": 8,
+              "box": 0,
+              "dir": 1,
+              "from": 8,
+              "to": 9
+            }
+          ],
+          [
+            {
+              "boxes": [
+                8,
+                14,
+                23
+              ],
+              "player": 22,
+              "box": 2,
+              "dir": 1,
+              "from": 22,
+              "to": 23
+            }
+          ],
+          [
+            {
+              "boxes": [
+                8,
+                14,
+                21
+              ],
+              "player": 22,
+              "box": 2,
+              "dir": 3,
+              "from": 22,
+              "to": 21
+            }
+          ],
+          [
+            {
+              "boxes": [
+                9,
+                14,
+                22
+              ],
+              "player": 8,
+              "box": 0,
+              "dir": 1,
+              "from": 8,
+              "to": 9
+            },
+            {
+              "boxes": [
+                9,
+                13,
+                22
+              ],
+              "player": 14,
+              "box": 1,
+              "dir": 3,
+              "from": 14,
+              "to": 13
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "room": 7,
+      "name": "Parking Bay",
+      "seed": 9052026,
+      "trial": 50369,
+      "removedShortcuts": [
+        {
+          "x": 2,
+          "z": 5
+        },
+        {
+          "x": 5,
+          "z": 4
+        }
+      ],
+      "generatedRows": [
+        " ##   ",
+        "  $@# ",
+        "  $ $.",
+        "  ## #",
+        "     #",
+        "  # .."
+      ],
+      "exit": {
+        "x": 4,
+        "z": 7
+      },
+      "metrics": {
+        "pushes": 23,
+        "lowerBound": 13,
+        "detour": 10,
+        "pushesPerCell": 0.8214285714285714,
+        "crateSwitches": 8,
+        "turns": 7,
+        "revisits": 2,
+        "targetReleases": 1,
+        "states": 573,
+        "expanded": 573,
+        "reachableStates": 573,
+        "solvableStates": 413,
+        "choicePositions": 22,
+        "nonCornerDeadlockChoices": 15,
+        "trapExamples": [
+          [
+            {
+              "boxes": [
+                6,
+                11,
+                14
+              ],
+              "player": 13,
+              "box": 2,
+              "dir": 1,
+              "from": 13,
+              "to": 14
+            }
+          ],
+          [
+            {
+              "boxes": [
+                6,
+                11,
+                12
+              ],
+              "player": 13,
+              "box": 2,
+              "dir": 3,
+              "from": 13,
+              "to": 12
+            }
+          ],
+          [
+            {
+              "boxes": [
+                6,
+                10,
+                13
+              ],
+              "player": 11,
+              "box": 1,
+              "dir": 3,
+              "from": 11,
+              "to": 10
+            },
+            {
+              "boxes": [
+                6,
+                10,
+                14
+              ],
+              "player": 13,
+              "box": 2,
+              "dir": 1,
+              "from": 13,
+              "to": 14
+            }
+          ],
+          [
+            {
+              "boxes": [
+                6,
+                10,
+                13
+              ],
+              "player": 11,
+              "box": 1,
+              "dir": 3,
+              "from": 11,
+              "to": 10
+            },
+            {
+              "boxes": [
+                6,
+                10,
+                12
+              ],
+              "player": 13,
+              "box": 2,
+              "dir": 3,
+              "from": 13,
+              "to": 12
+            },
+            {
+              "boxes": [
+                6,
+                5,
+                12
+              ],
+              "player": 10,
+              "box": 1,
+              "dir": 0,
+              "from": 10,
+              "to": 5
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "room": 8,
+      "name": "Cross Traffic",
+      "seed": 9052027,
+      "trial": "69450-3-6",
+      "removedShortcuts": [
+        {
+          "x": 2,
+          "z": 2
+        },
+        {
+          "x": 5,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 2
+        }
+      ],
+      "generatedRows": [
+        "   .@#",
+        "  .#$#",
+        "# ##  ",
+        "#. #  ",
+        "#  $$ ",
+        "      "
+      ],
+      "exit": {
+        "x": 6,
+        "z": 7
+      },
+      "metrics": {
+        "pushes": 24,
+        "lowerBound": 12,
+        "detour": 12,
+        "pushesPerCell": 0.8888888888888888,
+        "crateSwitches": 12,
+        "turns": 2,
+        "revisits": 1,
+        "targetReleases": 2,
+        "states": 379,
+        "expanded": 374
+      }
+    },
+    {
+      "room": 9,
+      "name": "Holding Pattern",
+      "seed": 9052027,
+      "trial": "43031-4-16",
+      "removedShortcuts": [
+        {
+          "x": 0,
+          "z": 2
+        },
+        {
+          "x": 2,
+          "z": 5
+        },
+        {
+          "x": 5,
+          "z": 0
+        },
+        {
+          "x": 4,
+          "z": 3
+        }
+      ],
+      "generatedRows": [
+        ".    #",
+        "   $@ ",
+        "# #   ",
+        "   ##.",
+        " $$ #.",
+        "  #   "
+      ],
+      "exit": {
+        "x": 6,
+        "z": 7
+      },
+      "metrics": {
+        "pushes": 24,
+        "lowerBound": 14,
+        "detour": 10,
+        "pushesPerCell": 0.8275862068965517,
+        "crateSwitches": 5,
+        "turns": 8,
+        "revisits": 2,
+        "targetReleases": 1,
+        "states": 431,
+        "expanded": 430
+      }
+    },
+    {
+      "room": 10,
+      "name": "Return Ticket",
+      "seed": 9052026,
+      "trial": 10927,
+      "removedShortcuts": [
+        {
+          "x": 3,
+          "z": 5
+        },
+        {
+          "x": 6,
+          "z": 2
+        },
+        {
+          "x": 4,
+          "z": 1
+        },
+        {
+          "x": 1,
+          "z": 0
+        }
+      ],
+      "generatedRows": [
+        " #  . #",
+        ".   #$#",
+        " #  # #",
+        " . #   ",
+        "#$   $ ",
+        " @ #  #"
+      ],
+      "exit": {
+        "x": 6,
+        "z": 7
+      },
+      "metrics": {
+        "pushes": 25,
+        "lowerBound": 11,
+        "detour": 14,
+        "pushesPerCell": 0.8064516129032258,
+        "crateSwitches": 12,
+        "turns": 4,
+        "revisits": 0,
+        "targetReleases": 2,
+        "states": 810,
+        "expanded": 810,
+        "reachableStates": 810,
+        "solvableStates": 402,
+        "choicePositions": 24,
+        "nonCornerDeadlockChoices": 23,
+        "trapExamples": [
+          [
+            {
+              "boxes": [
+                9,
+                20,
+                18
+              ],
+              "player": 24,
+              "box": 2,
+              "dir": 0,
+              "from": 24,
+              "to": 18
+            }
+          ],
+          [
+            {
+              "boxes": [
+                9,
+                20,
+                23
+              ],
+              "player": 24,
+              "box": 2,
+              "dir": 3,
+              "from": 24,
+              "to": 23
+            }
+          ],
+          [
+            {
+              "boxes": [
+                13,
+                20,
+                24
+              ],
+              "player": 9,
+              "box": 0,
+              "dir": 2,
+              "from": 9,
+              "to": 13
+            },
+            {
+              "boxes": [
+                18,
+                20,
+                24
+              ],
+              "player": 13,
+              "box": 0,
+              "dir": 2,
+              "from": 13,
+              "to": 18
+            }
+          ],
+          [
+            {
+              "boxes": [
+                13,
+                20,
+                24
+              ],
+              "player": 9,
+              "box": 0,
+              "dir": 2,
+              "from": 9,
+              "to": 13
+            },
+            {
+              "boxes": [
+                13,
+                20,
+                18
+              ],
+              "player": 24,
+              "box": 2,
+              "dir": 0,
+              "from": 24,
+              "to": 18
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "room": 11,
+      "name": "Narrow Margins",
+      "seed": 9052026,
+      "trial": 45385,
+      "removedShortcuts": [
+        {
+          "x": 2,
+          "z": 3
+        },
+        {
+          "x": 3,
+          "z": 2
+        },
+        {
+          "x": 3,
+          "z": 5
+        }
+      ],
+      "generatedRows": [
+        " #.  ##",
+        " . # $ ",
+        "   #$# ",
+        "  # $@ ",
+        "#      ",
+        ".  #   "
+      ],
+      "exit": {
+        "x": 7,
+        "z": 7
+      },
+      "metrics": {
+        "pushes": 30,
+        "lowerBound": 16,
+        "detour": 14,
+        "pushesPerCell": 0.9090909090909091,
+        "crateSwitches": 11,
+        "turns": 7,
+        "revisits": 2,
+        "targetReleases": 1,
+        "states": 768,
+        "expanded": 768,
+        "reachableStates": 768,
+        "solvableStates": 538,
+        "choicePositions": 24,
+        "nonCornerDeadlockChoices": 8,
+        "trapExamples": [
+          [
+            {
+              "boxes": [
+                7,
+                13,
+                18
+              ],
+              "player": 8,
+              "box": 0,
+              "dir": 3,
+              "from": 8,
+              "to": 7
+            }
+          ],
+          [
+            {
+              "boxes": [
+                7,
+                13,
+                18
+              ],
+              "player": 8,
+              "box": 0,
+              "dir": 3,
+              "from": 8,
+              "to": 7
+            },
+            {
+              "boxes": [
+                7,
+                13,
+                19
+              ],
+              "player": 18,
+              "box": 2,
+              "dir": 1,
+              "from": 18,
+              "to": 19
+            }
+          ],
+          [
+            {
+              "boxes": [
+                8,
+                13,
+                19
+              ],
+              "player": 18,
+              "box": 2,
+              "dir": 1,
+              "from": 18,
+              "to": 19
+            },
+            {
+              "boxes": [
+                8,
+                18,
+                19
+              ],
+              "player": 13,
+              "box": 1,
+              "dir": 2,
+              "from": 13,
+              "to": 18
+            },
+            {
+              "boxes": [
+                7,
+                18,
+                19
+              ],
+              "player": 8,
+              "box": 0,
+              "dir": 3,
+              "from": 8,
+              "to": 7
+            }
+          ],
+          [
+            {
+              "boxes": [
+                8,
+                13,
+                19
+              ],
+              "player": 18,
+              "box": 2,
+              "dir": 1,
+              "from": 18,
+              "to": 19
+            },
+            {
+              "boxes": [
+                8,
+                18,
+                19
+              ],
+              "player": 13,
+              "box": 1,
+              "dir": 2,
+              "from": 13,
+              "to": 18
+            },
+            {
+              "boxes": [
+                8,
+                24,
+                19
+              ],
+              "player": 18,
+              "box": 1,
+              "dir": 2,
+              "from": 18,
+              "to": 24
+            },
+            {
+              "boxes": [
+                8,
+                25,
+                19
+              ],
+              "player": 24,
+              "box": 1,
+              "dir": 1,
+              "from": 24,
+              "to": 25
+            },
+            {
+              "boxes": [
+                7,
+                25,
+                19
+              ],
+              "player": 8,
+              "box": 0,
+              "dir": 3,
+              "from": 8,
+              "to": 7
+            },
+            {
+              "boxes": [
+                13,
+                25,
+                19
+              ],
+              "player": 7,
+              "box": 0,
+              "dir": 2,
+              "from": 7,
+              "to": 13
+            },
+            {
+              "boxes": [
+                18,
+                25,
+                19
+              ],
+              "player": 13,
+              "box": 0,
+              "dir": 2,
+              "from": 13,
+              "to": 18
+            },
+            {
+              "boxes": [
+                18,
+                24,
+                19
+              ],
+              "player": 25,
+              "box": 1,
+              "dir": 3,
+              "from": 25,
+              "to": 24
+            },
+            {
+              "boxes": [
+                18,
+                23,
+                19
+              ],
+              "player": 24,
+              "box": 1,
+              "dir": 3,
+              "from": 24,
+              "to": 23
+            },
+            {
+              "boxes": [
+                18,
+                22,
+                19
+              ],
+              "player": 23,
+              "box": 1,
+              "dir": 3,
+              "from": 23,
+              "to": 22
+            },
+            {
+              "boxes": [
+                24,
+                22,
+                19
+              ],
+              "player": 18,
+              "box": 0,
+              "dir": 2,
+              "from": 18,
+              "to": 24
+            },
+            {
+              "boxes": [
+                23,
+                22,
+                19
+              ],
+              "player": 24,
+              "box": 0,
+              "dir": 3,
+              "from": 24,
+              "to": 23
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "room": 12,
+      "name": "Final Exchange",
+      "seed": 9052026,
+      "trial": 72209,
+      "removedShortcuts": [
+        {
+          "x": 5,
+          "z": 2
+        },
+        {
+          "x": 3,
+          "z": 5
+        }
+      ],
+      "generatedRows": [
+        " ..    ",
+        "##   $ ",
+        "  ## ##",
+        ". ##  #",
+        " $$    ",
+        " @##   "
+      ],
+      "exit": {
+        "x": 7,
+        "z": 7
+      },
+      "metrics": {
+        "pushes": 35,
+        "lowerBound": 15,
+        "detour": 20,
+        "pushesPerCell": 1.1290322580645162,
+        "crateSwitches": 6,
+        "turns": 8,
+        "revisits": 10,
+        "targetReleases": 1,
+        "states": 445,
+        "expanded": 445,
+        "reachableStates": 445,
+        "solvableStates": 220,
+        "choicePositions": 28,
+        "nonCornerDeadlockChoices": 3,
+        "trapExamples": [
+          [
+            {
+              "boxes": [
+                10,
+                16,
+                21
+              ],
+              "player": 20,
+              "box": 1,
+              "dir": 0,
+              "from": 20,
+              "to": 16
+            },
+            {
+              "boxes": [
+                10,
+                16,
+                22
+              ],
+              "player": 21,
+              "box": 2,
+              "dir": 1,
+              "from": 21,
+              "to": 22
+            },
+            {
+              "boxes": [
+                10,
+                16,
+                23
+              ],
+              "player": 22,
+              "box": 2,
+              "dir": 1,
+              "from": 22,
+              "to": 23
+            },
+            {
+              "boxes": [
+                10,
+                16,
+                24
+              ],
+              "player": 23,
+              "box": 2,
+              "dir": 1,
+              "from": 23,
+              "to": 24
+            },
+            {
+              "boxes": [
+                9,
+                16,
+                24
+              ],
+              "player": 10,
+              "box": 0,
+              "dir": 3,
+              "from": 10,
+              "to": 9
+            },
+            {
+              "boxes": [
+                14,
+                16,
+                24
+              ],
+              "player": 9,
+              "box": 0,
+              "dir": 2,
+              "from": 9,
+              "to": 14
+            }
+          ],
+          [
+            {
+              "boxes": [
+                10,
+                16,
+                21
+              ],
+              "player": 20,
+              "box": 1,
+              "dir": 0,
+              "from": 20,
+              "to": 16
+            },
+            {
+              "boxes": [
+                10,
+                16,
+                22
+              ],
+              "player": 21,
+              "box": 2,
+              "dir": 1,
+              "from": 21,
+              "to": 22
+            },
+            {
+              "boxes": [
+                10,
+                16,
+                23
+              ],
+              "player": 22,
+              "box": 2,
+              "dir": 1,
+              "from": 22,
+              "to": 23
+            },
+            {
+              "boxes": [
+                10,
+                16,
+                24
+              ],
+              "player": 23,
+              "box": 2,
+              "dir": 1,
+              "from": 23,
+              "to": 24
+            },
+            {
+              "boxes": [
+                9,
+                16,
+                24
+              ],
+              "player": 10,
+              "box": 0,
+              "dir": 3,
+              "from": 10,
+              "to": 9
+            },
+            {
+              "boxes": [
+                8,
+                16,
+                24
+              ],
+              "player": 9,
+              "box": 0,
+              "dir": 3,
+              "from": 9,
+              "to": 8
+            },
+            {
+              "boxes": [
+                8,
+                16,
+                23
+              ],
+              "player": 24,
+              "box": 2,
+              "dir": 3,
+              "from": 24,
+              "to": 23
+            },
+            {
+              "boxes": [
+                8,
+                16,
+                22
+              ],
+              "player": 23,
+              "box": 2,
+              "dir": 3,
+              "from": 23,
+              "to": 22
+            }
+          ],
+          [
+            {
+              "boxes": [
+                10,
+                16,
+                21
+              ],
+              "player": 20,
+              "box": 1,
+              "dir": 0,
+              "from": 20,
+              "to": 16
+            },
+            {
+              "boxes": [
+                10,
+                16,
+                22
+              ],
+              "player": 21,
+              "box": 2,
+              "dir": 1,
+              "from": 21,
+              "to": 22
+            },
+            {
+              "boxes": [
+                10,
+                16,
+                23
+              ],
+              "player": 22,
+              "box": 2,
+              "dir": 1,
+              "from": 22,
+              "to": 23
+            },
+            {
+              "boxes": [
+                10,
+                16,
+                24
+              ],
+              "player": 23,
+              "box": 2,
+              "dir": 1,
+              "from": 23,
+              "to": 24
+            },
+            {
+              "boxes": [
+                9,
+                16,
+                24
+              ],
+              "player": 10,
+              "box": 0,
+              "dir": 3,
+              "from": 10,
+              "to": 9
+            },
+            {
+              "boxes": [
+                8,
+                16,
+                24
+              ],
+              "player": 9,
+              "box": 0,
+              "dir": 3,
+              "from": 9,
+              "to": 8
+            },
+            {
+              "boxes": [
+                8,
+                16,
+                23
+              ],
+              "player": 24,
+              "box": 2,
+              "dir": 3,
+              "from": 24,
+              "to": 23
+            },
+            {
+              "boxes": [
+                8,
+                16,
+                17
+              ],
+              "player": 23,
+              "box": 2,
+              "dir": 0,
+              "from": 23,
+              "to": 17
+            },
+            {
+              "boxes": [
+                8,
+                20,
+                17
+              ],
+              "player": 16,
+              "box": 1,
+              "dir": 2,
+              "from": 16,
+              "to": 20
+            },
+            {
+              "boxes": [
+                8,
+                21,
+                17
+              ],
+              "player": 20,
+              "box": 1,
+              "dir": 1,
+              "from": 20,
+              "to": 21
+            },
+            {
+              "boxes": [
+                8,
+                22,
+                17
+              ],
+              "player": 21,
+              "box": 1,
+              "dir": 1,
+              "from": 21,
+              "to": 22
+            },
+            {
+              "boxes": [
+                8,
+                23,
+                17
+              ],
+              "player": 22,
+              "box": 1,
+              "dir": 1,
+              "from": 22,
+              "to": 23
+            },
+            {
+              "boxes": [
+                8,
+                24,
+                17
+              ],
+              "player": 23,
+              "box": 1,
+              "dir": 1,
+              "from": 23,
+              "to": 24
+            },
+            {
+              "boxes": [
+                8,
+                23,
+                17
+              ],
+              "player": 24,
+              "box": 1,
+              "dir": 3,
+              "from": 24,
+              "to": 23
+            },
+            {
+              "boxes": [
+                8,
+                22,
+                17
+              ],
+              "player": 23,
+              "box": 1,
+              "dir": 3,
+              "from": 23,
+              "to": 22
+            },
+            {
+              "boxes": [
+                8,
+                21,
+                17
+              ],
+              "player": 22,
+              "box": 1,
+              "dir": 3,
+              "from": 22,
+              "to": 21
+            },
+            {
+              "boxes": [
+                8,
+                20,
+                17
+              ],
+              "player": 21,
+              "box": 1,
+              "dir": 3,
+              "from": 21,
+              "to": 20
+            },
+            {
+              "boxes": [
+                8,
+                19,
+                17
+              ],
+              "player": 20,
+              "box": 1,
+              "dir": 3,
+              "from": 20,
+              "to": 19
+            },
+            {
+              "boxes": [
+                8,
+                15,
+                17
+              ],
+              "player": 19,
+              "box": 1,
+              "dir": 0,
+              "from": 19,
+              "to": 15
+            },
+            {
+              "boxes": [
+                8,
+                15,
+                14
+              ],
+              "player": 17,
+              "box": 2,
+              "dir": 0,
+              "from": 17,
+              "to": 14
+            },
+            {
+              "boxes": [
+                8,
+                15,
+                9
+              ],
+              "player": 14,
+              "box": 2,
+              "dir": 0,
+              "from": 14,
+              "to": 9
+            },
+            {
+              "boxes": [
+                8,
+                15,
+                4
+              ],
+              "player": 9,
+              "box": 2,
+              "dir": 0,
+              "from": 9,
+              "to": 4
+            },
+            {
+              "boxes": [
+                8,
+                15,
+                3
+              ],
+              "player": 4,
+              "box": 2,
+              "dir": 3,
+              "from": 4,
+              "to": 3
+            },
+            {
+              "boxes": [
+                8,
+                15,
+                2
+              ],
+              "player": 3,
+              "box": 2,
+              "dir": 3,
+              "from": 3,
+              "to": 2
+            },
+            {
+              "boxes": [
+                8,
+                15,
+                1
+              ],
+              "player": 2,
+              "box": 2,
+              "dir": 3,
+              "from": 2,
+              "to": 1
+            },
+            {
+              "boxes": [
+                9,
+                15,
+                1
+              ],
+              "player": 8,
+              "box": 0,
+              "dir": 1,
+              "from": 8,
+              "to": 9
+            },
+            {
+              "boxes": [
+                14,
+                15,
+                1
+              ],
+              "player": 9,
+              "box": 0,
+              "dir": 2,
+              "from": 9,
+              "to": 14
+            },
+            {
+              "boxes": [
+                17,
+                15,
+                1
+              ],
+              "player": 14,
+              "box": 0,
+              "dir": 2,
+              "from": 14,
+              "to": 17
+            },
+            {
+              "boxes": [
+                23,
+                15,
+                1
+              ],
+              "player": 17,
+              "box": 0,
+              "dir": 2,
+              "from": 17,
+              "to": 23
+            },
+            {
+              "boxes": [
+                22,
+                15,
+                1
+              ],
+              "player": 23,
+              "box": 0,
+              "dir": 3,
+              "from": 23,
+              "to": 22
+            }
+          ]
+        ]
+      }
+    }
+  ]
+}

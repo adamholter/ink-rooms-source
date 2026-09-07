@@ -1,0 +1,1308 @@
+[
+  {
+    "level": {
+      "name": "First Frost",
+      "subtitle": "",
+      "hint": "Push the crate across the blue strip, then follow it. The crate stops on dry floor and catches your slide.",
+      "lesson": "Blue tiles are ice. You and crates slide straight until dry floor or an obstacle. Undo reverses the whole slide.",
+      "map": [
+        "~~~~~~~~",
+        "~~    ~~",
+        "~~   ~~~",
+        "~ @$  .~",
+        "~  ~ E ~",
+        "~~ ~  ~~",
+        "~~~~~~~~"
+      ],
+      "ice": [
+        {
+          "x": 4,
+          "z": 3
+        },
+        {
+          "x": 5,
+          "z": 3
+        }
+      ]
+    },
+    "path": [
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      }
+    ],
+    "room": 32,
+    "metrics": {
+      "moves": 3,
+      "pushes": 1,
+      "floorCellsExcludingExit": 20,
+      "playerSlideCells": 1,
+      "crateSlideCells": 2,
+      "robotSlideCells": 0
+    },
+    "designWitness": {
+      "afterMoves": 0,
+      "action": {
+        "x": 1,
+        "z": 0
+      },
+      "kind": "crate-slide",
+      "before": {
+        "level": 31,
+        "player": {
+          "x": 2,
+          "z": 3
+        },
+        "boxes": [
+          {
+            "x": 3,
+            "z": 3
+          }
+        ],
+        "moves": 0,
+        "pushes": 0,
+        "won": false,
+        "fall": null
+      },
+      "after": {
+        "level": 31,
+        "player": {
+          "x": 3,
+          "z": 3
+        },
+        "boxes": [
+          {
+            "x": 6,
+            "z": 3
+          }
+        ],
+        "moves": 1,
+        "pushes": 1,
+        "won": false,
+        "fall": null
+      }
+    },
+    "intendedRouteRequiresIce": true
+  },
+  {
+    "level": {
+      "name": "Crosscurrent",
+      "subtitle": "",
+      "hint": "Keep the lower lane clear. Deliver one crate into the right-hand bay before bringing the other down to its mark.",
+      "map": [
+        "~~~~~~~~~",
+        "~~ E ~~~~",
+        "~~   ~~~~",
+        "~   #  ~~",
+        "~      ~~",
+        "~  # $@ ~",
+        "~#$     ~",
+        "~    . .~",
+        "~~~~~~~~~"
+      ],
+      "ice": [
+        {
+          "x": 1,
+          "z": 7
+        },
+        {
+          "x": 2,
+          "z": 3
+        },
+        {
+          "x": 5,
+          "z": 3
+        },
+        {
+          "x": 4,
+          "z": 7
+        },
+        {
+          "x": 6,
+          "z": 4
+        },
+        {
+          "x": 5,
+          "z": 6
+        },
+        {
+          "x": 4,
+          "z": 4
+        }
+      ]
+    },
+    "path": [
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      }
+    ],
+    "room": 33,
+    "metrics": {
+      "moves": 33,
+      "pushes": 9,
+      "floorCellsExcludingExit": 35,
+      "playerSlideCells": 4,
+      "crateSlideCells": 3,
+      "robotSlideCells": 0
+    },
+    "designWitness": {
+      "afterMoves": 3,
+      "action": {
+        "x": 0,
+        "z": 1
+      },
+      "kind": "crate-slide",
+      "before": {
+        "level": 32,
+        "player": {
+          "x": 5,
+          "z": 4
+        },
+        "boxes": [
+          {
+            "x": 5,
+            "z": 5
+          },
+          {
+            "x": 2,
+            "z": 6
+          }
+        ],
+        "moves": 3,
+        "pushes": 0,
+        "won": false,
+        "fall": null
+      },
+      "after": {
+        "level": 32,
+        "player": {
+          "x": 5,
+          "z": 5
+        },
+        "boxes": [
+          {
+            "x": 5,
+            "z": 7
+          },
+          {
+            "x": 2,
+            "z": 6
+          }
+        ],
+        "moves": 4,
+        "pushes": 1,
+        "won": false,
+        "fall": null
+      }
+    },
+    "wrongStagingWitness": {
+      "afterMoves": 16,
+      "action": {
+        "x": 0,
+        "z": -1
+      },
+      "kind": "premature-slide",
+      "before": {
+        "level": 32,
+        "player": {
+          "x": 2,
+          "z": 5
+        },
+        "boxes": [
+          {
+            "x": 7,
+            "z": 7
+          },
+          {
+            "x": 2,
+            "z": 4
+          }
+        ],
+        "moves": 16,
+        "pushes": 5,
+        "won": false,
+        "fall": null
+      },
+      "after": {
+        "level": 32,
+        "player": {
+          "x": 2,
+          "z": 4
+        },
+        "boxes": [
+          {
+            "x": 7,
+            "z": 7
+          },
+          {
+            "x": 2,
+            "z": 2
+          }
+        ],
+        "moves": 17,
+        "pushes": 6,
+        "won": false,
+        "fall": null
+      },
+      "proof": {
+        "solvable": false,
+        "states": 56,
+        "exhaustive": true
+      }
+    },
+    "intendedRouteRequiresIce": true
+  },
+  {
+    "level": {
+      "name": "Long Thaw",
+      "subtitle": "",
+      "hint": "Bring the right-hand crate to the upper mark. Keep space below the left-hand crate for its trip to the right-hand bay.",
+      "map": [
+        "~~~~~~~~~~~",
+        "~~~.    ~~~",
+        "~~~   $$# ~",
+        "~  @      ~",
+        "~        .~",
+        "~  E## ~ ~~",
+        "~~~~~~~~~~~"
+      ],
+      "ice": [
+        {
+          "x": 5,
+          "z": 1
+        },
+        {
+          "x": 3,
+          "z": 2
+        },
+        {
+          "x": 6,
+          "z": 1
+        },
+        {
+          "x": 4,
+          "z": 1
+        },
+        {
+          "x": 4,
+          "z": 4
+        },
+        {
+          "x": 7,
+          "z": 4
+        },
+        {
+          "x": 5,
+          "z": 2
+        }
+      ]
+    },
+    "path": [
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      }
+    ],
+    "room": 34,
+    "metrics": {
+      "moves": 35,
+      "pushes": 13,
+      "floorCellsExcludingExit": 33,
+      "playerSlideCells": 9,
+      "crateSlideCells": 3,
+      "robotSlideCells": 0
+    },
+    "designWitness": {
+      "afterMoves": 3,
+      "action": {
+        "x": -1,
+        "z": 0
+      },
+      "kind": "crate-slide",
+      "before": {
+        "level": 33,
+        "player": {
+          "x": 7,
+          "z": 2
+        },
+        "boxes": [
+          {
+            "x": 6,
+            "z": 2
+          },
+          {
+            "x": 7,
+            "z": 3
+          }
+        ],
+        "moves": 3,
+        "pushes": 1,
+        "won": false,
+        "fall": null
+      },
+      "after": {
+        "level": 33,
+        "player": {
+          "x": 6,
+          "z": 2
+        },
+        "boxes": [
+          {
+            "x": 4,
+            "z": 2
+          },
+          {
+            "x": 7,
+            "z": 3
+          }
+        ],
+        "moves": 4,
+        "pushes": 2,
+        "won": false,
+        "fall": null
+      }
+    },
+    "intendedRouteRequiresIce": true
+  },
+  {
+    "level": {
+      "name": "Borrowed Brake",
+      "subtitle": "",
+      "hint": "Use one crate to catch the other on the ice. Leave the brake on the right while you bring the caught crate around to the left-hand bay.",
+      "map": [
+        "~~~~~~~~~",
+        "~~~ E ~~~",
+        "~~~   ~~~",
+        "~~#  #  ~",
+        "~~# $   ~",
+        "~   $   ~",
+        "~   #   ~",
+        "~.@   . ~",
+        "~~~~~~~~~"
+      ],
+      "ice": [
+        {
+          "x": 3,
+          "z": 7
+        },
+        {
+          "x": 2,
+          "z": 5
+        },
+        {
+          "x": 6,
+          "z": 4
+        },
+        {
+          "x": 5,
+          "z": 5
+        },
+        {
+          "x": 3,
+          "z": 3
+        },
+        {
+          "x": 6,
+          "z": 6
+        },
+        {
+          "x": 7,
+          "z": 7
+        }
+      ]
+    },
+    "path": [
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      }
+    ],
+    "room": 35,
+    "metrics": {
+      "moves": 41,
+      "pushes": 13,
+      "floorCellsExcludingExit": 34,
+      "playerSlideCells": 5,
+      "crateSlideCells": 5,
+      "robotSlideCells": 0
+    },
+    "designWitness": {
+      "afterMoves": 12,
+      "action": {
+        "x": 1,
+        "z": 0
+      },
+      "kind": "crate-stopper",
+      "before": {
+        "level": 34,
+        "player": {
+          "x": 3,
+          "z": 5
+        },
+        "boxes": [
+          {
+            "x": 4,
+            "z": 5
+          },
+          {
+            "x": 6,
+            "z": 5
+          }
+        ],
+        "moves": 12,
+        "pushes": 4,
+        "won": false,
+        "fall": null
+      },
+      "after": {
+        "level": 34,
+        "player": {
+          "x": 4,
+          "z": 5
+        },
+        "boxes": [
+          {
+            "x": 5,
+            "z": 5
+          },
+          {
+            "x": 6,
+            "z": 5
+          }
+        ],
+        "moves": 13,
+        "pushes": 5,
+        "won": false,
+        "fall": null
+      }
+    },
+    "stopperNecessity": {
+      "solvable": false,
+      "states": 4384,
+      "exhaustive": true
+    },
+    "intendedRouteRequiresIce": true
+  },
+  {
+    "level": {
+      "name": "Cold Storage",
+      "subtitle": "",
+      "hint": "The lower crate needs room to turn. Stage it off the ice before sending its partner into the left-hand bay.",
+      "map": [
+        "~~~~~~~~~",
+        "~~~ E ~~~",
+        "~~~   ~~~",
+        "~~    #.~",
+        "~~  #   ~",
+        "~  $  @ ~",
+        "~  $    ~",
+        "~. #   #~",
+        "~~~~~~~~~"
+      ],
+      "ice": [
+        {
+          "x": 5,
+          "z": 4
+        },
+        {
+          "x": 2,
+          "z": 5
+        },
+        {
+          "x": 3,
+          "z": 4
+        },
+        {
+          "x": 5,
+          "z": 7
+        },
+        {
+          "x": 7,
+          "z": 6
+        },
+        {
+          "x": 5,
+          "z": 6
+        },
+        {
+          "x": 4,
+          "z": 6
+        }
+      ]
+    },
+    "path": [
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      }
+    ],
+    "room": 36,
+    "metrics": {
+      "moves": 56,
+      "pushes": 17,
+      "floorCellsExcludingExit": 34,
+      "playerSlideCells": 12,
+      "crateSlideCells": 4,
+      "robotSlideCells": 0
+    },
+    "designWitness": {
+      "afterMoves": 3,
+      "action": {
+        "x": 0,
+        "z": -1
+      },
+      "kind": "crate-slide",
+      "before": {
+        "level": 35,
+        "player": {
+          "x": 3,
+          "z": 6
+        },
+        "boxes": [
+          {
+            "x": 3,
+            "z": 5
+          },
+          {
+            "x": 2,
+            "z": 6
+          }
+        ],
+        "moves": 3,
+        "pushes": 1,
+        "won": false,
+        "fall": null
+      },
+      "after": {
+        "level": 35,
+        "player": {
+          "x": 3,
+          "z": 5
+        },
+        "boxes": [
+          {
+            "x": 3,
+            "z": 3
+          },
+          {
+            "x": 2,
+            "z": 6
+          }
+        ],
+        "moves": 4,
+        "pushes": 2,
+        "won": false,
+        "fall": null
+      }
+    },
+    "wrongStagingWitness": {
+      "afterMoves": 33,
+      "action": {
+        "x": -1,
+        "z": 0
+      },
+      "kind": "premature-slide",
+      "before": {
+        "level": 35,
+        "player": {
+          "x": 4,
+          "z": 5
+        },
+        "boxes": [
+          {
+            "x": 3,
+            "z": 5
+          },
+          {
+            "x": 7,
+            "z": 3
+          }
+        ],
+        "moves": 33,
+        "pushes": 13,
+        "won": false,
+        "fall": null
+      },
+      "after": {
+        "level": 35,
+        "player": {
+          "x": 3,
+          "z": 5
+        },
+        "boxes": [
+          {
+            "x": 1,
+            "z": 5
+          },
+          {
+            "x": 7,
+            "z": 3
+          }
+        ],
+        "moves": 34,
+        "pushes": 14,
+        "won": false,
+        "fall": null
+      },
+      "proof": {
+        "solvable": false,
+        "states": 29,
+        "exhaustive": true
+      }
+    },
+    "intendedRouteRequiresIce": true
+  }
+]

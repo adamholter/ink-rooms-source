@@ -1,0 +1,2913 @@
+[
+  {
+    "level": {
+      "name": "Quarter Cargo",
+      "subtitle": "",
+      "hint": "The plate turns the square. Bring the crate aboard before turning it toward the mark.",
+      "map": [
+        "~~~~~~~",
+        "~    #~",
+        "~### .~",
+        "~##  #~",
+        "~   $ ~",
+        "~@   E~",
+        "~~~~~~~"
+      ],
+      "rotators": [
+        {
+          "x": 3,
+          "z": 3,
+          "radius": 1,
+          "channel": 1
+        }
+      ],
+      "switches": [
+        {
+          "x": 1,
+          "z": 4,
+          "channel": 1
+        }
+      ],
+      "lesson": "Step onto the plate to turn the square clockwise. Step off before triggering another turn. Everything aboard rides with it."
+    },
+    "path": [
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      }
+    ],
+    "moves": 18,
+    "pushes": 3,
+    "states": 844,
+    "rotationNecessity": {
+      "unsolvable": true,
+      "states": 81,
+      "exhaustive": true
+    },
+    "id": 37,
+    "metrics": {
+      "moves": 18,
+      "pushes": 3,
+      "floorCellsExcludingExit": 17,
+      "movesPerFloor": 1.0588235294117647,
+      "pushesPerFloor": 0.17647058823529413,
+      "rotationActivations": 2,
+      "carriedCrates": 2,
+      "carriedPlayers": 0,
+      "carriedRobots": 0,
+      "playerSlideCells": 0,
+      "crateSlideCells": 0,
+      "robotSlideCells": 0
+    },
+    "mechanicWitnesses": [
+      {
+        "afterMoves": 0,
+        "kind": "rotation",
+        "action": {
+          "x": 0,
+          "z": -1
+        },
+        "before": {
+          "level": 36,
+          "player": {
+            "x": 1,
+            "z": 5
+          },
+          "boxes": [
+            {
+              "x": 4,
+              "z": 4
+            }
+          ],
+          "rotations": [
+            0
+          ],
+          "moves": 0,
+          "pushes": 0,
+          "won": false,
+          "fall": null
+        },
+        "after": {
+          "level": 36,
+          "player": {
+            "x": 1,
+            "z": 4
+          },
+          "boxes": [
+            {
+              "x": 2,
+              "z": 4
+            }
+          ],
+          "rotations": [
+            1
+          ],
+          "moves": 1,
+          "pushes": 0,
+          "won": false,
+          "fall": null
+        }
+      },
+      {
+        "afterMoves": 4,
+        "kind": "rotation",
+        "action": {
+          "x": -1,
+          "z": 0
+        },
+        "before": {
+          "level": 36,
+          "player": {
+            "x": 2,
+            "z": 4
+          },
+          "boxes": [
+            {
+              "x": 2,
+              "z": 3
+            }
+          ],
+          "rotations": [
+            1
+          ],
+          "moves": 4,
+          "pushes": 1,
+          "won": false,
+          "fall": null
+        },
+        "after": {
+          "level": 36,
+          "player": {
+            "x": 1,
+            "z": 4
+          },
+          "boxes": [
+            {
+              "x": 3,
+              "z": 2
+            }
+          ],
+          "rotations": [
+            2
+          ],
+          "moves": 5,
+          "pushes": 1,
+          "won": false,
+          "fall": null
+        }
+      }
+    ],
+    "authorship": "Procedurally authored from private random geometry and mechanics constraints. Public corpus used only afterward as collision audit.",
+    "solutionOptimality": "Shortest complete command path by exhaustive breadth-first search, including robot positions and rotor orientations."
+  },
+  {
+    "level": {
+      "name": "Shared Deck",
+      "subtitle": "",
+      "hint": "Both crates ride the square. Give each one room to leave.",
+      "map": [
+        "~~~~~~~",
+        "~.   #~",
+        "~##  .~",
+        "~ # $ ~",
+        "~  $ #~",
+        "~@#  E~",
+        "~~~~~~~"
+      ],
+      "rotators": [
+        {
+          "x": 3,
+          "z": 3,
+          "radius": 1,
+          "channel": 1
+        }
+      ],
+      "switches": [
+        {
+          "x": 1,
+          "z": 4,
+          "channel": 1
+        }
+      ]
+    },
+    "path": [
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      }
+    ],
+    "moves": 18,
+    "pushes": 5,
+    "states": 5103,
+    "rotationNecessity": {
+      "unsolvable": true,
+      "states": 280,
+      "exhaustive": true
+    },
+    "id": 38,
+    "metrics": {
+      "moves": 18,
+      "pushes": 5,
+      "floorCellsExcludingExit": 18,
+      "movesPerFloor": 1,
+      "pushesPerFloor": 0.2777777777777778,
+      "rotationActivations": 2,
+      "carriedCrates": 4,
+      "carriedPlayers": 0,
+      "carriedRobots": 0,
+      "playerSlideCells": 0,
+      "crateSlideCells": 0,
+      "robotSlideCells": 0
+    },
+    "mechanicWitnesses": [
+      {
+        "afterMoves": 0,
+        "kind": "rotation",
+        "action": {
+          "x": 0,
+          "z": -1
+        },
+        "before": {
+          "level": 37,
+          "player": {
+            "x": 1,
+            "z": 5
+          },
+          "boxes": [
+            {
+              "x": 4,
+              "z": 3
+            },
+            {
+              "x": 3,
+              "z": 4
+            }
+          ],
+          "rotations": [
+            0
+          ],
+          "moves": 0,
+          "pushes": 0,
+          "won": false,
+          "fall": null
+        },
+        "after": {
+          "level": 37,
+          "player": {
+            "x": 1,
+            "z": 4
+          },
+          "boxes": [
+            {
+              "x": 3,
+              "z": 4
+            },
+            {
+              "x": 2,
+              "z": 3
+            }
+          ],
+          "rotations": [
+            1
+          ],
+          "moves": 1,
+          "pushes": 0,
+          "won": false,
+          "fall": null
+        }
+      },
+      {
+        "afterMoves": 2,
+        "kind": "rotation",
+        "action": {
+          "x": -1,
+          "z": 0
+        },
+        "before": {
+          "level": 37,
+          "player": {
+            "x": 2,
+            "z": 4
+          },
+          "boxes": [
+            {
+              "x": 3,
+              "z": 4
+            },
+            {
+              "x": 2,
+              "z": 3
+            }
+          ],
+          "rotations": [
+            1
+          ],
+          "moves": 2,
+          "pushes": 0,
+          "won": false,
+          "fall": null
+        },
+        "after": {
+          "level": 37,
+          "player": {
+            "x": 1,
+            "z": 4
+          },
+          "boxes": [
+            {
+              "x": 2,
+              "z": 3
+            },
+            {
+              "x": 3,
+              "z": 2
+            }
+          ],
+          "rotations": [
+            2
+          ],
+          "moves": 3,
+          "pushes": 0,
+          "won": false,
+          "fall": null
+        }
+      }
+    ],
+    "authorship": "Procedurally authored from private random geometry and mechanics constraints. Public corpus used only afterward as collision audit.",
+    "solutionOptimality": "Shortest complete command path by exhaustive breadth-first search, including robot positions and rotor orientations."
+  },
+  {
+    "level": {
+      "name": "Turn Order",
+      "subtitle": "",
+      "hint": "Stage the crates before the next turn closes their route.",
+      "map": [
+        "~~~~~~~",
+        "~#    ~",
+        "~. #$#~",
+        "~#$   ~",
+        "~.    ~",
+        "~@#  E~",
+        "~~~~~~~"
+      ],
+      "rotators": [
+        {
+          "x": 3,
+          "z": 3,
+          "radius": 1,
+          "channel": 1
+        }
+      ],
+      "switches": [
+        {
+          "x": 1,
+          "z": 4,
+          "channel": 1
+        }
+      ]
+    },
+    "path": [
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      }
+    ],
+    "moves": 24,
+    "pushes": 5,
+    "states": 3263,
+    "rotationNecessity": {
+      "unsolvable": true,
+      "states": 77,
+      "exhaustive": true
+    },
+    "id": 39,
+    "metrics": {
+      "moves": 24,
+      "pushes": 5,
+      "floorCellsExcludingExit": 19,
+      "movesPerFloor": 1.263157894736842,
+      "pushesPerFloor": 0.2631578947368421,
+      "rotationActivations": 4,
+      "carriedCrates": 6,
+      "carriedPlayers": 1,
+      "carriedRobots": 0,
+      "playerSlideCells": 0,
+      "crateSlideCells": 0,
+      "robotSlideCells": 0
+    },
+    "mechanicWitnesses": [
+      {
+        "afterMoves": 0,
+        "kind": "rotation",
+        "action": {
+          "x": 0,
+          "z": -1
+        },
+        "before": {
+          "level": 38,
+          "player": {
+            "x": 1,
+            "z": 5
+          },
+          "boxes": [
+            {
+              "x": 4,
+              "z": 2
+            },
+            {
+              "x": 2,
+              "z": 3
+            }
+          ],
+          "rotations": [
+            0
+          ],
+          "moves": 0,
+          "pushes": 0,
+          "won": false,
+          "fall": null
+        },
+        "after": {
+          "level": 38,
+          "player": {
+            "x": 1,
+            "z": 4
+          },
+          "boxes": [
+            {
+              "x": 4,
+              "z": 4
+            },
+            {
+              "x": 3,
+              "z": 2
+            }
+          ],
+          "rotations": [
+            1
+          ],
+          "moves": 1,
+          "pushes": 0,
+          "won": false,
+          "fall": null
+        }
+      },
+      {
+        "afterMoves": 2,
+        "kind": "rotation",
+        "action": {
+          "x": -1,
+          "z": 0
+        },
+        "before": {
+          "level": 38,
+          "player": {
+            "x": 2,
+            "z": 4
+          },
+          "boxes": [
+            {
+              "x": 4,
+              "z": 4
+            },
+            {
+              "x": 3,
+              "z": 2
+            }
+          ],
+          "rotations": [
+            1
+          ],
+          "moves": 2,
+          "pushes": 0,
+          "won": false,
+          "fall": null
+        },
+        "after": {
+          "level": 38,
+          "player": {
+            "x": 1,
+            "z": 4
+          },
+          "boxes": [
+            {
+              "x": 2,
+              "z": 4
+            },
+            {
+              "x": 4,
+              "z": 3
+            }
+          ],
+          "rotations": [
+            2
+          ],
+          "moves": 3,
+          "pushes": 0,
+          "won": false,
+          "fall": null
+        }
+      }
+    ],
+    "wrongStagingWitness": {
+      "afterMoves": 7,
+      "action": {
+        "x": 1,
+        "z": 0
+      },
+      "before": {
+        "level": 38,
+        "player": {
+          "x": 3,
+          "z": 4
+        },
+        "boxes": [
+          {
+            "x": 2,
+            "z": 2
+          },
+          {
+            "x": 4,
+            "z": 4
+          }
+        ],
+        "rotations": [
+          3
+        ],
+        "moves": 7,
+        "pushes": 1,
+        "won": false,
+        "fall": null
+      },
+      "after": {
+        "level": 38,
+        "player": {
+          "x": 4,
+          "z": 4
+        },
+        "boxes": [
+          {
+            "x": 2,
+            "z": 2
+          },
+          {
+            "x": 5,
+            "z": 4
+          }
+        ],
+        "rotations": [
+          3
+        ],
+        "moves": 8,
+        "pushes": 2,
+        "won": false,
+        "fall": null
+      },
+      "proof": {
+        "unsolvable": true,
+        "states": 1100,
+        "exhaustive": true
+      }
+    },
+    "authorship": "Procedurally authored from private random geometry and mechanics constraints. Public corpus used only afterward as collision audit.",
+    "solutionOptimality": "Shortest complete command path by exhaustive breadth-first search, including robot positions and rotor orientations."
+  },
+  {
+    "level": {
+      "name": "Off Axis",
+      "subtitle": "",
+      "hint": "The upper marks need separate approaches. Use the square to change which side you can reach.",
+      "map": [
+        "~~~~~~~",
+        "~..  #~",
+        "~  $# ~",
+        "~#  $ ~",
+        "~  #  ~",
+        "~@ ##E~",
+        "~~~~~~~"
+      ],
+      "rotators": [
+        {
+          "x": 3,
+          "z": 3,
+          "radius": 1,
+          "channel": 1
+        }
+      ],
+      "switches": [
+        {
+          "x": 1,
+          "z": 4,
+          "channel": 1
+        }
+      ]
+    },
+    "path": [
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      }
+    ],
+    "moves": 38,
+    "pushes": 7,
+    "states": 3153,
+    "rotationNecessity": {
+      "unsolvable": true,
+      "states": 204,
+      "exhaustive": true
+    },
+    "id": 40,
+    "metrics": {
+      "moves": 38,
+      "pushes": 7,
+      "floorCellsExcludingExit": 18,
+      "movesPerFloor": 2.111111111111111,
+      "pushesPerFloor": 0.3888888888888889,
+      "rotationActivations": 4,
+      "carriedCrates": 4,
+      "carriedPlayers": 0,
+      "carriedRobots": 0,
+      "playerSlideCells": 0,
+      "crateSlideCells": 0,
+      "robotSlideCells": 0
+    },
+    "mechanicWitnesses": [
+      {
+        "afterMoves": 8,
+        "kind": "rotation",
+        "action": {
+          "x": -1,
+          "z": 0
+        },
+        "before": {
+          "level": 39,
+          "player": {
+            "x": 2,
+            "z": 4
+          },
+          "boxes": [
+            {
+              "x": 3,
+              "z": 1
+            },
+            {
+              "x": 4,
+              "z": 3
+            }
+          ],
+          "rotations": [
+            0
+          ],
+          "moves": 8,
+          "pushes": 1,
+          "won": false,
+          "fall": null
+        },
+        "after": {
+          "level": 39,
+          "player": {
+            "x": 1,
+            "z": 4
+          },
+          "boxes": [
+            {
+              "x": 3,
+              "z": 1
+            },
+            {
+              "x": 3,
+              "z": 4
+            }
+          ],
+          "rotations": [
+            1
+          ],
+          "moves": 9,
+          "pushes": 1,
+          "won": false,
+          "fall": null
+        }
+      },
+      {
+        "afterMoves": 10,
+        "kind": "rotation",
+        "action": {
+          "x": -1,
+          "z": 0
+        },
+        "before": {
+          "level": 39,
+          "player": {
+            "x": 2,
+            "z": 4
+          },
+          "boxes": [
+            {
+              "x": 3,
+              "z": 1
+            },
+            {
+              "x": 3,
+              "z": 4
+            }
+          ],
+          "rotations": [
+            1
+          ],
+          "moves": 10,
+          "pushes": 1,
+          "won": false,
+          "fall": null
+        },
+        "after": {
+          "level": 39,
+          "player": {
+            "x": 1,
+            "z": 4
+          },
+          "boxes": [
+            {
+              "x": 3,
+              "z": 1
+            },
+            {
+              "x": 2,
+              "z": 3
+            }
+          ],
+          "rotations": [
+            2
+          ],
+          "moves": 11,
+          "pushes": 1,
+          "won": false,
+          "fall": null
+        }
+      }
+    ],
+    "wrongStagingWitness": {
+      "afterMoves": 4,
+      "action": {
+        "x": 1,
+        "z": 0
+      },
+      "before": {
+        "level": 39,
+        "player": {
+          "x": 3,
+          "z": 3
+        },
+        "boxes": [
+          {
+            "x": 3,
+            "z": 2
+          },
+          {
+            "x": 4,
+            "z": 3
+          }
+        ],
+        "rotations": [
+          0
+        ],
+        "moves": 4,
+        "pushes": 0,
+        "won": false,
+        "fall": null
+      },
+      "after": {
+        "level": 39,
+        "player": {
+          "x": 4,
+          "z": 3
+        },
+        "boxes": [
+          {
+            "x": 3,
+            "z": 2
+          },
+          {
+            "x": 5,
+            "z": 3
+          }
+        ],
+        "rotations": [
+          0
+        ],
+        "moves": 5,
+        "pushes": 1,
+        "won": false,
+        "fall": null
+      },
+      "proof": {
+        "unsolvable": true,
+        "states": 1823,
+        "exhaustive": true
+      }
+    },
+    "authorship": "Procedurally authored from private random geometry and mechanics constraints. Public corpus used only afterward as collision audit.",
+    "solutionOptimality": "Shortest complete command path by exhaustive breadth-first search, including robot positions and rotor orientations."
+  },
+  {
+    "level": {
+      "name": "Lift and Drift",
+      "subtitle": "",
+      "hint": "Use the lift to change which side of the cargo you can reach. The ice square changes where you stop.",
+      "map": [
+        "~~~~~~~~",
+        "~      ~",
+        "~ $  # ~",
+        "~  $ ##~",
+        "~..# # ~",
+        "~@ #  E~",
+        "~~~~~~~~"
+      ],
+      "ice": [
+        {
+          "x": 2,
+          "z": 3
+        }
+      ],
+      "jumping": true,
+      "heights": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "elevators": [
+        {
+          "x": 3,
+          "z": 2,
+          "low": 0,
+          "high": 2,
+          "channel": 1
+        },
+        {
+          "x": 3,
+          "z": 3,
+          "low": 0,
+          "high": 2,
+          "channel": 1
+        }
+      ],
+      "switches": [
+        {
+          "x": 1,
+          "z": 4,
+          "channel": 1
+        }
+      ]
+    },
+    "path": [
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      }
+    ],
+    "moves": 43,
+    "pushes": 8,
+    "states": 1327,
+    "secondaryNecessity": {
+      "unsolvable": true,
+      "states": 571,
+      "exhaustive": true
+    },
+    "id": 41,
+    "metrics": {
+      "moves": 43,
+      "pushes": 8,
+      "floorCellsExcludingExit": 23,
+      "movesPerFloor": 1.8695652173913044,
+      "pushesPerFloor": 0.34782608695652173,
+      "rotationActivations": 0,
+      "carriedCrates": 0,
+      "carriedPlayers": 0,
+      "carriedRobots": 0,
+      "playerSlideCells": 2,
+      "crateSlideCells": 1,
+      "robotSlideCells": 0
+    },
+    "mechanicWitnesses": [
+      {
+        "afterMoves": 0,
+        "kind": "cargo-lift",
+        "action": {
+          "x": 0,
+          "z": -1
+        },
+        "before": {
+          "level": 40,
+          "player": {
+            "x": 1,
+            "z": 5
+          },
+          "boxes": [
+            {
+              "x": 2,
+              "z": 2
+            },
+            {
+              "x": 3,
+              "z": 3
+            }
+          ],
+          "moves": 0,
+          "pushes": 0,
+          "won": false,
+          "fall": null
+        },
+        "after": {
+          "level": 40,
+          "player": {
+            "x": 1,
+            "z": 4
+          },
+          "boxes": [
+            {
+              "x": 2,
+              "z": 2
+            },
+            {
+              "x": 3,
+              "z": 3
+            }
+          ],
+          "moves": 1,
+          "pushes": 0,
+          "won": false,
+          "fall": null
+        }
+      },
+      {
+        "afterMoves": 9,
+        "kind": "slide",
+        "action": {
+          "x": -1,
+          "z": 0
+        },
+        "before": {
+          "level": 40,
+          "player": {
+            "x": 4,
+            "z": 3
+          },
+          "boxes": [
+            {
+              "x": 3,
+              "z": 2
+            },
+            {
+              "x": 3,
+              "z": 3
+            }
+          ],
+          "moves": 9,
+          "pushes": 1,
+          "won": false,
+          "fall": null
+        },
+        "after": {
+          "level": 40,
+          "player": {
+            "x": 3,
+            "z": 3
+          },
+          "boxes": [
+            {
+              "x": 3,
+              "z": 2
+            },
+            {
+              "x": 1,
+              "z": 3
+            }
+          ],
+          "moves": 10,
+          "pushes": 2,
+          "won": false,
+          "fall": null
+        }
+      }
+    ],
+    "wrongStagingWitness": {
+      "afterMoves": 4,
+      "action": {
+        "x": 1,
+        "z": 0
+      },
+      "before": {
+        "level": 40,
+        "player": {
+          "x": 2,
+          "z": 2
+        },
+        "boxes": [
+          {
+            "x": 3,
+            "z": 2
+          },
+          {
+            "x": 3,
+            "z": 3
+          }
+        ],
+        "moves": 4,
+        "pushes": 1,
+        "won": false,
+        "fall": null
+      },
+      "after": {
+        "level": 40,
+        "player": {
+          "x": 3,
+          "z": 2
+        },
+        "boxes": [
+          {
+            "x": 4,
+            "z": 2
+          },
+          {
+            "x": 3,
+            "z": 3
+          }
+        ],
+        "moves": 5,
+        "pushes": 2,
+        "won": false,
+        "fall": null
+      },
+      "proof": {
+        "unsolvable": true,
+        "states": 32,
+        "exhaustive": true
+      }
+    },
+    "authorship": "Procedurally authored from private random geometry and mechanics constraints. Public corpus used only afterward as collision audit.",
+    "iceCounterfactual": {
+      "path": [
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        }
+      ],
+      "moves": 45,
+      "pushes": 9,
+      "states": 1751
+    },
+    "intendedRouteRequiresIce": true,
+    "solutionOptimality": "Shortest complete command path by exhaustive breadth-first search, including robot positions and rotor orientations."
+  },
+  {
+    "level": {
+      "name": "Remote Brake",
+      "subtitle": "",
+      "hint": "Deliver both crates, then steer the robot onto the icy plate at the far right. Keep it there while crossing.",
+      "map": [
+        "~~~~~~~~",
+        "~#    #~",
+        "~.$$  #~",
+        "~#  #  ~",
+        "~ .   #~",
+        "~@# # E~",
+        "~~~~~~~~"
+      ],
+      "ice": [
+        {
+          "x": 5,
+          "z": 1
+        },
+        {
+          "x": 5,
+          "z": 2
+        },
+        {
+          "x": 3,
+          "z": 3
+        },
+        {
+          "x": 6,
+          "z": 3
+        },
+        {
+          "x": 3,
+          "z": 4
+        }
+      ],
+      "robots": [
+        {
+          "x": 4,
+          "z": 1,
+          "direction": 1
+        }
+      ],
+      "bridges": [
+        {
+          "x": 5,
+          "z": 5,
+          "height": 0,
+          "channel": 1
+        }
+      ],
+      "switches": [
+        {
+          "x": 6,
+          "z": 3,
+          "channel": 1
+        }
+      ]
+    },
+    "path": [
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      }
+    ],
+    "moves": 41,
+    "pushes": 6,
+    "states": 3652,
+    "secondaryNecessity": {
+      "unsolvable": true,
+      "states": 176,
+      "exhaustive": true
+    },
+    "id": 42,
+    "metrics": {
+      "moves": 41,
+      "pushes": 6,
+      "floorCellsExcludingExit": 21,
+      "movesPerFloor": 1.9523809523809523,
+      "pushesPerFloor": 0.2857142857142857,
+      "rotationActivations": 0,
+      "carriedCrates": 0,
+      "carriedPlayers": 0,
+      "carriedRobots": 0,
+      "playerSlideCells": 4,
+      "crateSlideCells": 0,
+      "robotSlideCells": 0
+    },
+    "mechanicWitnesses": [
+      {
+        "afterMoves": 2,
+        "kind": "slide",
+        "action": {
+          "x": 1,
+          "z": 0
+        },
+        "before": {
+          "level": 41,
+          "player": {
+            "x": 2,
+            "z": 4
+          },
+          "boxes": [
+            {
+              "x": 2,
+              "z": 2
+            },
+            {
+              "x": 3,
+              "z": 2
+            }
+          ],
+          "robots": [
+            {
+              "x": 5,
+              "z": 1,
+              "direction": 1,
+              "blocked": false
+            }
+          ],
+          "moves": 2,
+          "pushes": 0,
+          "won": false,
+          "fall": null
+        },
+        "after": {
+          "level": 41,
+          "player": {
+            "x": 4,
+            "z": 4
+          },
+          "boxes": [
+            {
+              "x": 2,
+              "z": 2
+            },
+            {
+              "x": 3,
+              "z": 2
+            }
+          ],
+          "robots": [
+            {
+              "x": 5,
+              "z": 1,
+              "direction": 1,
+              "blocked": true
+            }
+          ],
+          "moves": 3,
+          "pushes": 0,
+          "won": false,
+          "fall": null
+        }
+      },
+      {
+        "afterMoves": 39,
+        "kind": "bridge-crossing",
+        "action": {
+          "x": 0,
+          "z": 1
+        },
+        "before": {
+          "level": 41,
+          "player": {
+            "x": 5,
+            "z": 4
+          },
+          "boxes": [
+            {
+              "x": 2,
+              "z": 4
+            },
+            {
+              "x": 1,
+              "z": 2
+            }
+          ],
+          "robots": [
+            {
+              "x": 6,
+              "z": 3,
+              "direction": 2,
+              "blocked": true
+            }
+          ],
+          "moves": 39,
+          "pushes": 6,
+          "won": false,
+          "fall": null
+        },
+        "after": {
+          "level": 41,
+          "player": {
+            "x": 5,
+            "z": 5
+          },
+          "boxes": [
+            {
+              "x": 2,
+              "z": 4
+            },
+            {
+              "x": 1,
+              "z": 2
+            }
+          ],
+          "robots": [
+            {
+              "x": 6,
+              "z": 3,
+              "direction": 2,
+              "blocked": true
+            }
+          ],
+          "moves": 40,
+          "pushes": 6,
+          "won": false,
+          "fall": null
+        }
+      }
+    ],
+    "wrongStagingWitness": {
+      "afterMoves": 10,
+      "action": {
+        "x": 0,
+        "z": -1
+      },
+      "before": {
+        "level": 41,
+        "player": {
+          "x": 2,
+          "z": 4
+        },
+        "boxes": [
+          {
+            "x": 2,
+            "z": 3
+          },
+          {
+            "x": 3,
+            "z": 2
+          }
+        ],
+        "robots": [
+          {
+            "x": 3,
+            "z": 1,
+            "direction": 1,
+            "blocked": false
+          }
+        ],
+        "moves": 10,
+        "pushes": 1,
+        "won": false,
+        "fall": null
+      },
+      "after": {
+        "level": 41,
+        "player": {
+          "x": 2,
+          "z": 3
+        },
+        "boxes": [
+          {
+            "x": 2,
+            "z": 2
+          },
+          {
+            "x": 3,
+            "z": 2
+          }
+        ],
+        "robots": [
+          {
+            "x": 3,
+            "z": 1,
+            "direction": 0,
+            "blocked": true
+          }
+        ],
+        "moves": 11,
+        "pushes": 2,
+        "won": false,
+        "fall": null
+      },
+      "proof": {
+        "unsolvable": true,
+        "states": 3185,
+        "exhaustive": true
+      }
+    },
+    "authorship": "Procedurally authored from private random geometry and mechanics constraints. Public corpus used only afterward as collision audit.",
+    "iceCounterfactual": {
+      "path": [
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 1,
+          "z": 0
+        }
+      ],
+      "moves": 25,
+      "pushes": 4,
+      "states": 9023
+    },
+    "intendedRouteRequiresIce": true,
+    "solutionOptimality": "Shortest complete command path by exhaustive breadth-first search, including robot positions and rotor orientations."
+  },
+  {
+    "level": {
+      "name": "Turning Current",
+      "subtitle": "",
+      "hint": "The marks and ice turn with the crates. Leave room for the slide before you turn the square again.",
+      "map": [
+        "~~~~~~~",
+        "~ ##  ~",
+        "~..   ~",
+        "~## # ~",
+        "~ $$ #~",
+        "~@   E~",
+        "~~~~~~~"
+      ],
+      "ice": [
+        {
+          "x": 1,
+          "z": 1
+        },
+        {
+          "x": 3,
+          "z": 2
+        },
+        {
+          "x": 5,
+          "z": 2
+        },
+        {
+          "x": 3,
+          "z": 3
+        },
+        {
+          "x": 1,
+          "z": 4
+        }
+      ],
+      "rotators": [
+        {
+          "x": 3,
+          "z": 3,
+          "radius": 1,
+          "channel": 1
+        }
+      ],
+      "switches": [
+        {
+          "x": 1,
+          "z": 4,
+          "channel": 1
+        }
+      ]
+    },
+    "path": [
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      }
+    ],
+    "moves": 29,
+    "pushes": 5,
+    "states": 976,
+    "secondaryNecessity": {
+      "unsolvable": true,
+      "states": 37,
+      "exhaustive": true
+    },
+    "id": 43,
+    "metrics": {
+      "moves": 29,
+      "pushes": 5,
+      "floorCellsExcludingExit": 18,
+      "movesPerFloor": 1.6111111111111112,
+      "pushesPerFloor": 0.2777777777777778,
+      "rotationActivations": 6,
+      "carriedCrates": 12,
+      "carriedPlayers": 0,
+      "carriedRobots": 0,
+      "playerSlideCells": 3,
+      "crateSlideCells": 1,
+      "robotSlideCells": 0
+    },
+    "mechanicWitnesses": [
+      {
+        "afterMoves": 2,
+        "kind": "slide",
+        "action": {
+          "x": 0,
+          "z": -1
+        },
+        "before": {
+          "level": 42,
+          "player": {
+            "x": 3,
+            "z": 5
+          },
+          "boxes": [
+            {
+              "x": 2,
+              "z": 4
+            },
+            {
+              "x": 3,
+              "z": 4
+            }
+          ],
+          "rotations": [
+            0
+          ],
+          "moves": 2,
+          "pushes": 0,
+          "won": false,
+          "fall": null
+        },
+        "after": {
+          "level": 42,
+          "player": {
+            "x": 3,
+            "z": 4
+          },
+          "boxes": [
+            {
+              "x": 2,
+              "z": 4
+            },
+            {
+              "x": 3,
+              "z": 2
+            }
+          ],
+          "rotations": [
+            0
+          ],
+          "moves": 3,
+          "pushes": 1,
+          "won": false,
+          "fall": null
+        }
+      },
+      {
+        "afterMoves": 6,
+        "kind": "rotation",
+        "action": {
+          "x": 0,
+          "z": -1
+        },
+        "before": {
+          "level": 42,
+          "player": {
+            "x": 1,
+            "z": 5
+          },
+          "boxes": [
+            {
+              "x": 2,
+              "z": 4
+            },
+            {
+              "x": 3,
+              "z": 2
+            }
+          ],
+          "rotations": [
+            0
+          ],
+          "moves": 6,
+          "pushes": 1,
+          "won": false,
+          "fall": null
+        },
+        "after": {
+          "level": 42,
+          "player": {
+            "x": 1,
+            "z": 4
+          },
+          "boxes": [
+            {
+              "x": 2,
+              "z": 2
+            },
+            {
+              "x": 4,
+              "z": 3
+            }
+          ],
+          "rotations": [
+            1
+          ],
+          "moves": 7,
+          "pushes": 1,
+          "won": false,
+          "fall": null
+        }
+      },
+      {
+        "afterMoves": 8,
+        "kind": "rotation",
+        "action": {
+          "x": 0,
+          "z": -1
+        },
+        "before": {
+          "level": 42,
+          "player": {
+            "x": 1,
+            "z": 5
+          },
+          "boxes": [
+            {
+              "x": 2,
+              "z": 2
+            },
+            {
+              "x": 4,
+              "z": 3
+            }
+          ],
+          "rotations": [
+            1
+          ],
+          "moves": 8,
+          "pushes": 1,
+          "won": false,
+          "fall": null
+        },
+        "after": {
+          "level": 42,
+          "player": {
+            "x": 1,
+            "z": 4
+          },
+          "boxes": [
+            {
+              "x": 4,
+              "z": 2
+            },
+            {
+              "x": 3,
+              "z": 4
+            }
+          ],
+          "rotations": [
+            2
+          ],
+          "moves": 9,
+          "pushes": 1,
+          "won": false,
+          "fall": null
+        }
+      }
+    ],
+    "authorship": "Procedurally authored from private random geometry and mechanics constraints. Public corpus used only afterward as collision audit.",
+    "iceCounterfactual": {
+      "path": [
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        }
+      ],
+      "moves": 32,
+      "pushes": 6,
+      "states": 2691
+    },
+    "intendedRouteRequiresIce": true,
+    "solutionOptimality": "Shortest complete command path by exhaustive breadth-first search, including robot positions and rotor orientations."
+  }
+]

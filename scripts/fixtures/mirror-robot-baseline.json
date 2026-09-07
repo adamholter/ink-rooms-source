@@ -1,0 +1,2213 @@
+[
+  {
+    "name": "First Impression",
+    "subtitle": "Bring the crate around to its mark.",
+    "hint": "Walk around the crate before you push.",
+    "map": [
+      "~ . ~",
+      "     ",
+      " $@ E",
+      "~   ~"
+    ]
+  },
+  {
+    "name": "Corner Turn",
+    "subtitle": "A straight push is only the beginning.",
+    "hint": "Push left first, then get underneath.",
+    "map": [
+      "~.   ~",
+      "      ",
+      "  $@  ",
+      "    E ",
+      "~    ~"
+    ]
+  },
+  {
+    "name": "Ink Post",
+    "subtitle": "One obstacle changes the route.",
+    "hint": "Use the open side to get behind the crate twice.",
+    "map": [
+      "~  .  ~",
+      "   #   ",
+      "  $    ",
+      " @   E ",
+      "~     ~"
+    ]
+  },
+  {
+    "name": "Offset Pair",
+    "subtitle": "Two crates, crossed destinations.",
+    "hint": "Move the right crate out of the lower lane first.",
+    "map": [
+      "~.   .~",
+      "   #   ",
+      "  $ $  ",
+      "    @E ",
+      "~     ~"
+    ]
+  },
+  {
+    "name": "Passing Place",
+    "subtitle": "Two crates need room to pass.",
+    "hint": "Keep the lower aisle open while bringing the upper crate around.",
+    "map": [
+      "~~~~~~~~",
+      "~. ~   ~",
+      "~   @$ ~",
+      "~  #$~ ~",
+      "~    ~~~",
+      "~    ~~~",
+      "~~.    ~",
+      "~~~~~~E~"
+    ]
+  },
+  {
+    "name": "Three-Way Junction",
+    "subtitle": "Three crates compete for the central turning space.",
+    "hint": "Move a crate aside before trying to finish its neighbor.",
+    "map": [
+      "~~~~~~~~~",
+      "~ .  ~ ~~",
+      "~  # $ ~~",
+      "~  #  $ ~",
+      "~~.  ## ~",
+      "~  $   .~",
+      "~ ~@ ~  ~",
+      "~~~~~~~E~"
+    ]
+  },
+  {
+    "name": "Parking Bay",
+    "subtitle": "A marked space can be temporary parking.",
+    "hint": "A crate on a mark may still need to move again.",
+    "map": [
+      "~~~~~~~~",
+      "~ ~~   ~",
+      "~  $@# ~",
+      "~  $ $.~",
+      "~  ## ~~",
+      "~     ~~",
+      "~  ~ ..~",
+      "~~~~E~~~"
+    ]
+  },
+  {
+    "name": "Cross Traffic",
+    "subtitle": "The same aisle carries crates in different directions.",
+    "hint": "Keep a route behind the crates until the last turn is complete.",
+    "map": [
+      "~~~~~~~~",
+      "~   .@~~",
+      "~  .#$~~",
+      "~~ ##  ~",
+      "~~. #  ~",
+      "~~  $$ ~",
+      "~      ~",
+      "~~~~~~E~"
+    ]
+  },
+  {
+    "name": "Holding Pattern",
+    "subtitle": "Crates must repeatedly make room for one another.",
+    "hint": "Keep a spare turning space until the last crate has passed.",
+    "map": [
+      "~~~~~~~~",
+      "~.    ~~",
+      "~   $@ ~",
+      "~~ #   ~",
+      "~   ##.~",
+      "~ $$ #.~",
+      "~  ~   ~",
+      "~~~~~~E~"
+    ]
+  },
+  {
+    "name": "Return Ticket",
+    "subtitle": "Three destinations share their approaches.",
+    "hint": "Leave yourself a way behind each crate, even after reaching a mark.",
+    "map": [
+      "~~~~~~~~~",
+      "~ ~  . ~~",
+      "~.   #$~~",
+      "~ #  # ~~",
+      "~ . #   ~",
+      "~~$   $ ~",
+      "~ @ ~  ~~",
+      "~~~~~~E~~"
+    ]
+  },
+  {
+    "name": "Narrow Margins",
+    "subtitle": "The same turning space serves several deliveries.",
+    "hint": "Clear the narrow central aisle before sending crates toward the left.",
+    "map": [
+      "~~~~~~~~~",
+      "~ ~.  ~~~",
+      "~ . # $ ~",
+      "~   #$# ~",
+      "~  # $@ ~",
+      "~~      ~",
+      "~.  ~   ~",
+      "~~~~~~~E~"
+    ]
+  },
+  {
+    "name": "Final Exchange",
+    "subtitle": "The upper and lower aisles depend on each other.",
+    "hint": "A crate may have to retrace its route to free another crate.",
+    "map": [
+      "~~~~~~~~~",
+      "~ ..    ~",
+      "~~~   $ ~",
+      "~  ## ~~~",
+      "~. ##  ~~",
+      "~ $$    ~",
+      "~ @~~   ~",
+      "~~~~~~~E~"
+    ]
+  },
+  {
+    "name": "First Ascent",
+    "subtitle": "Walk up onto the terrace.",
+    "hint": "Walk into a raised ledge to hop up automatically.",
+    "map": [
+      "~~~~~~~~",
+      "~@  .  ~",
+      "~   $  ~",
+      "~     E~",
+      "~     ~~",
+      "~~~~~~~~"
+    ],
+    "heights": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        2,
+        2,
+        2,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "jumping": true,
+    "lesson": "Walk into a ledge to hop up automatically."
+  },
+  {
+    "name": "Keep One High",
+    "subtitle": "The ramp only carries crates downward.",
+    "hint": "Finish the upper mark before sending the other crate through the low opening.",
+    "map": [
+      "~~~~~~~~",
+      "~ .#   ~",
+      "~  #.$ ~",
+      "~  # $ ~",
+      "~    @E~",
+      "~      ~",
+      "~~~~~~~~"
+    ],
+    "heights": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "jumping": true,
+    "lesson": "Crates can drop to a lower floor. They cannot climb back up."
+  },
+  {
+    "name": "Upper Berth",
+    "subtitle": "Three crates share the upper loading lane.",
+    "hint": "Keep access behind the upper crates before committing one to the lower mark.",
+    "map": [
+      "~~~~~~~~~",
+      "~   .# #~",
+      "~  .   #~",
+      "~ #  @  ~",
+      "~   $$$ ~",
+      "~E# #. #~",
+      "~ # #   ~",
+      "~~~~~~~~~"
+    ],
+    "heights": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "jumping": true
+  },
+  {
+    "name": "Narrow Landing",
+    "subtitle": "The turning space belongs to every crate.",
+    "hint": "Use the upper turning space. The small lower pocket cannot return a crate.",
+    "map": [
+      "~~~~~~~~~",
+      "~  E   #~",
+      "~ ##  $ ~",
+      "~.## #$ ~",
+      "~   #   ~",
+      "~  @.$  ~",
+      "~   . ##~",
+      "~~~~~~~~~"
+    ],
+    "heights": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "jumping": true
+  },
+  {
+    "name": "The Long Way Down",
+    "subtitle": "Two upper marks and one final descent.",
+    "hint": "The shortest route to a mark can block the route needed by the next crate.",
+    "map": [
+      "~~~~~~~~~",
+      "~   .#  ~",
+      "~ # $ $@~",
+      "~.#  #$ ~",
+      "~    . #~",
+      "~  # #  ~",
+      "~  E    ~",
+      "~~~~~~~~~"
+    ],
+    "heights": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "jumping": true
+  },
+  {
+    "name": "Freight Lift",
+    "subtitle": "Raise the crate, then meet it upstairs.",
+    "hint": "Load the right crate first. The other crate can keep the lift raised.",
+    "lesson": "A crate on a pressure plate keeps every machine with that number active.",
+    "map": [
+      "~~~~~~~",
+      "~.   E~",
+      "~     ~",
+      "~     ~",
+      "~$ $ @~",
+      "~.    ~",
+      "~~~~~~~"
+    ],
+    "heights": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        0,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        0,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        0,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        0,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "jumping": true,
+    "switches": [
+      {
+        "x": 1,
+        "z": 5,
+        "channel": 1
+      }
+    ],
+    "elevators": [
+      {
+        "x": 3,
+        "z": 3,
+        "low": 0,
+        "high": 2,
+        "channel": 1
+      }
+    ]
+  },
+  {
+    "name": "Side Loading",
+    "subtitle": "Load sideways, then find room for the turn upstairs.",
+    "hint": "Push the raised crate fully onto the upper deck before turning toward the mark.",
+    "jumping": true,
+    "map": [
+      "~~~~~~~~~",
+      "~  .   E~",
+      "~  #    ~",
+      "~       ~",
+      "~       ~",
+      "~  $    ~",
+      "~ $     ~",
+      "~ .  @  ~",
+      "~~~~~~~~~"
+    ],
+    "heights": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "switches": [
+      {
+        "x": 2,
+        "z": 7,
+        "channel": 1
+      }
+    ],
+    "elevators": [
+      {
+        "x": 4,
+        "z": 5,
+        "low": 0,
+        "high": 2,
+        "channel": 1
+      }
+    ]
+  },
+  {
+    "name": "Two Stops",
+    "subtitle": "One plate raises two distant loads.",
+    "hint": "Load both lifts before filling the plate.",
+    "map": [
+      "~~~~~~~",
+      "~    .~",
+      "~     ~",
+      "~    .~",
+      "~$$ $@~",
+      "~.   E~",
+      "~~~~~~~"
+    ],
+    "heights": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        2,
+        0,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        2,
+        0,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        2,
+        0,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        2,
+        0,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "jumping": true,
+    "switches": [
+      {
+        "x": 1,
+        "z": 5,
+        "channel": 1
+      }
+    ],
+    "elevators": [
+      {
+        "x": 2,
+        "z": 3,
+        "low": 0,
+        "high": 2,
+        "channel": 1
+      },
+      {
+        "x": 4,
+        "z": 3,
+        "low": 0,
+        "high": 2,
+        "channel": 1
+      }
+    ]
+  },
+  {
+    "name": "Lift Exchange",
+    "subtitle": "The same elevator must carry two loads.",
+    "hint": "Stand on the raised rear switch to lift a load. The front switch takes over as you unload it.",
+    "jumping": true,
+    "map": [
+      "~~~~~~~~~",
+      "~  . . E~",
+      "~  # #  ~",
+      "~       ~",
+      "~       ~",
+      "~  $    ~",
+      "~ $     ~",
+      "~    @  ~",
+      "~~~~~~~~~"
+    ],
+    "heights": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "switches": [
+      {
+        "x": 4,
+        "z": 6,
+        "channel": 1
+      },
+      {
+        "x": 4,
+        "z": 4,
+        "channel": 1
+      }
+    ],
+    "elevators": [
+      {
+        "x": 4,
+        "z": 5,
+        "low": 0,
+        "high": 2,
+        "channel": 1
+      }
+    ]
+  },
+  {
+    "name": "Span",
+    "subtitle": "Hold the plate, cross the gap.",
+    "hint": "Leave the first crate on the plate, then take the long way around it.",
+    "lesson": "A held pressure plate unfolds its matching bridge. An empty plate folds it away.",
+    "map": [
+      "~~~~~~~",
+      "~  ~ E~",
+      "~  ~  ~",
+      "~    .~",
+      "~$@~ $~",
+      "~. ~  ~",
+      "~~~~~~~"
+    ],
+    "jumping": true,
+    "switches": [
+      {
+        "x": 1,
+        "z": 5,
+        "channel": 1
+      }
+    ],
+    "bridges": [
+      {
+        "x": 3,
+        "z": 3,
+        "height": 0,
+        "channel": 1
+      }
+    ]
+  },
+  {
+    "name": "Return Span",
+    "subtitle": "Make room on the far bank before the final turns.",
+    "hint": "Move each upper crate out from under its divider before turning it toward a mark.",
+    "jumping": true,
+    "map": [
+      "~~~~~~~~~",
+      "~  . . E~",
+      "~  # #  ~",
+      "~  $ $  ~",
+      "~       ~",
+      "~~~~ ~~~~",
+      "~  #    ~",
+      "~ $     ~",
+      "~   .@  ~",
+      "~~~~~~~~~"
+    ],
+    "switches": [
+      {
+        "x": 4,
+        "z": 8,
+        "channel": 1
+      }
+    ],
+    "bridges": [
+      {
+        "x": 4,
+        "z": 5,
+        "height": 0,
+        "channel": 1
+      }
+    ]
+  },
+  {
+    "name": "Freight Crossing",
+    "subtitle": "Both loads must pass through the shared crossing.",
+    "hint": "Keep the bridge powered and clear the upper turning lane before sending the next crate.",
+    "jumping": true,
+    "map": [
+      "~~~~~~~~~",
+      "~  . . E~",
+      "~  # #  ~",
+      "~       ~",
+      "~       ~",
+      "~~~~ ~~~~",
+      "~       ~",
+      "~ $ $$  ~",
+      "~   .@  ~",
+      "~~~~~~~~~"
+    ],
+    "switches": [
+      {
+        "x": 4,
+        "z": 8,
+        "channel": 1
+      }
+    ],
+    "bridges": [
+      {
+        "x": 4,
+        "z": 5,
+        "height": 0,
+        "channel": 1
+      }
+    ]
+  },
+  {
+    "name": "Relay Foundry",
+    "subtitle": "Load below, relay above, then clear both keepers.",
+    "hint": "Load the lift first. The left plate raises it; the numbered mark keeps the crossing open.",
+    "map": [
+      "~~~~~~~~~",
+      "~.  .~  ~",
+      "~ $     ~",
+      "~ $  ~ .~",
+      "~    ~  ~",
+      "~  $ ~  ~",
+      "~  @ ~ E~",
+      "~~~~~~~~~"
+    ],
+    "heights": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
+        2,
+        2,
+        0,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        2,
+        2,
+        0,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        2,
+        2,
+        0,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "jumping": true,
+    "switches": [
+      {
+        "x": 1,
+        "z": 3,
+        "channel": 1
+      },
+      {
+        "x": 4,
+        "z": 1,
+        "channel": 2
+      }
+    ],
+    "elevators": [
+      {
+        "x": 3,
+        "z": 4,
+        "low": 0,
+        "high": 2,
+        "channel": 1
+      }
+    ],
+    "bridges": [
+      {
+        "x": 5,
+        "z": 2,
+        "height": 2,
+        "channel": 2
+      }
+    ]
+  },
+  {
+    "name": "Transfer Yard",
+    "subtitle": "One keeper powers two stages of the same delivery.",
+    "hint": "Load the lift while it is down. Move the keeper from the lift plate to the bridge plate only after unloading upstairs.",
+    "jumping": true,
+    "map": [
+      "~~~~~~~~~~",
+      "~~~~~~~.~~",
+      "~   ~~~ ~~",
+      "~        ~",
+      "~~   ~  E~",
+      "~~     ~~~",
+      "~~~$ $ .~~",
+      "~~~ @~~~~~",
+      "~~~~~~~~~~"
+    ],
+    "heights": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        2,
+        2,
+        0,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        2,
+        2,
+        0,
+        2,
+        2,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        2,
+        2,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "switches": [
+      {
+        "x": 4,
+        "z": 6,
+        "channel": 1
+      },
+      {
+        "x": 6,
+        "z": 6,
+        "channel": 2
+      }
+    ],
+    "elevators": [
+      {
+        "x": 3,
+        "z": 4,
+        "low": 0,
+        "high": 2,
+        "channel": 1
+      }
+    ],
+    "bridges": [
+      {
+        "x": 5,
+        "z": 3,
+        "height": 2,
+        "channel": 2
+      }
+    ]
+  },
+  {
+    "name": "Last Circuit",
+    "subtitle": "The crossing opens above the lift, then the keeper must move again.",
+    "hint": "The divider blocks the direct route. Free turning space before committing either switch keeper.",
+    "map": [
+      "~~~~~~~~~",
+      "~.     .~",
+      "~ $#.~  ~",
+      "~ $  ~  ~",
+      "~    ~  ~",
+      "~  $ ~  ~",
+      "~  @ ~ E~",
+      "~~~~~~~~~"
+    ],
+    "heights": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        2,
+        2,
+        0,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        2,
+        2,
+        0,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        2,
+        2,
+        0,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "jumping": true,
+    "switches": [
+      {
+        "x": 1,
+        "z": 3,
+        "channel": 1
+      },
+      {
+        "x": 4,
+        "z": 2,
+        "channel": 2
+      }
+    ],
+    "elevators": [
+      {
+        "x": 3,
+        "z": 4,
+        "low": 0,
+        "high": 2,
+        "channel": 1
+      }
+    ],
+    "bridges": [
+      {
+        "x": 5,
+        "z": 1,
+        "height": 2,
+        "channel": 2
+      }
+    ]
+  },
+  {
+    "name": "Helping Hand",
+    "subtitle": "",
+    "hint": "Let the robot bring the first crate out, then clear its lane.",
+    "lesson": "The robot takes one step after each of yours. It pushes crates and follows floor arrows.",
+    "map": [
+      "~~~~~~~~~",
+      "~~ $   .~",
+      "~~~~~   ~",
+      "~ @ $ .~~",
+      "~   #  E~",
+      "~~     ~~",
+      "~~~~~~~~~"
+    ],
+    "robots": [
+      {
+        "x": 2,
+        "z": 1,
+        "direction": 1
+      }
+    ],
+    "arrows": [
+      {
+        "x": 5,
+        "z": 1,
+        "direction": 2
+      },
+      {
+        "x": 5,
+        "z": 2,
+        "direction": 1
+      },
+      {
+        "x": 7,
+        "z": 2,
+        "direction": 2
+      }
+    ],
+    "switches": [
+      {
+        "x": 7,
+        "z": 2,
+        "channel": 1
+      }
+    ],
+    "bridges": [
+      {
+        "x": 6,
+        "z": 4,
+        "height": 0,
+        "channel": 1
+      }
+    ]
+  },
+  {
+    "name": "On the Beat",
+    "subtitle": "",
+    "hint": "Load the crossing before the robot reaches the first pressure plate.",
+    "map": [
+      "~~~~~~~~~~",
+      "~   ~~ . ~",
+      "~ $ ~ #  ~",
+      "~ @      ~",
+      "~ $ ~    ~",
+      "~   ~~ .E~",
+      "~~~~~~~~~~",
+      "~~~   ~~~~",
+      "~~~   ~~~~",
+      "~~~~~~~~~~"
+    ],
+    "bridges": [
+      {
+        "x": 4,
+        "z": 3,
+        "height": 0,
+        "channel": 1
+      }
+    ],
+    "robots": [
+      {
+        "x": 3,
+        "z": 7,
+        "direction": 1
+      }
+    ],
+    "arrows": [
+      {
+        "x": 5,
+        "z": 7,
+        "direction": 2
+      },
+      {
+        "x": 5,
+        "z": 8,
+        "direction": 3
+      },
+      {
+        "x": 3,
+        "z": 8,
+        "direction": 0
+      },
+      {
+        "x": 3,
+        "z": 7,
+        "direction": 1
+      }
+    ],
+    "switches": [
+      {
+        "x": 3,
+        "z": 7,
+        "channel": 1
+      },
+      {
+        "x": 4,
+        "z": 7,
+        "channel": 1
+      },
+      {
+        "x": 5,
+        "z": 7,
+        "channel": 1
+      },
+      {
+        "x": 5,
+        "z": 8,
+        "channel": 1
+      }
+    ]
+  },
+  {
+    "name": "Shift Change",
+    "subtitle": "",
+    "hint": "Load the lift while the robot is off the plates. Meet the crate on the upper side before it lowers.",
+    "map": [
+      "~~~~~~~~~",
+      "~~     ~~",
+      "~  # .  ~",
+      "~      .~",
+      "~ $   # ~",
+      "~~ @$ E~~",
+      "~~~  ~~~~",
+      "~~~~~~~~~",
+      "~   ~~~~~",
+      "~   ~~~~~",
+      "~~~~~~~~~"
+    ],
+    "robots": [
+      {
+        "x": 1,
+        "z": 8,
+        "direction": 1
+      }
+    ],
+    "arrows": [
+      {
+        "x": 3,
+        "z": 8,
+        "direction": 2
+      },
+      {
+        "x": 3,
+        "z": 9,
+        "direction": 3
+      },
+      {
+        "x": 1,
+        "z": 9,
+        "direction": 0
+      },
+      {
+        "x": 1,
+        "z": 8,
+        "direction": 1
+      }
+    ],
+    "switches": [
+      {
+        "x": 1,
+        "z": 8,
+        "channel": 1
+      },
+      {
+        "x": 2,
+        "z": 8,
+        "channel": 1
+      },
+      {
+        "x": 3,
+        "z": 8,
+        "channel": 1
+      },
+      {
+        "x": 3,
+        "z": 9,
+        "channel": 1
+      }
+    ],
+    "bridges": [],
+    "heights": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "jumping": true,
+    "elevators": [
+      {
+        "x": 3,
+        "z": 3,
+        "low": 0,
+        "high": 2,
+        "channel": 1
+      }
+    ]
+  },
+  {
+    "name": "Night Shift",
+    "subtitle": "",
+    "hint": "The same patrol runs the bridge and the delivery lift. Clear the arrival lane before lifting the upper shipment.",
+    "map": [
+      "~~~~~~~~~~~",
+      "~~   ~~  .~",
+      "~ $$ ~    ~",
+      "~  @    # ~",
+      "~~   ~    ~",
+      "~~~  ~~   ~",
+      "~~~~~~~. E~",
+      "~~~~~~~~~~~",
+      "~~   ~~~~~~",
+      "~~   ~~~~~~",
+      "~~~~~~~~~~~"
+    ],
+    "bridges": [
+      {
+        "x": 5,
+        "z": 3,
+        "height": 0,
+        "channel": 1
+      }
+    ],
+    "robots": [
+      {
+        "x": 2,
+        "z": 8,
+        "direction": 1
+      }
+    ],
+    "arrows": [
+      {
+        "x": 4,
+        "z": 8,
+        "direction": 2
+      },
+      {
+        "x": 4,
+        "z": 9,
+        "direction": 3
+      },
+      {
+        "x": 2,
+        "z": 9,
+        "direction": 0
+      },
+      {
+        "x": 2,
+        "z": 8,
+        "direction": 1
+      }
+    ],
+    "switches": [
+      {
+        "x": 2,
+        "z": 8,
+        "channel": 1
+      },
+      {
+        "x": 3,
+        "z": 8,
+        "channel": 1
+      },
+      {
+        "x": 4,
+        "z": 8,
+        "channel": 1
+      },
+      {
+        "x": 4,
+        "z": 9,
+        "channel": 1
+      }
+    ],
+    "heights": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "elevators": [
+      {
+        "x": 9,
+        "z": 2,
+        "low": 0,
+        "high": 2,
+        "channel": 1
+      }
+    ],
+    "jumping": true
+  }
+]

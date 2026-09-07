@@ -1,0 +1,20 @@
+Ink Rooms licensing
+
+The source code, procedural geometry, level data, tests, and documentation text
+are licensed under the MIT License in LICENSE-CODE.
+
+The MIT grant does not cover Adam Holter's character or likeness assets, including
+public/character.glb, embedded meshes, textures, face artwork, rig and animation
+data, profile images, SVG character art, Blender files, screenshots, or renders
+depicting Adam. These assets are reserved under ASSET-RIGHTS.md.
+
+Other bundled media, including music and sound recordings, are also excluded from
+the source-code license unless a separate license expressly identifies them.
+Third-party components retain their own licenses.
+
+No right to use Adam Holter's name, image, likeness, identity, or endorsement is
+granted by the source-code license. This reservation does not restrict uses of
+the MIT-licensed code that do not require permission for the excluded material.
+
+This notice states the scope for this revision. It does not claim to revoke
+permissions that may have been validly granted with an earlier distribution.

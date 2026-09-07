@@ -1,0 +1,88 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/.vinext/
+/out/
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# local environment
+.env*
+
+# deployment and generated files
+.vercel
+next-env.d.ts
+/dist/
+/.wrangler/
+/outputs/
+/work/
+
+# Local starter, deployment configuration, and historical design material
+/dist-game/
+/.openai/
+/app/
+/components/
+/hooks/
+/lib/
+/components.json
+/next.config.ts
+/vite.config.ts
+/tsconfig.json
+/tsconfig.tsbuildinfo
+/.oxfmtrc.json
+/.oxlintrc.json
+/LEVEL_REVIEW.md
+/scripts/private-release-notes/
+/scripts/audit-data/corpus/
+/scripts/fixtures/*candidates*.json
+/scripts/fixtures/original-refined-*.json
+/scripts/fixtures/robot-expansion-baseline.json
+/scripts/fixtures/machinery-solutions.json
+/scripts/fixtures/original-quality-report.json
+/public/props/
+/public/assets/
+
+# Publish only the maintained test and audit tools, not local capture/design scripts.
+/scripts/*
+!/scripts/test-*.ts
+!/scripts/lib/
+!/scripts/fixtures/
+!/scripts/audit-originality.ts
+!/scripts/audit-data/
+/scripts/fixtures/*
+!/scripts/fixtures/accepted-rooms.json
+!/scripts/fixtures/accepted-first17.json
+!/scripts/fixtures/elevation-solutions.json
+!/scripts/fixtures/mirror-robot-baseline.json
+!/scripts/fixtures/original-flat-design.json
+!/scripts/fixtures/original-terraces-design.json
+!/scripts/fixtures/pre-ice-levels.json
+!/scripts/fixtures/pre-rotation-levels.json
+!/scripts/fixtures/ice-room-design.json
+!/scripts/fixtures/robot-room-design.json
+!/scripts/fixtures/room26-design.json
+!/scripts/fixtures/rotation-room-design.json
+/scripts/audit-data/*
+!/scripts/audit-data/sources.json
+!/scripts/audit-data/rotation-expansion-audit.json
+!/scripts/audit-data/rotation-expansion-audit.md

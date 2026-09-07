@@ -1,0 +1,31 @@
+{
+  "name": "ink-rooms",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A monochrome 3D puzzle game with 43 rooms, built with Three.js.",
+  "license": "SEE LICENSE IN LICENSE",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "dev": "vite --config vite.game.config.ts",
+    "build": "vite build --config vite.game.config.ts",
+    "preview": "vite preview --config vite.game.config.ts",
+    "dev:game": "vite --config vite.game.config.ts",
+    "build:game": "vite build --config vite.game.config.ts",
+    "validate": "npm run test:puzzle && npm run typecheck:game && npm run build:game",
+    "test:puzzle": "node --experimental-strip-types scripts/test-puzzle.ts && node --experimental-strip-types scripts/test-elevation.ts && node --experimental-strip-types scripts/test-machinery.ts && node --experimental-strip-types scripts/test-design-quality.ts && node --experimental-strip-types scripts/test-robots.ts && node --experimental-strip-types scripts/test-robot-expansion.ts && node --experimental-strip-types scripts/test-ice.ts && node --experimental-strip-types scripts/test-ice-chapter.ts && node --experimental-strip-types scripts/test-rotation.ts && node --experimental-strip-types scripts/test-rotation-chapter.ts",
+    "typecheck:game": "tsc --noEmit --allowImportingTsExtensions --target es2022 --module esnext --moduleResolution bundler --skipLibCheck src/game.ts src/puzzle.ts src/hint-worker.ts",
+    "audit:originality": "node --experimental-strip-types scripts/audit-originality.ts --fail-on-match"
+  },
+  "dependencies": {
+    "three": "^0.185.1"
+  },
+  "devDependencies": {
+    "@types/node": "22.19.19",
+    "@types/three": "^0.185.4",
+    "typescript": "5.9.3",
+    "vite": "8.0.13"
+  }
+}

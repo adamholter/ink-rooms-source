@@ -1,0 +1,1249 @@
+[
+  {
+    "level": {
+      "name": "Same Direction",
+      "subtitle": "",
+      "hint": "Bring the robot above its crate. Use the bay edges to line up the left and downward pushes.",
+      "map": [
+        "~~~~~~~~~~~",
+        "~    ~    ~",
+        "~ $ .~ $  ~",
+        "~   ~~. # ~",
+        "~E@  ~    ~",
+        "~~~~~~~~~~~"
+      ],
+      "robots": [
+        {
+          "x": 9,
+          "z": 3,
+          "direction": 1
+        }
+      ],
+      "lesson": "The robot copies your steps. Edges and obstacles can hold it while you move."
+    },
+    "path": [
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      }
+    ],
+    "room": 28,
+    "metrics": {
+      "moves": 17,
+      "pushes": 4,
+      "robotPushes": 2,
+      "floor": 29,
+      "blockedRobotTurns": 3,
+      "floorCellsExcludingExit": 29
+    },
+    "designWitness": {
+      "kind": "deadlock",
+      "proof": "reverse-push-unreachable",
+      "afterMoves": 1,
+      "action": {
+        "x": 0,
+        "z": -1
+      },
+      "strandedBox": {
+        "x": 2,
+        "z": 1
+      },
+      "reason": "The legal push leaves cargo on a cell from which no sequence of pushes can reach any goal."
+    },
+    "robotDisabled": {
+      "solvable": false,
+      "exhausted": true,
+      "states": 181
+    }
+  },
+  {
+    "level": {
+      "name": "Separate Duties",
+      "subtitle": "",
+      "hint": "Leave room behind both robot crates. Use the platform edges to line up your next push.",
+      "map": [
+        "~~~~~~~~~~~~",
+        "~.   ~~.   ~",
+        "~ #$E~~  $ ~",
+        "~  @  ~ #$ ~",
+        "~    ~~.   ~",
+        "~~~~~~~~~~~~"
+      ],
+      "robots": [
+        {
+          "x": 7,
+          "z": 2,
+          "direction": 1
+        }
+      ]
+    },
+    "path": [
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      }
+    ],
+    "room": 29,
+    "metrics": {
+      "moves": 56,
+      "pushes": 13,
+      "robotPushes": 8,
+      "floor": 30,
+      "blockedRobotTurns": 17,
+      "floorCellsExcludingExit": 30
+    },
+    "designWitness": {
+      "kind": "deadlock",
+      "proof": "reverse-push-unreachable",
+      "afterMoves": 3,
+      "action": {
+        "x": 1,
+        "z": 0
+      },
+      "strandedBox": {
+        "x": 10,
+        "z": 2
+      },
+      "reason": "The legal push leaves cargo on a cell from which no sequence of pushes can reach any goal."
+    },
+    "robotDisabled": {
+      "solvable": false,
+      "exhausted": true,
+      "states": 194
+    },
+    "coordinationWitness": {
+      "room": 29,
+      "kind": "coordination-detour",
+      "afterMoves": 7,
+      "action": {
+        "x": 1,
+        "z": 0
+      },
+      "optimalRemaining": 49,
+      "detourRemaining": 57,
+      "detourIncludesChosenAction": true,
+      "extraMoves": 8,
+      "reason": "A cargo-free move holds the robot against a blocker and changes the offset. Recovering the needed alignment costs extra moves."
+    }
+  },
+  {
+    "level": {
+      "name": "Shared Signal",
+      "subtitle": "",
+      "hint": "Keep the lower lane clear while you move both robot crates around the post. Park on the lower plates to leave.",
+      "map": [
+        "~~~~~~~~~~~~",
+        "~~   ~~.   ~",
+        "~    ~~ #$ ~",
+        "~ #@  ~.   ~",
+        "~ $  ~~  $ ~",
+        "~~ . ~~~   ~",
+        "~~E~~~~~~~~~"
+      ],
+      "robots": [
+        {
+          "x": 10,
+          "z": 4,
+          "direction": 1
+        }
+      ],
+      "bridges": [
+        {
+          "x": 2,
+          "z": 5,
+          "height": 0,
+          "channel": 1
+        }
+      ],
+      "switches": [
+        {
+          "x": 8,
+          "z": 5,
+          "channel": 1
+        },
+        {
+          "x": 9,
+          "z": 5,
+          "channel": 1
+        }
+      ]
+    },
+    "path": [
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      }
+    ],
+    "room": 30,
+    "metrics": {
+      "moves": 34,
+      "pushes": 14,
+      "robotPushes": 8,
+      "floor": 36,
+      "blockedRobotTurns": 9,
+      "floorCellsExcludingExit": 36
+    },
+    "designWitness": {
+      "kind": "deadlock",
+      "proof": "reverse-push-unreachable",
+      "afterMoves": 14,
+      "action": {
+        "x": 0,
+        "z": -1
+      },
+      "strandedBox": {
+        "x": 3,
+        "z": 1
+      },
+      "reason": "The legal push leaves cargo on a cell from which no sequence of pushes can reach any goal."
+    },
+    "robotDisabled": {
+      "solvable": false,
+      "exhausted": true,
+      "states": 255
+    },
+    "coordinationWitness": {
+      "room": 30,
+      "kind": "coordination-detour",
+      "afterMoves": 15,
+      "action": {
+        "x": 1,
+        "z": 0
+      },
+      "optimalRemaining": 19,
+      "detourRemaining": 29,
+      "detourIncludesChosenAction": true,
+      "extraMoves": 10,
+      "reason": "A cargo-free move holds the robot against a blocker and changes the offset. Recovering the needed alignment costs extra moves."
+    }
+  },
+  {
+    "level": {
+      "name": "Hold the Line",
+      "subtitle": "",
+      "hint": "Deliver the crates, then steer the robot onto the lower plates to open your exit.",
+      "map": [
+        "~~~~~~~~~~~",
+        "~.  ~~  . ~",
+        "~$#@ ~  $ ~",
+        "~    ~~ $ ~",
+        "~    ~   .~",
+        "~~   ~    ~",
+        "~~E~~~~~~~~"
+      ],
+      "robots": [
+        {
+          "x": 9,
+          "z": 2,
+          "direction": 1
+        }
+      ],
+      "bridges": [
+        {
+          "x": 2,
+          "z": 5,
+          "height": 0,
+          "channel": 1
+        }
+      ],
+      "switches": [
+        {
+          "x": 8,
+          "z": 5,
+          "channel": 1
+        },
+        {
+          "x": 9,
+          "z": 5,
+          "channel": 1
+        }
+      ]
+    },
+    "path": [
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": -1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": -1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 1,
+        "z": 0
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      },
+      {
+        "x": 0,
+        "z": 1
+      }
+    ],
+    "room": 31,
+    "metrics": {
+      "moves": 135,
+      "pushes": 20,
+      "robotPushes": 13,
+      "floor": 36,
+      "blockedRobotTurns": 27,
+      "floorCellsExcludingExit": 36
+    },
+    "designWitness": {
+      "kind": "deadlock",
+      "proof": "reverse-push-unreachable",
+      "afterMoves": 3,
+      "action": {
+        "x": 0,
+        "z": 1
+      },
+      "strandedBox": {
+        "x": 8,
+        "z": 5
+      },
+      "reason": "The legal push leaves cargo on a cell from which no sequence of pushes can reach any goal."
+    },
+    "robotDisabled": {
+      "solvable": false,
+      "exhausted": true,
+      "states": 60
+    }
+  }
+]

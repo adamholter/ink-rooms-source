@@ -1,0 +1,229 @@
+{
+  "id": "room26-transfer-yard",
+  "level": {
+    "name": "Transfer Yard",
+    "subtitle": "One keeper powers two stages of the same delivery.",
+    "hint": "Load the lift while it is down. Move the keeper from the lift plate to the bridge plate only after unloading upstairs.",
+    "jumping": true,
+    "map": [
+      "~~~~~~~~~~",
+      "~~~~~~~.~~",
+      "~   ~~~ ~~",
+      "~        ~",
+      "~~   ~  E~",
+      "~~     ~~~",
+      "~~~$ $ .~~",
+      "~~~ @~~~~~",
+      "~~~~~~~~~~"
+    ],
+    "heights": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        2,
+        2,
+        0,
+        2,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        2,
+        2,
+        0,
+        2,
+        2,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        2,
+        2,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "switches": [
+      {
+        "x": 4,
+        "z": 6,
+        "channel": 1
+      },
+      {
+        "x": 6,
+        "z": 6,
+        "channel": 2
+      }
+    ],
+    "elevators": [
+      {
+        "x": 3,
+        "z": 4,
+        "low": 0,
+        "high": 2,
+        "channel": 1
+      }
+    ],
+    "bridges": [
+      {
+        "x": 5,
+        "z": 3,
+        "height": 2,
+        "channel": 2
+      }
+    ]
+  },
+  "provenance": {
+    "method": "Hand-authored from the game rules without using a public puzzle layout as design input.",
+    "designIntent": "The right crate is a reusable circuit keeper. It first moves left to raise loaded cargo, then crosses its start to power the bridge, then continues right to its target. The cargo must be loaded before the lift rises, unloaded through the upper side pocket, staged west of the bridge, and crossed only after the keeper changes circuits.",
+    "publicCorpusAudit": "Compared with 10,902 cached public entries under translation, rotation, reflection, exact floor/structure/pieces/complete modes, and 0.82 near-match review. No exact or near match was reported.",
+    "internalAudit": "Compared together with rooms 25 and 27. Room 26 produced no internal pair at the 0.82 floor or pieces threshold."
+  },
+  "metrics": {
+    "crates": 2,
+    "floorCellsExcludingExit": 30,
+    "solutionMoves": 45,
+    "solutionPushes": 15,
+    "pushesPerFloorCell": 0.5,
+    "loadedLiftRaises": 1,
+    "poweredBridgeCrossings": 1,
+    "correctPermanentDrops": 0,
+    "circuitSequence": [
+      "load lift while unpowered",
+      "keeper to lift plate",
+      "unload cargo upstairs",
+      "keeper to bridge plate",
+      "cargo across bridge",
+      "keeper to lower target"
+    ],
+    "liftDisabledSolvable": false,
+    "bridgeDisabledSolvable": false
+  },
+  "canonicalSolution": "LUURRRDLULULDDRRULLLURUULLDRRRRRDDLDRUURUUDRD",
+  "deadlockWitness": {
+    "solutionPrefixMoves": 8,
+    "mistake": "L",
+    "description": "Pushing the keeper left a second time blocks the cargo transfer lane without causing an immediate fall.",
+    "before": {
+      "player": {
+        "x": 5,
+        "z": 6
+      },
+      "boxes": [
+        {
+          "x": 3,
+          "z": 4
+        },
+        {
+          "x": 4,
+          "z": 6
+        }
+      ],
+      "moves": 8,
+      "pushes": 3
+    },
+    "after": {
+      "player": {
+        "x": 4,
+        "z": 6
+      },
+      "boxes": [
+        {
+          "x": 3,
+          "z": 4
+        },
+        {
+          "x": 3,
+          "z": 6
+        }
+      ],
+      "moves": 9,
+      "pushes": 4
+    },
+    "beforeSolvable": true,
+    "afterSolvable": false
+  }
+}

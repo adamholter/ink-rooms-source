@@ -1,0 +1,61 @@
+[
+  {
+    "index": 0,
+    "level": {
+      "name": "First Impression",
+      "subtitle": "Bring the crate around to its mark.",
+      "hint": "Walk around the crate before you push.",
+      "map": [
+        "~ . ~",
+        "     ",
+        " $@ E",
+        "~   ~"
+      ]
+    }
+  },
+  {
+    "index": 1,
+    "level": {
+      "name": "Corner Turn",
+      "subtitle": "A straight push is only the beginning.",
+      "hint": "Push left first, then get underneath.",
+      "map": [
+        "~.   ~",
+        "      ",
+        "  $@  ",
+        "    E ",
+        "~    ~"
+      ]
+    }
+  },
+  {
+    "index": 2,
+    "level": {
+      "name": "Ink Post",
+      "subtitle": "One obstacle changes the route.",
+      "hint": "Use the open side to get behind the crate twice.",
+      "map": [
+        "~  .  ~",
+        "   #   ",
+        "  $    ",
+        " @   E ",
+        "~     ~"
+      ]
+    }
+  },
+  {
+    "index": 3,
+    "level": {
+      "name": "Offset Pair",
+      "subtitle": "Two crates, crossed destinations.",
+      "hint": "Move the right crate out of the lower lane first.",
+      "map": [
+        "~.   .~",
+        "   #   ",
+        "  $ $  ",
+        "    @E ",
+        "~     ~"
+      ]
+    }
+  }
+]

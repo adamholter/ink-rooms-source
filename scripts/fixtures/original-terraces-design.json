@@ -1,0 +1,2728 @@
+{
+  "created": "2026-09-05",
+  "originalityClaim": "Created without public level inputs. Corpus uniqueness must be checked separately; this file does not claim internet-wide uniqueness.",
+  "rooms": [
+    {
+      "room": 15,
+      "name": "Upper Berth",
+      "level": {
+        "name": "Upper Berth",
+        "subtitle": "Three crates share the upper loading lane.",
+        "hint": "Keep access behind the upper crates before committing one to the lower mark.",
+        "map": [
+          "~~~~~~~~~",
+          "~   .# #~",
+          "~  .   #~",
+          "~ #  @  ~",
+          "~   $$$ ~",
+          "~E# #. #~",
+          "~ # #   ~",
+          "~~~~~~~~~"
+        ],
+        "heights": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2,
+            2,
+            2,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2,
+            2,
+            2,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2,
+            2,
+            2,
+            2,
+            0
+          ],
+          [
+            0,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            0
+          ],
+          [
+            0,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            0
+          ],
+          [
+            0,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "jumping": true
+      },
+      "provenance": {
+        "kind": "New seeded geometry, reverse-state breadth-first search, individual author revision",
+        "publicLevelInputs": [],
+        "initialSeed": "0x59051517",
+        "trial": 2710,
+        "generator": "/tmp/design-terraces-bfs.ts",
+        "procedure": "Generate a 7 by 6 footprint with independent 23 percent blocked cells. Heights are zero in the northwest 3 by 3 area and two elsewhere. Choose two upper targets and one lower target. Enumerate reverse legal pushes from the solved arrangement, retaining deeply scrambled states with three upper crates. Solve forward with independent minimum-push BFS, reject low-detour or low-interleaving candidates, then add an exit and re-solve. Selected individually from 3000 trials. No public puzzle geometry entered this process.",
+        "individualRevisions": "Name and hint authored after selection."
+      },
+      "metrics": {
+        "floorCells": 33,
+        "crates": 3,
+        "upperTargets": 2,
+        "lowerTargets": 1,
+        "optimalPushes": 19,
+        "movesInPushOptimalSolution": 72,
+        "movesAreNotProvenMinimum": true,
+        "manhattanAssignmentLowerBound": 9,
+        "pushesBeyondManhattanAssignment": 10,
+        "pushesPerFloorCell": 0.5757575757575758,
+        "crateInterleaves": 10,
+        "crateDirectionChanges": 10,
+        "pushesOffTargets": 1,
+        "permanentDropsInSolution": 1
+      },
+      "solution": [
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        }
+      ],
+      "pushTrace": [
+        {
+          "box": 1,
+          "from": {
+            "x": 5,
+            "z": 4
+          },
+          "to": {
+            "x": 5,
+            "z": 5
+          },
+          "direction": {
+            "x": 0,
+            "z": 1
+          }
+        },
+        {
+          "box": 0,
+          "from": {
+            "x": 4,
+            "z": 4
+          },
+          "to": {
+            "x": 3,
+            "z": 4
+          },
+          "direction": {
+            "x": -1,
+            "z": 0
+          }
+        },
+        {
+          "box": 0,
+          "from": {
+            "x": 3,
+            "z": 4
+          },
+          "to": {
+            "x": 2,
+            "z": 4
+          },
+          "direction": {
+            "x": -1,
+            "z": 0
+          }
+        },
+        {
+          "box": 2,
+          "from": {
+            "x": 6,
+            "z": 4
+          },
+          "to": {
+            "x": 5,
+            "z": 4
+          },
+          "direction": {
+            "x": -1,
+            "z": 0
+          }
+        },
+        {
+          "box": 2,
+          "from": {
+            "x": 5,
+            "z": 4
+          },
+          "to": {
+            "x": 4,
+            "z": 4
+          },
+          "direction": {
+            "x": -1,
+            "z": 0
+          }
+        },
+        {
+          "box": 1,
+          "from": {
+            "x": 5,
+            "z": 5
+          },
+          "to": {
+            "x": 5,
+            "z": 4
+          },
+          "direction": {
+            "x": 0,
+            "z": -1
+          }
+        },
+        {
+          "box": 1,
+          "from": {
+            "x": 5,
+            "z": 4
+          },
+          "to": {
+            "x": 5,
+            "z": 3
+          },
+          "direction": {
+            "x": 0,
+            "z": -1
+          }
+        },
+        {
+          "box": 1,
+          "from": {
+            "x": 5,
+            "z": 3
+          },
+          "to": {
+            "x": 5,
+            "z": 2
+          },
+          "direction": {
+            "x": 0,
+            "z": -1
+          }
+        },
+        {
+          "box": 1,
+          "from": {
+            "x": 5,
+            "z": 2
+          },
+          "to": {
+            "x": 4,
+            "z": 2
+          },
+          "direction": {
+            "x": -1,
+            "z": 0
+          }
+        },
+        {
+          "box": 1,
+          "from": {
+            "x": 4,
+            "z": 2
+          },
+          "to": {
+            "x": 4,
+            "z": 1
+          },
+          "direction": {
+            "x": 0,
+            "z": -1
+          }
+        },
+        {
+          "box": 2,
+          "from": {
+            "x": 4,
+            "z": 4
+          },
+          "to": {
+            "x": 5,
+            "z": 4
+          },
+          "direction": {
+            "x": 1,
+            "z": 0
+          }
+        },
+        {
+          "box": 0,
+          "from": {
+            "x": 2,
+            "z": 4
+          },
+          "to": {
+            "x": 3,
+            "z": 4
+          },
+          "direction": {
+            "x": 1,
+            "z": 0
+          }
+        },
+        {
+          "box": 0,
+          "from": {
+            "x": 3,
+            "z": 4
+          },
+          "to": {
+            "x": 4,
+            "z": 4
+          },
+          "direction": {
+            "x": 1,
+            "z": 0
+          }
+        },
+        {
+          "box": 2,
+          "from": {
+            "x": 5,
+            "z": 4
+          },
+          "to": {
+            "x": 5,
+            "z": 3
+          },
+          "direction": {
+            "x": 0,
+            "z": -1
+          }
+        },
+        {
+          "box": 0,
+          "from": {
+            "x": 4,
+            "z": 4
+          },
+          "to": {
+            "x": 5,
+            "z": 4
+          },
+          "direction": {
+            "x": 1,
+            "z": 0
+          }
+        },
+        {
+          "box": 2,
+          "from": {
+            "x": 5,
+            "z": 3
+          },
+          "to": {
+            "x": 4,
+            "z": 3
+          },
+          "direction": {
+            "x": -1,
+            "z": 0
+          }
+        },
+        {
+          "box": 0,
+          "from": {
+            "x": 5,
+            "z": 4
+          },
+          "to": {
+            "x": 5,
+            "z": 5
+          },
+          "direction": {
+            "x": 0,
+            "z": 1
+          }
+        },
+        {
+          "box": 2,
+          "from": {
+            "x": 4,
+            "z": 3
+          },
+          "to": {
+            "x": 4,
+            "z": 2
+          },
+          "direction": {
+            "x": 0,
+            "z": -1
+          }
+        },
+        {
+          "box": 2,
+          "from": {
+            "x": 4,
+            "z": 2
+          },
+          "to": {
+            "x": 3,
+            "z": 2
+          },
+          "direction": {
+            "x": -1,
+            "z": 0
+          }
+        }
+      ],
+      "irreversibleDropWitness": {
+        "solutionPrefixMoves": 60,
+        "approach": [],
+        "drop": {
+          "x": -1,
+          "z": 0
+        },
+        "before": {
+          "level": 14,
+          "player": {
+            "x": 5,
+            "z": 3
+          },
+          "boxes": [
+            {
+              "x": 5,
+              "z": 4
+            },
+            {
+              "x": 4,
+              "z": 1
+            },
+            {
+              "x": 4,
+              "z": 3
+            }
+          ],
+          "moves": 60,
+          "pushes": 16,
+          "won": false,
+          "fall": null
+        },
+        "after": {
+          "level": 14,
+          "player": {
+            "x": 4,
+            "z": 3
+          },
+          "boxes": [
+            {
+              "x": 5,
+              "z": 4
+            },
+            {
+              "x": 4,
+              "z": 1
+            },
+            {
+              "x": 3,
+              "z": 3
+            }
+          ],
+          "moves": 61,
+          "pushes": 17,
+          "won": false,
+          "fall": null
+        },
+        "verifiedBeforeSolvable": true,
+        "verifiedAfterUnsolvable": true
+      }
+    },
+    {
+      "room": 16,
+      "name": "Narrow Landing",
+      "level": {
+        "name": "Narrow Landing",
+        "subtitle": "The turning space belongs to every crate.",
+        "hint": "Use the upper turning space. The small lower pocket cannot return a crate.",
+        "map": [
+          "~~~~~~~~~",
+          "~  E   #~",
+          "~ ##  $ ~",
+          "~.## #$ ~",
+          "~   #   ~",
+          "~  @.$  ~",
+          "~   . ##~",
+          "~~~~~~~~~"
+        ],
+        "heights": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2,
+            2,
+            2,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2,
+            2,
+            2,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2,
+            2,
+            2,
+            2,
+            0
+          ],
+          [
+            0,
+            2,
+            2,
+            0,
+            2,
+            2,
+            2,
+            2,
+            0
+          ],
+          [
+            0,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            0
+          ],
+          [
+            0,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "jumping": true
+      },
+      "provenance": {
+        "kind": "New seeded geometry, reverse-state breadth-first search, individual author revision",
+        "publicLevelInputs": [],
+        "initialSeed": "0x59051517",
+        "trial": 1055,
+        "generator": "/tmp/design-terraces-bfs.ts",
+        "procedure": "Generate a 7 by 6 footprint with independent 23 percent blocked cells. Heights are zero in the northwest 3 by 3 area and two elsewhere. Choose two upper targets and one lower target. Enumerate reverse legal pushes from the solved arrangement, retaining deeply scrambled states with three upper crates. Solve forward with independent minimum-push BFS, reject low-detour or low-interleaving candidates, then add an exit and re-solve. Selected individually from 3000 trials. No public puzzle geometry entered this process.",
+        "individualRevisions": "Move spawn off an upper target, preserving both separately. Replace the divider at x3,z4 with a lower recessed floor pocket, then re-solve and verify its irreversible drop trap. Follow-up topology revision 16-second-2_3-3_3: [{\"x\":1,\"z\":2,\"from\":\"#\",\"to\":\" \"},{\"x\":2,\"z\":3,\"from\":\" \",\"to\":\"#\"},{\"x\":3,\"z\":3,\"from\":\" \",\"to\":\"#\"}]. Engine minimum-push solution and irreversible-drop witness reverified."
+      },
+      "metrics": {
+        "floorCells": 33,
+        "crates": 3,
+        "upperTargets": 2,
+        "lowerTargets": 1,
+        "optimalPushes": 24,
+        "movesInPushOptimalSolution": 112,
+        "movesAreNotProvenMinimum": true,
+        "manhattanAssignmentLowerBound": 12,
+        "pushesBeyondManhattanAssignment": 12,
+        "pushesPerFloorCell": 0.7272727272727273,
+        "crateInterleaves": 15,
+        "crateDirectionChanges": 8,
+        "pushesOffTargets": 2,
+        "permanentDropsInSolution": 1
+      },
+      "solution": [
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        }
+      ],
+      "pushTrace": [
+        {
+          "box": 2,
+          "from": {
+            "x": 5,
+            "z": 5
+          },
+          "to": {
+            "x": 6,
+            "z": 5
+          },
+          "direction": {
+            "x": 1,
+            "z": 0
+          }
+        },
+        {
+          "box": 0,
+          "from": {
+            "x": 6,
+            "z": 2
+          },
+          "to": {
+            "x": 5,
+            "z": 2
+          },
+          "direction": {
+            "x": -1,
+            "z": 0
+          }
+        },
+        {
+          "box": 1,
+          "from": {
+            "x": 6,
+            "z": 3
+          },
+          "to": {
+            "x": 6,
+            "z": 4
+          },
+          "direction": {
+            "x": 0,
+            "z": 1
+          }
+        },
+        {
+          "box": 2,
+          "from": {
+            "x": 6,
+            "z": 5
+          },
+          "to": {
+            "x": 5,
+            "z": 5
+          },
+          "direction": {
+            "x": -1,
+            "z": 0
+          }
+        },
+        {
+          "box": 2,
+          "from": {
+            "x": 5,
+            "z": 5
+          },
+          "to": {
+            "x": 4,
+            "z": 5
+          },
+          "direction": {
+            "x": -1,
+            "z": 0
+          }
+        },
+        {
+          "box": 1,
+          "from": {
+            "x": 6,
+            "z": 4
+          },
+          "to": {
+            "x": 6,
+            "z": 5
+          },
+          "direction": {
+            "x": 0,
+            "z": 1
+          }
+        },
+        {
+          "box": 0,
+          "from": {
+            "x": 5,
+            "z": 2
+          },
+          "to": {
+            "x": 6,
+            "z": 2
+          },
+          "direction": {
+            "x": 1,
+            "z": 0
+          }
+        },
+        {
+          "box": 0,
+          "from": {
+            "x": 6,
+            "z": 2
+          },
+          "to": {
+            "x": 6,
+            "z": 3
+          },
+          "direction": {
+            "x": 0,
+            "z": 1
+          }
+        },
+        {
+          "box": 2,
+          "from": {
+            "x": 4,
+            "z": 5
+          },
+          "to": {
+            "x": 3,
+            "z": 5
+          },
+          "direction": {
+            "x": -1,
+            "z": 0
+          }
+        },
+        {
+          "box": 2,
+          "from": {
+            "x": 3,
+            "z": 5
+          },
+          "to": {
+            "x": 2,
+            "z": 5
+          },
+          "direction": {
+            "x": -1,
+            "z": 0
+          }
+        },
+        {
+          "box": 0,
+          "from": {
+            "x": 6,
+            "z": 3
+          },
+          "to": {
+            "x": 6,
+            "z": 4
+          },
+          "direction": {
+            "x": 0,
+            "z": 1
+          }
+        },
+        {
+          "box": 1,
+          "from": {
+            "x": 6,
+            "z": 5
+          },
+          "to": {
+            "x": 5,
+            "z": 5
+          },
+          "direction": {
+            "x": -1,
+            "z": 0
+          }
+        },
+        {
+          "box": 1,
+          "from": {
+            "x": 5,
+            "z": 5
+          },
+          "to": {
+            "x": 4,
+            "z": 5
+          },
+          "direction": {
+            "x": -1,
+            "z": 0
+          }
+        },
+        {
+          "box": 0,
+          "from": {
+            "x": 6,
+            "z": 4
+          },
+          "to": {
+            "x": 6,
+            "z": 5
+          },
+          "direction": {
+            "x": 0,
+            "z": 1
+          }
+        },
+        {
+          "box": 2,
+          "from": {
+            "x": 2,
+            "z": 5
+          },
+          "to": {
+            "x": 2,
+            "z": 6
+          },
+          "direction": {
+            "x": 0,
+            "z": 1
+          }
+        },
+        {
+          "box": 1,
+          "from": {
+            "x": 4,
+            "z": 5
+          },
+          "to": {
+            "x": 3,
+            "z": 5
+          },
+          "direction": {
+            "x": -1,
+            "z": 0
+          }
+        },
+        {
+          "box": 1,
+          "from": {
+            "x": 3,
+            "z": 5
+          },
+          "to": {
+            "x": 2,
+            "z": 5
+          },
+          "direction": {
+            "x": -1,
+            "z": 0
+          }
+        },
+        {
+          "box": 2,
+          "from": {
+            "x": 2,
+            "z": 6
+          },
+          "to": {
+            "x": 3,
+            "z": 6
+          },
+          "direction": {
+            "x": 1,
+            "z": 0
+          }
+        },
+        {
+          "box": 1,
+          "from": {
+            "x": 2,
+            "z": 5
+          },
+          "to": {
+            "x": 1,
+            "z": 5
+          },
+          "direction": {
+            "x": -1,
+            "z": 0
+          }
+        },
+        {
+          "box": 1,
+          "from": {
+            "x": 1,
+            "z": 5
+          },
+          "to": {
+            "x": 1,
+            "z": 4
+          },
+          "direction": {
+            "x": 0,
+            "z": -1
+          }
+        },
+        {
+          "box": 1,
+          "from": {
+            "x": 1,
+            "z": 4
+          },
+          "to": {
+            "x": 1,
+            "z": 3
+          },
+          "direction": {
+            "x": 0,
+            "z": -1
+          }
+        },
+        {
+          "box": 2,
+          "from": {
+            "x": 3,
+            "z": 6
+          },
+          "to": {
+            "x": 4,
+            "z": 6
+          },
+          "direction": {
+            "x": 1,
+            "z": 0
+          }
+        },
+        {
+          "box": 0,
+          "from": {
+            "x": 6,
+            "z": 5
+          },
+          "to": {
+            "x": 5,
+            "z": 5
+          },
+          "direction": {
+            "x": -1,
+            "z": 0
+          }
+        },
+        {
+          "box": 0,
+          "from": {
+            "x": 5,
+            "z": 5
+          },
+          "to": {
+            "x": 4,
+            "z": 5
+          },
+          "direction": {
+            "x": -1,
+            "z": 0
+          }
+        }
+      ],
+      "irreversibleDropWitness": {
+        "solutionPrefixMoves": 37,
+        "approach": [
+          {
+            "x": 0,
+            "z": 1
+          },
+          {
+            "x": -1,
+            "z": 0
+          }
+        ],
+        "drop": {
+          "x": 0,
+          "z": -1
+        },
+        "before": {
+          "level": 15,
+          "player": {
+            "x": 3,
+            "z": 6
+          },
+          "boxes": [
+            {
+              "x": 6,
+              "z": 3
+            },
+            {
+              "x": 6,
+              "z": 5
+            },
+            {
+              "x": 3,
+              "z": 5
+            }
+          ],
+          "moves": 39,
+          "pushes": 9,
+          "won": false,
+          "fall": null
+        },
+        "after": {
+          "level": 15,
+          "player": {
+            "x": 3,
+            "z": 5
+          },
+          "boxes": [
+            {
+              "x": 6,
+              "z": 3
+            },
+            {
+              "x": 6,
+              "z": 5
+            },
+            {
+              "x": 3,
+              "z": 4
+            }
+          ],
+          "moves": 40,
+          "pushes": 10,
+          "won": false,
+          "fall": null
+        },
+        "verifiedBeforeSolvable": true,
+        "verifiedAfterUnsolvable": true
+      }
+    },
+    {
+      "room": 17,
+      "name": "The Long Way Down",
+      "level": {
+        "name": "The Long Way Down",
+        "subtitle": "Two upper marks and one final descent.",
+        "hint": "The shortest route to a mark can block the route needed by the next crate.",
+        "map": [
+          "~~~~~~~~~",
+          "~   .#  ~",
+          "~ # $ $@~",
+          "~.#  #$ ~",
+          "~    . #~",
+          "~  # #  ~",
+          "~  E    ~",
+          "~~~~~~~~~"
+        ],
+        "heights": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2,
+            2,
+            2,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2,
+            2,
+            2,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2,
+            2,
+            2,
+            2,
+            0
+          ],
+          [
+            0,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            0
+          ],
+          [
+            0,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            0
+          ],
+          [
+            0,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "jumping": true
+      },
+      "provenance": {
+        "kind": "New seeded geometry, reverse-state breadth-first search, individual author revision",
+        "publicLevelInputs": [],
+        "initialSeed": "0x59051517",
+        "trial": 2002,
+        "generator": "/tmp/design-terraces-bfs.ts",
+        "procedure": "Generate a 7 by 6 footprint with independent 23 percent blocked cells. Heights are zero in the northwest 3 by 3 area and two elsewhere. Choose two upper targets and one lower target. Enumerate reverse legal pushes from the solved arrangement, retaining deeply scrambled states with three upper crates. Solve forward with independent minimum-push BFS, reject low-detour or low-interleaving candidates, then add an exit and re-solve. Selected individually from 3000 trials. No public puzzle geometry entered this process.",
+        "individualRevisions": "Name and hint authored after selection. Follow-up topology revision 17-second-2_2: [{\"x\":2,\"z\":2,\"from\":\" \",\"to\":\"#\"},{\"x\":3,\"z\":5,\"from\":\" \",\"to\":\"#\"}]. Engine minimum-push solution and irreversible-drop witness reverified."
+      },
+      "metrics": {
+        "floorCells": 35,
+        "crates": 3,
+        "upperTargets": 2,
+        "lowerTargets": 1,
+        "optimalPushes": 27,
+        "movesInPushOptimalSolution": 82,
+        "movesAreNotProvenMinimum": true,
+        "manhattanAssignmentLowerBound": 9,
+        "pushesBeyondManhattanAssignment": 18,
+        "pushesPerFloorCell": 0.7714285714285715,
+        "crateInterleaves": 9,
+        "crateDirectionChanges": 10,
+        "pushesOffTargets": 1,
+        "permanentDropsInSolution": 1
+      },
+      "solution": [
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": -1,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": -1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": 0,
+          "z": 1
+        },
+        {
+          "x": -1,
+          "z": 0
+        }
+      ],
+      "pushTrace": [
+        {
+          "box": 1,
+          "from": {
+            "x": 6,
+            "z": 2
+          },
+          "to": {
+            "x": 5,
+            "z": 2
+          },
+          "direction": {
+            "x": -1,
+            "z": 0
+          }
+        },
+        {
+          "box": 2,
+          "from": {
+            "x": 6,
+            "z": 3
+          },
+          "to": {
+            "x": 6,
+            "z": 4
+          },
+          "direction": {
+            "x": 0,
+            "z": 1
+          }
+        },
+        {
+          "box": 2,
+          "from": {
+            "x": 6,
+            "z": 4
+          },
+          "to": {
+            "x": 6,
+            "z": 5
+          },
+          "direction": {
+            "x": 0,
+            "z": 1
+          }
+        },
+        {
+          "box": 0,
+          "from": {
+            "x": 4,
+            "z": 2
+          },
+          "to": {
+            "x": 4,
+            "z": 3
+          },
+          "direction": {
+            "x": 0,
+            "z": 1
+          }
+        },
+        {
+          "box": 0,
+          "from": {
+            "x": 4,
+            "z": 3
+          },
+          "to": {
+            "x": 4,
+            "z": 4
+          },
+          "direction": {
+            "x": 0,
+            "z": 1
+          }
+        },
+        {
+          "box": 0,
+          "from": {
+            "x": 4,
+            "z": 4
+          },
+          "to": {
+            "x": 5,
+            "z": 4
+          },
+          "direction": {
+            "x": 1,
+            "z": 0
+          }
+        },
+        {
+          "box": 2,
+          "from": {
+            "x": 6,
+            "z": 5
+          },
+          "to": {
+            "x": 6,
+            "z": 4
+          },
+          "direction": {
+            "x": 0,
+            "z": -1
+          }
+        },
+        {
+          "box": 2,
+          "from": {
+            "x": 6,
+            "z": 4
+          },
+          "to": {
+            "x": 6,
+            "z": 3
+          },
+          "direction": {
+            "x": 0,
+            "z": -1
+          }
+        },
+        {
+          "box": 0,
+          "from": {
+            "x": 5,
+            "z": 4
+          },
+          "to": {
+            "x": 4,
+            "z": 4
+          },
+          "direction": {
+            "x": -1,
+            "z": 0
+          }
+        },
+        {
+          "box": 0,
+          "from": {
+            "x": 4,
+            "z": 4
+          },
+          "to": {
+            "x": 3,
+            "z": 4
+          },
+          "direction": {
+            "x": -1,
+            "z": 0
+          }
+        },
+        {
+          "box": 0,
+          "from": {
+            "x": 3,
+            "z": 4
+          },
+          "to": {
+            "x": 2,
+            "z": 4
+          },
+          "direction": {
+            "x": -1,
+            "z": 0
+          }
+        },
+        {
+          "box": 0,
+          "from": {
+            "x": 2,
+            "z": 4
+          },
+          "to": {
+            "x": 1,
+            "z": 4
+          },
+          "direction": {
+            "x": -1,
+            "z": 0
+          }
+        },
+        {
+          "box": 0,
+          "from": {
+            "x": 1,
+            "z": 4
+          },
+          "to": {
+            "x": 1,
+            "z": 3
+          },
+          "direction": {
+            "x": 0,
+            "z": -1
+          }
+        },
+        {
+          "box": 2,
+          "from": {
+            "x": 6,
+            "z": 3
+          },
+          "to": {
+            "x": 6,
+            "z": 2
+          },
+          "direction": {
+            "x": 0,
+            "z": -1
+          }
+        },
+        {
+          "box": 2,
+          "from": {
+            "x": 6,
+            "z": 2
+          },
+          "to": {
+            "x": 6,
+            "z": 3
+          },
+          "direction": {
+            "x": 0,
+            "z": 1
+          }
+        },
+        {
+          "box": 1,
+          "from": {
+            "x": 5,
+            "z": 2
+          },
+          "to": {
+            "x": 4,
+            "z": 2
+          },
+          "direction": {
+            "x": -1,
+            "z": 0
+          }
+        },
+        {
+          "box": 2,
+          "from": {
+            "x": 6,
+            "z": 3
+          },
+          "to": {
+            "x": 6,
+            "z": 4
+          },
+          "direction": {
+            "x": 0,
+            "z": 1
+          }
+        },
+        {
+          "box": 2,
+          "from": {
+            "x": 6,
+            "z": 4
+          },
+          "to": {
+            "x": 6,
+            "z": 5
+          },
+          "direction": {
+            "x": 0,
+            "z": 1
+          }
+        },
+        {
+          "box": 1,
+          "from": {
+            "x": 4,
+            "z": 2
+          },
+          "to": {
+            "x": 4,
+            "z": 3
+          },
+          "direction": {
+            "x": 0,
+            "z": 1
+          }
+        },
+        {
+          "box": 1,
+          "from": {
+            "x": 4,
+            "z": 3
+          },
+          "to": {
+            "x": 4,
+            "z": 4
+          },
+          "direction": {
+            "x": 0,
+            "z": 1
+          }
+        },
+        {
+          "box": 1,
+          "from": {
+            "x": 4,
+            "z": 4
+          },
+          "to": {
+            "x": 5,
+            "z": 4
+          },
+          "direction": {
+            "x": 1,
+            "z": 0
+          }
+        },
+        {
+          "box": 2,
+          "from": {
+            "x": 6,
+            "z": 5
+          },
+          "to": {
+            "x": 6,
+            "z": 4
+          },
+          "direction": {
+            "x": 0,
+            "z": -1
+          }
+        },
+        {
+          "box": 2,
+          "from": {
+            "x": 6,
+            "z": 4
+          },
+          "to": {
+            "x": 6,
+            "z": 3
+          },
+          "direction": {
+            "x": 0,
+            "z": -1
+          }
+        },
+        {
+          "box": 2,
+          "from": {
+            "x": 6,
+            "z": 3
+          },
+          "to": {
+            "x": 6,
+            "z": 2
+          },
+          "direction": {
+            "x": 0,
+            "z": -1
+          }
+        },
+        {
+          "box": 2,
+          "from": {
+            "x": 6,
+            "z": 2
+          },
+          "to": {
+            "x": 5,
+            "z": 2
+          },
+          "direction": {
+            "x": -1,
+            "z": 0
+          }
+        },
+        {
+          "box": 2,
+          "from": {
+            "x": 5,
+            "z": 2
+          },
+          "to": {
+            "x": 4,
+            "z": 2
+          },
+          "direction": {
+            "x": -1,
+            "z": 0
+          }
+        },
+        {
+          "box": 2,
+          "from": {
+            "x": 4,
+            "z": 2
+          },
+          "to": {
+            "x": 4,
+            "z": 1
+          },
+          "direction": {
+            "x": 0,
+            "z": -1
+          }
+        }
+      ],
+      "irreversibleDropWitness": {
+        "solutionPrefixMoves": 40,
+        "approach": [],
+        "drop": {
+          "x": -1,
+          "z": 0
+        },
+        "before": {
+          "level": 16,
+          "player": {
+            "x": 5,
+            "z": 2
+          },
+          "boxes": [
+            {
+              "x": 1,
+              "z": 3
+            },
+            {
+              "x": 4,
+              "z": 2
+            },
+            {
+              "x": 6,
+              "z": 3
+            }
+          ],
+          "moves": 40,
+          "pushes": 16,
+          "won": false,
+          "fall": null
+        },
+        "after": {
+          "level": 16,
+          "player": {
+            "x": 4,
+            "z": 2
+          },
+          "boxes": [
+            {
+              "x": 1,
+              "z": 3
+            },
+            {
+              "x": 3,
+              "z": 2
+            },
+            {
+              "x": 6,
+              "z": 3
+            }
+          ],
+          "moves": 41,
+          "pushes": 17,
+          "won": false,
+          "fall": null
+        },
+        "verifiedBeforeSolvable": true,
+        "verifiedAfterUnsolvable": true
+      }
+    }
+  ],
+  "generationSource": "import fs from 'node:fs';\nimport {LEVELS,solve,attemptMove,createState,type Level} from '../src/puzzle.ts';\nlet seed=0x59051517;const rnd=()=>{seed^=seed<<13;seed^=seed>>>17;seed^=seed<<5;return(seed>>>0)/4294967296};const pick=<T>(a:T[])=>a[Math.floor(rnd()*a.length)];\nconst W=9,H=8,N=72,ds=[-9,1,9,-1];\nfunction reach(p:number,bs:number[],f:boolean[]){let q=[p],s=new Set(q);for(let i=0;i<q.length;i++)for(let d of ds){let t=q[i]+d;if(f[t]&&!bs.includes(t)&&!s.has(t)){q.push(t);s.add(t)}}return q}\nfunction shortest(f:boolean[],ht:number[],goals:number[],bs:number[],p:number,limit=70000){\n const dead=new Set(goals),rq=[...goals];for(let i=0;i<rq.length;i++)for(const d of ds){let b=rq[i]-d,a=b-d;if(f[b]&&f[a]&&ht[b]>=ht[rq[i]]&&ht[a]===ht[b]&&!dead.has(b)){dead.add(b);rq.push(b)}}if(bs.some(b=>!dead.has(b)))return null;\n const nodes=[{p,bs:bs.slice(),n:-1,d:0,b:0}],seen=new Set<string>();let k=(p:number,b:number[])=>Math.min(...reach(p,b,f))+':'+b.slice().sort((a,b)=>a-b).join(',');seen.add(k(p,bs));\n for(let i=0;i<nodes.length;i++){let n=nodes[i];if(n.bs.every(b=>goals.includes(b))){let route=[];for(let j=i;nodes[j].n>=0;j=nodes[j].n)route.push({b:nodes[j].b,d:nodes[j].d});return{pushes:route.length,states:nodes.length,route:route.reverse()}}\n let rr=reach(n.p,n.bs,f);for(let b of n.bs)for(let d of ds){let dest=b+d,behind=b-d;if(!dead.has(dest)||n.bs.includes(dest)||!rr.includes(behind)||ht[behind]!==ht[b]||ht[dest]>ht[b])continue;let nb=n.bs.map(x=>x===b?dest:x),key=k(b,nb);if(!seen.has(key)){seen.add(key);nodes.push({p:b,bs:nb,n:i,d,b});if(nodes.length>limit)return null}}\n }return null;\n}\nconst best:any[]=[];let solved=0;let eligible=0;let max=0;\nfor(let trial=0;trial<3000;trial++){\n let f=Array(N).fill(false),ht=Array(N).fill(0);for(let z=1;z<=6;z++)for(let x=1;x<=7;x++){f[z*9+x]=rnd()>.23;ht[z*9+x]=(x<=3&&z<=3)?0:2}\n let cells=f.flatMap((v,i)=>v?[i]:[]);if(cells.length<28||reach(cells[0],[],f).length!==cells.length)continue;\n let highs=cells.filter(i=>ht[i]===2),lows=cells.filter(i=>ht[i]===0);let goals=[pick(highs),pick(highs),pick(lows)];if(new Set(goals).size<3)continue;\n let initialPlayer=pick(cells.filter(i=>!goals.includes(i)));let nodes=[{bs:goals.slice(),p:initialPlayer,depth:0}],seen=new Set<string>();let winner=nodes[0];\n for(let ni=0;ni<nodes.length&&nodes.length<40000;ni++){\n  let n=nodes[ni],r=reach(n.p,n.bs,f);if(n.bs.every(b=>ht[b]===2&&!goals.includes(b))&&n.depth>winner.depth)winner=n;\n  for(let b of n.bs)for(let d of ds){let src=b-d,behind=src-d;if(!f[src]||!f[behind]||n.bs.includes(src)||n.bs.includes(behind)||!r.includes(src)||ht[src]<ht[b]||ht[behind]!==ht[src])continue;let nb=n.bs.map(v=>v===b?src:v),key=nb.slice().sort((a,b)=>a-b).join(',')+':'+Math.min(...reach(behind,nb,f));if(seen.has(key))continue;seen.add(key);nodes.push({bs:nb,p:behind,depth:n.depth+1})}\n }\n let bs=winner.bs,p=winner.p;if(winner.depth<18)continue;\n if(bs.some(b=>goals.includes(b))||bs.filter(b=>ht[b]===2).length<3)continue;\n eligible++;let sol=shortest(f,ht,goals,bs,p);if(sol&&sol.pushes>max){max=sol.pushes;console.log(\"MAX\",max,eligible)}if(!sol||sol.pushes<18)continue;solved++;\n let ids=bs.slice(),seq:number[]=[];let drops=0;for(let r of sol.route){let id=ids.indexOf(r.b);seq.push(id);if(ht[r.b]>ht[r.b+r.d])drops++;ids[id]+=r.d}let switches=seq.filter((v,i)=>i&&v!==seq[i-1]).length;\n let lb=Math.min(...[[0,1,2],[0,2,1],[1,0,2],[1,2,0],[2,0,1],[2,1,0]].map(pm=>bs.reduce((s,b,i)=>s+Math.abs(b%9-goals[pm[i]]%9)+Math.abs((b/9|0)-(goals[pm[i]]/9|0)),0)));\n if(switches<3||sol.pushes-lb<6)continue;\n let exit=pick(cells.filter(c=>!goals.includes(c)&&!bs.includes(c)&&c!==p&&([1,7].includes(c%9)||[1,6].includes(c/9|0))));if(!exit)continue;\n // Exit should occupy a dead crate square so it does not alter necessary routing.\n let eff=f.slice();eff[exit]=false;if(reach(p,bs,eff).length<2)continue;let confirmed=shortest(eff,ht,goals,bs,p);if(!confirmed||confirmed.pushes<18)continue;\n let map=Array.from({length:H},(_,z)=>Array.from({length:W},(_,x)=>{let i=z*9+x;return i===exit?'E':i===p?'@':bs.includes(i)?'$':goals.includes(i)?'.':f[i]?' ':x===0||x===8||z===0||z===7?'~':'#'}).join(''));\n let l:Level={name:'Candidate '+trial,subtitle:'',hint:'',map,heights:Array.from({length:8},(_,z)=>ht.slice(z*9,z*9+9)),jumping:true};\n let rec={trial,seed:seed>>>0,level:l,floor:cells.length,pushes:confirmed.pushes,states:confirmed.states,lowerBound:lb,interleaves:switches,drops,route:confirmed.route};best.push(rec);best.sort((a,b)=>(b.pushes-b.lowerBound+b.interleaves)-(a.pushes-a.lowerBound+a.interleaves));if(best.length>15)best.length=15;fs.writeFileSync('/tmp/terrace-candidates.json',JSON.stringify(best,null,2));console.log(JSON.stringify({trial,pushes:rec.pushes,floor:cells.length,lb,switches,drops}));\n if(best.length>=12&&best[0].pushes>=30&&trial>500)break;\n}\nconsole.log('DONE',best.length,solved);\n",
+  "generationSourceNote": "Preserved source of the bounded search that produced the selected geometry candidates. File paths in this source identify the working environment; the three selected layouts and subsequent revisions are recorded above."
+}

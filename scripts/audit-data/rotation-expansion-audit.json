@@ -1,0 +1,1471 @@
+{
+  "generatedAt": "2026-09-07T11:37:40.472Z",
+  "method": {
+    "symmetry": "translation plus all 8 rotations/reflections",
+    "exactModes": {
+      "floor": "playable-cell geometry only",
+      "structure": "geometry plus target positions",
+      "pieces": "geometry, targets, and crates",
+      "complete": "geometry, targets, crates, and player"
+    },
+    "near": "Jaccard similarity after symmetry and translations up to one cell; normalized dimensions may differ by up to two cells; reported at an unrounded score >= 0.82",
+    "limitations": "Finite public corpus. A clean result does not prove internet-wide uniqueness."
+  },
+  "corpus": {
+    "entries": 10902,
+    "uniqueComplete": 10902,
+    "sources": [
+      {
+        "id": "microban",
+        "name": "Microban",
+        "author": "David W. Skinner",
+        "url": "https://sokoban-game.com/packs/microban/download",
+        "entries": 155,
+        "sha256": "6506781b2a0d0de99e686c6c98e95540a1004251356ad263cccf1932dc1e9fb2"
+      },
+      {
+        "id": "mas-microban",
+        "name": "Mas Microban",
+        "author": "David W. Skinner",
+        "url": "https://sokoban-game.com/packs/mas-microban/download",
+        "entries": 135,
+        "sha256": "7d1eae1cf8e37b779e7886095938b5f5cfd67bcded3cd84280d92d5cfd389a06"
+      },
+      {
+        "id": "mas-sasquatch",
+        "name": "Mas Sasquatch",
+        "author": "David W. Skinner",
+        "url": "https://sokoban-game.com/packs/mas-sasquatch/download",
+        "entries": 50,
+        "sha256": "012163c4db80c759faf92cf1b219fd13ba51f4da4f28817828dfb91950aa6016"
+      },
+      {
+        "id": "sasquatch",
+        "name": "Sasquatch",
+        "author": "David W. Skinner",
+        "url": "https://sokoban-game.com/packs/sasquatch/download",
+        "entries": 50,
+        "sha256": "c21742f1bafdd574df09a07a64825d67b8039fac3c25247252963eb2b4131324"
+      },
+      {
+        "id": "sasquatch-iii",
+        "name": "Sasquatch III",
+        "author": "David W. Skinner",
+        "url": "https://sokoban-game.com/packs/sasquatch-iii/download",
+        "entries": 50,
+        "sha256": "5fe67fb573ab010e5083bd7a4e5cd382da4596f47ed7de23174221bc4d471582"
+      },
+      {
+        "id": "sasquatch-iv",
+        "name": "Sasquatch IV",
+        "author": "David W. Skinner",
+        "url": "https://sokoban-game.com/packs/sasquatch-iv/download",
+        "entries": 50,
+        "sha256": "ee41e94ad839b06e9b9f6a4284ca976b51977edde56c96e9d21a8c20ad078067"
+      },
+      {
+        "id": "sasquatch-v",
+        "name": "Sasquatch V",
+        "author": "David W. Skinner",
+        "url": "https://sokoban-game.com/packs/sasquatch-v/download",
+        "entries": 50,
+        "sha256": "2cf3fd94fe4b00dc5d8026e959cb828b05d148a64ef35f1b50267dde6222cfd6"
+      },
+      {
+        "id": "sasquatch-vi",
+        "name": "Sasquatch VI",
+        "author": "David W. Skinner",
+        "url": "https://sokoban-game.com/packs/sasquatch-vi/download",
+        "entries": 50,
+        "sha256": "0ebac92eca278b7f2902f492ee9ea9b73601405cfc7d34f7f80e367fcf4b68ac"
+      },
+      {
+        "id": "sasquatch-vii",
+        "name": "Sasquatch VII",
+        "author": "David W. Skinner",
+        "url": "https://sokoban-game.com/packs/sasquatch-vii/download",
+        "entries": 50,
+        "sha256": "ce957e4ea9f9a7796e8846489e8d8e84ade468739d9b320543a1db48887850e2"
+      },
+      {
+        "id": "micro-cosmos",
+        "name": "Micro Cosmos",
+        "author": "Aymeric du Peloux",
+        "url": "https://sokoban-game.com/packs/micro-cosmos/download",
+        "entries": 40,
+        "sha256": "ed099f072835646af0a4d425706dc78a3453efb30969389435f666fafee806e0"
+      },
+      {
+        "id": "mini-cosmos",
+        "name": "Mini Cosmos",
+        "author": "Aymeric du Peloux",
+        "url": "https://sokoban-game.com/packs/mini-cosmos/download",
+        "entries": 40,
+        "sha256": "b1acfcc744524f995bef428dcb527f98f51caa99f59ad70481f133e8fd6ce48d"
+      },
+      {
+        "id": "nabo-cosmos",
+        "name": "Nabo Cosmos",
+        "author": "Aymeric du Peloux",
+        "url": "https://sokoban-game.com/packs/nabo-cosmos/download",
+        "entries": 40,
+        "sha256": "41a4a0ff7a2a3713f12ae43222d22234b3a2e28f701d282587d0c8f5480ca1fc"
+      },
+      {
+        "id": "original-extra",
+        "name": "Original & Extra",
+        "author": "Thinking Rabbit",
+        "url": "https://sokoban-game.com/packs/original-extra/download",
+        "entries": 90,
+        "sha256": "5a181f60070448695d3fb328fb8cba8512fd613196a6a2071f03b5a3b562c826"
+      },
+      {
+        "id": "autogen-52",
+        "name": "Yoshio Murase Auto-Generated",
+        "author": "Yoshio Murase",
+        "url": "https://sokoban-game.com/packs/yoshio-murase-s-auto-generated/download",
+        "entries": 52,
+        "sha256": "4f7f4d9849e7df2be7eda0caf3d2f3084fa3579427f3f6124afe5c2f9edf8295"
+      },
+      {
+        "id": "boxoban-medium-000",
+        "name": "Boxoban Medium 000",
+        "author": "Google DeepMind",
+        "format": "xsb",
+        "url": "https://raw.githubusercontent.com/google-deepmind/boxoban-levels/master/medium/train/000.txt",
+        "entries": 1000,
+        "sha256": "b44e6dac95d03c0f29158252eafe7b1d97a3f3b447743a23617efa66e735167b"
+      },
+      {
+        "id": "boxoban-medium-001",
+        "name": "Boxoban Medium 001",
+        "author": "Google DeepMind",
+        "format": "xsb",
+        "url": "https://raw.githubusercontent.com/google-deepmind/boxoban-levels/master/medium/train/001.txt",
+        "entries": 1000,
+        "sha256": "8197b2e4438c05be3b9b91e7ec984c8b7acf09011272a196c2636402bc1b6d15"
+      },
+      {
+        "id": "boxoban-medium-002",
+        "name": "Boxoban Medium 002",
+        "author": "Google DeepMind",
+        "format": "xsb",
+        "url": "https://raw.githubusercontent.com/google-deepmind/boxoban-levels/master/medium/train/002.txt",
+        "entries": 1000,
+        "sha256": "42b5c21ea71ea2cb6c62ed0e828c5462aa0785561122d24058ab2f06fa35cd01"
+      },
+      {
+        "id": "boxoban-medium-003",
+        "name": "Boxoban Medium 003",
+        "author": "Google DeepMind",
+        "format": "xsb",
+        "url": "https://raw.githubusercontent.com/google-deepmind/boxoban-levels/master/medium/train/003.txt",
+        "entries": 1000,
+        "sha256": "61d67e4f18cbc2c27948e75c42d14fa18789712559af37c915d8650e9c5eae1a"
+      },
+      {
+        "id": "boxoban-medium-004",
+        "name": "Boxoban Medium 004",
+        "author": "Google DeepMind",
+        "format": "xsb",
+        "url": "https://raw.githubusercontent.com/google-deepmind/boxoban-levels/master/medium/train/004.txt",
+        "entries": 1000,
+        "sha256": "e56ce95ca8fb233ba9d7418d6474a61aab6122866023d9f1e4e97e4e1b7fa9ed"
+      },
+      {
+        "id": "boxoban-medium-005",
+        "name": "Boxoban Medium 005",
+        "author": "Google DeepMind",
+        "format": "xsb",
+        "url": "https://raw.githubusercontent.com/google-deepmind/boxoban-levels/master/medium/train/005.txt",
+        "entries": 1000,
+        "sha256": "3126f2f205ed425ae8038fe8ccdc3dc09031191b424b12ed4ca974ab436a89ed"
+      },
+      {
+        "id": "boxoban-medium-006",
+        "name": "Boxoban Medium 006",
+        "author": "Google DeepMind",
+        "format": "xsb",
+        "url": "https://raw.githubusercontent.com/google-deepmind/boxoban-levels/master/medium/train/006.txt",
+        "entries": 1000,
+        "sha256": "6c339df10bc4eba55ba191691b2ea54d632c7c366d1669525e03c85f514e9a6e"
+      },
+      {
+        "id": "boxoban-medium-007",
+        "name": "Boxoban Medium 007",
+        "author": "Google DeepMind",
+        "format": "xsb",
+        "url": "https://raw.githubusercontent.com/google-deepmind/boxoban-levels/master/medium/train/007.txt",
+        "entries": 1000,
+        "sha256": "f53f475626716bead820a42bbf8913f76ff3eac0d454f7ccfbfab26c1b509a95"
+      },
+      {
+        "id": "boxoban-medium-008",
+        "name": "Boxoban Medium 008",
+        "author": "Google DeepMind",
+        "format": "xsb",
+        "url": "https://raw.githubusercontent.com/google-deepmind/boxoban-levels/master/medium/train/008.txt",
+        "entries": 1000,
+        "sha256": "f6bfba9176975fe31fff1bb78cbe872689bd19dce6f178228a016544e79b85a8"
+      },
+      {
+        "id": "boxoban-medium-009",
+        "name": "Boxoban Medium 009",
+        "author": "Google DeepMind",
+        "format": "xsb",
+        "url": "https://raw.githubusercontent.com/google-deepmind/boxoban-levels/master/medium/train/009.txt",
+        "entries": 1000,
+        "sha256": "b70621047cfbd134b027c6855c0069e953a510120fb1f8088632332fac89e7bb"
+      }
+    ]
+  },
+  "rooms": [
+    {
+      "room": 1,
+      "name": "First Impression",
+      "cellCount": 15,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": [
+        {
+          "collection": "Microban",
+          "author": "David W. Skinner",
+          "level": 30,
+          "title": "30",
+          "floor": 0.882,
+          "pieces": 0.524
+        },
+        {
+          "collection": "Boxoban Medium 000",
+          "author": "Google DeepMind",
+          "level": 827,
+          "title": "826",
+          "floor": 0.882,
+          "pieces": 0.391
+        },
+        {
+          "collection": "Boxoban Medium 008",
+          "author": "Google DeepMind",
+          "level": 435,
+          "title": "434",
+          "floor": 0.882,
+          "pieces": 0.333
+        },
+        {
+          "collection": "Mas Microban",
+          "author": "David W. Skinner",
+          "level": 14,
+          "title": "14",
+          "floor": 0.833,
+          "pieces": 0.375
+        },
+        {
+          "collection": "Boxoban Medium 000",
+          "author": "Google DeepMind",
+          "level": 865,
+          "title": "864",
+          "floor": 0.833,
+          "pieces": 0.435
+        },
+        {
+          "collection": "Boxoban Medium 002",
+          "author": "Google DeepMind",
+          "level": 388,
+          "title": "387",
+          "floor": 0.833,
+          "pieces": 0.32
+        },
+        {
+          "collection": "Boxoban Medium 008",
+          "author": "Google DeepMind",
+          "level": 756,
+          "title": "755",
+          "floor": 0.833,
+          "pieces": 0.375
+        },
+        {
+          "collection": "Microban",
+          "author": "David W. Skinner",
+          "level": 40,
+          "title": "40",
+          "floor": 0.824,
+          "pieces": 0.348
+        }
+      ]
+    },
+    {
+      "room": 2,
+      "name": "Corner Turn",
+      "cellCount": 25,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": [
+        {
+          "collection": "Boxoban Medium 003",
+          "author": "Google DeepMind",
+          "level": 726,
+          "title": "725",
+          "floor": 0.852,
+          "pieces": 0.429
+        },
+        {
+          "collection": "Mas Microban",
+          "author": "David W. Skinner",
+          "level": 25,
+          "title": "25",
+          "floor": 0.846,
+          "pieces": 0.5
+        },
+        {
+          "collection": "Microban",
+          "author": "David W. Skinner",
+          "level": 7,
+          "title": "7",
+          "floor": 0.833,
+          "pieces": 0.341
+        },
+        {
+          "collection": "Boxoban Medium 003",
+          "author": "Google DeepMind",
+          "level": 561,
+          "title": "560",
+          "floor": 0.828,
+          "pieces": 0.472
+        },
+        {
+          "collection": "Mas Microban",
+          "author": "David W. Skinner",
+          "level": 105,
+          "title": "105",
+          "floor": 0.821,
+          "pieces": 0.417
+        },
+        {
+          "collection": "Nabo Cosmos",
+          "author": "Aymeric du Peloux",
+          "level": 29,
+          "title": "NABOKOSMOS 29",
+          "floor": 0.821,
+          "pieces": 0.308
+        },
+        {
+          "collection": "Boxoban Medium 002",
+          "author": "Google DeepMind",
+          "level": 449,
+          "title": "448",
+          "floor": 0.821,
+          "pieces": 0.378
+        },
+        {
+          "collection": "Boxoban Medium 003",
+          "author": "Google DeepMind",
+          "level": 1000,
+          "title": "999",
+          "floor": 0.821,
+          "pieces": 0.457
+        }
+      ]
+    },
+    {
+      "room": 3,
+      "name": "Ink Post",
+      "cellCount": 29,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": [
+        {
+          "collection": "Sasquatch VII",
+          "author": "David W. Skinner",
+          "level": 8,
+          "title": "8",
+          "floor": 0.824,
+          "pieces": 0.378
+        }
+      ]
+    },
+    {
+      "room": 4,
+      "name": "Offset Pair",
+      "cellCount": 29,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": [
+        {
+          "collection": "Sasquatch VII",
+          "author": "David W. Skinner",
+          "level": 8,
+          "title": "8",
+          "floor": 0.824,
+          "pieces": 0.319
+        }
+      ]
+    },
+    {
+      "room": 5,
+      "name": "Passing Place",
+      "cellCount": 28,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 6,
+      "name": "Three-Way Junction",
+      "cellCount": 32,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 7,
+      "name": "Parking Bay",
+      "cellCount": 28,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 8,
+      "name": "Cross Traffic",
+      "cellCount": 27,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 9,
+      "name": "Holding Pattern",
+      "cellCount": 29,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 10,
+      "name": "Return Ticket",
+      "cellCount": 31,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 11,
+      "name": "Narrow Margins",
+      "cellCount": 33,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 12,
+      "name": "Cargo Exchange",
+      "cellCount": 31,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 13,
+      "name": "First Ascent",
+      "cellCount": 22,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": [
+        {
+          "collection": "Boxoban Medium 007",
+          "author": "Google DeepMind",
+          "level": 152,
+          "title": "151",
+          "floor": 0.913,
+          "pieces": 0.419
+        },
+        {
+          "collection": "Microban",
+          "author": "David W. Skinner",
+          "level": 52,
+          "title": "52",
+          "floor": 0.909,
+          "pieces": 0.556
+        },
+        {
+          "collection": "Boxoban Medium 006",
+          "author": "Google DeepMind",
+          "level": 202,
+          "title": "201",
+          "floor": 0.909,
+          "pieces": 0.4
+        },
+        {
+          "collection": "Boxoban Medium 009",
+          "author": "Google DeepMind",
+          "level": 68,
+          "title": "67",
+          "floor": 0.909,
+          "pieces": 0.448
+        },
+        {
+          "collection": "Boxoban Medium 000",
+          "author": "Google DeepMind",
+          "level": 567,
+          "title": "566",
+          "floor": 0.875,
+          "pieces": 0.364
+        },
+        {
+          "collection": "Boxoban Medium 002",
+          "author": "Google DeepMind",
+          "level": 626,
+          "title": "625",
+          "floor": 0.875,
+          "pieces": 0.452
+        },
+        {
+          "collection": "Boxoban Medium 003",
+          "author": "Google DeepMind",
+          "level": 71,
+          "title": "70",
+          "floor": 0.875,
+          "pieces": 0.452
+        },
+        {
+          "collection": "Boxoban Medium 003",
+          "author": "Google DeepMind",
+          "level": 644,
+          "title": "643",
+          "floor": 0.875,
+          "pieces": 0.406
+        }
+      ]
+    },
+    {
+      "room": 14,
+      "name": "Keep One High",
+      "cellCount": 26,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": [
+        {
+          "collection": "Microban",
+          "author": "David W. Skinner",
+          "level": 7,
+          "title": "7",
+          "floor": 0.867,
+          "pieces": 0.436
+        },
+        {
+          "collection": "Boxoban Medium 000",
+          "author": "Google DeepMind",
+          "level": 100,
+          "title": "99",
+          "floor": 0.857,
+          "pieces": 0.529
+        },
+        {
+          "collection": "Boxoban Medium 004",
+          "author": "Google DeepMind",
+          "level": 51,
+          "title": "50",
+          "floor": 0.857,
+          "pieces": 0.444
+        },
+        {
+          "collection": "Boxoban Medium 005",
+          "author": "Google DeepMind",
+          "level": 312,
+          "title": "311",
+          "floor": 0.857,
+          "pieces": 0.405
+        },
+        {
+          "collection": "Mas Microban",
+          "author": "David W. Skinner",
+          "level": 13,
+          "title": "13",
+          "floor": 0.852,
+          "pieces": 0.429
+        },
+        {
+          "collection": "Boxoban Medium 002",
+          "author": "Google DeepMind",
+          "level": 157,
+          "title": "156",
+          "floor": 0.852,
+          "pieces": 0.389
+        },
+        {
+          "collection": "Boxoban Medium 004",
+          "author": "Google DeepMind",
+          "level": 228,
+          "title": "227",
+          "floor": 0.833,
+          "pieces": 0.528
+        },
+        {
+          "collection": "Microban",
+          "author": "David W. Skinner",
+          "level": 5,
+          "title": "5",
+          "floor": 0.828,
+          "pieces": 0.472
+        }
+      ]
+    },
+    {
+      "room": 15,
+      "name": "Upper Berth",
+      "cellCount": 32,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 16,
+      "name": "Narrow Landing",
+      "cellCount": 32,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 17,
+      "name": "The Long Way Down",
+      "cellCount": 34,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 18,
+      "name": "Freight Lift",
+      "cellCount": 24,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": [
+        {
+          "collection": "Mas Microban",
+          "author": "David W. Skinner",
+          "level": 69,
+          "title": "69",
+          "floor": 0.96,
+          "pieces": 0.256
+        },
+        {
+          "collection": "Boxoban Medium 005",
+          "author": "Google DeepMind",
+          "level": 651,
+          "title": "650",
+          "floor": 0.917,
+          "pieces": 0.394
+        },
+        {
+          "collection": "Boxoban Medium 007",
+          "author": "Google DeepMind",
+          "level": 1000,
+          "title": "999",
+          "floor": 0.917,
+          "pieces": 0.438
+        },
+        {
+          "collection": "Microban",
+          "author": "David W. Skinner",
+          "level": 5,
+          "title": "5",
+          "floor": 0.889,
+          "pieces": 0.378
+        },
+        {
+          "collection": "Boxoban Medium 001",
+          "author": "Google DeepMind",
+          "level": 425,
+          "title": "424",
+          "floor": 0.875,
+          "pieces": 0.364
+        },
+        {
+          "collection": "Boxoban Medium 006",
+          "author": "Google DeepMind",
+          "level": 888,
+          "title": "887",
+          "floor": 0.875,
+          "pieces": 0.406
+        },
+        {
+          "collection": "Boxoban Medium 007",
+          "author": "Google DeepMind",
+          "level": 883,
+          "title": "882",
+          "floor": 0.875,
+          "pieces": 0.364
+        },
+        {
+          "collection": "Boxoban Medium 003",
+          "author": "Google DeepMind",
+          "level": 561,
+          "title": "560",
+          "floor": 0.857,
+          "pieces": 0.486
+        }
+      ]
+    },
+    {
+      "room": 19,
+      "name": "Side Loading",
+      "cellCount": 47,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": [
+        {
+          "collection": "Mas Microban",
+          "author": "David W. Skinner",
+          "level": 72,
+          "title": "72",
+          "floor": 0.959,
+          "pieces": 0.297
+        },
+        {
+          "collection": "Mas Microban",
+          "author": "David W. Skinner",
+          "level": 73,
+          "title": "73",
+          "floor": 0.959,
+          "pieces": 0.297
+        },
+        {
+          "collection": "Sasquatch VI",
+          "author": "David W. Skinner",
+          "level": 20,
+          "title": "20",
+          "floor": 0.959,
+          "pieces": 0.231
+        },
+        {
+          "collection": "Mas Microban",
+          "author": "David W. Skinner",
+          "level": 74,
+          "title": "74",
+          "floor": 0.918,
+          "pieces": 0.306
+        },
+        {
+          "collection": "Microban",
+          "author": "David W. Skinner",
+          "level": 146,
+          "title": "146",
+          "floor": 0.917,
+          "pieces": 0.26
+        },
+        {
+          "collection": "Mas Microban",
+          "author": "David W. Skinner",
+          "level": 75,
+          "title": "75",
+          "floor": 0.878,
+          "pieces": 0.243
+        },
+        {
+          "collection": "Mas Microban",
+          "author": "David W. Skinner",
+          "level": 76,
+          "title": "76",
+          "floor": 0.833,
+          "pieces": 0.294
+        },
+        {
+          "collection": "Boxoban Medium 006",
+          "author": "Google DeepMind",
+          "level": 839,
+          "title": "838",
+          "floor": 0.833,
+          "pieces": 0.6
+        }
+      ]
+    },
+    {
+      "room": 20,
+      "name": "Two Stops",
+      "cellCount": 24,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": [
+        {
+          "collection": "Mas Microban",
+          "author": "David W. Skinner",
+          "level": 69,
+          "title": "69",
+          "floor": 0.96,
+          "pieces": 0.225
+        },
+        {
+          "collection": "Boxoban Medium 005",
+          "author": "Google DeepMind",
+          "level": 651,
+          "title": "650",
+          "floor": 0.917,
+          "pieces": 0.438
+        },
+        {
+          "collection": "Boxoban Medium 007",
+          "author": "Google DeepMind",
+          "level": 1000,
+          "title": "999",
+          "floor": 0.917,
+          "pieces": 0.438
+        },
+        {
+          "collection": "Microban",
+          "author": "David W. Skinner",
+          "level": 5,
+          "title": "5",
+          "floor": 0.889,
+          "pieces": 0.308
+        },
+        {
+          "collection": "Boxoban Medium 001",
+          "author": "Google DeepMind",
+          "level": 425,
+          "title": "424",
+          "floor": 0.875,
+          "pieces": 0.406
+        },
+        {
+          "collection": "Boxoban Medium 006",
+          "author": "Google DeepMind",
+          "level": 888,
+          "title": "887",
+          "floor": 0.875,
+          "pieces": 0.406
+        },
+        {
+          "collection": "Boxoban Medium 007",
+          "author": "Google DeepMind",
+          "level": 883,
+          "title": "882",
+          "floor": 0.875,
+          "pieces": 0.364
+        },
+        {
+          "collection": "Boxoban Medium 003",
+          "author": "Google DeepMind",
+          "level": 561,
+          "title": "560",
+          "floor": 0.857,
+          "pieces": 0.405
+        }
+      ]
+    },
+    {
+      "room": 21,
+      "name": "Lift Exchange",
+      "cellCount": 46,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": [
+        {
+          "collection": "Mas Microban",
+          "author": "David W. Skinner",
+          "level": 72,
+          "title": "72",
+          "floor": 0.939,
+          "pieces": 0.301
+        },
+        {
+          "collection": "Mas Microban",
+          "author": "David W. Skinner",
+          "level": 73,
+          "title": "73",
+          "floor": 0.939,
+          "pieces": 0.301
+        },
+        {
+          "collection": "Sasquatch VI",
+          "author": "David W. Skinner",
+          "level": 20,
+          "title": "20",
+          "floor": 0.939,
+          "pieces": 0.234
+        },
+        {
+          "collection": "Mas Microban",
+          "author": "David W. Skinner",
+          "level": 74,
+          "title": "74",
+          "floor": 0.898,
+          "pieces": 0.31
+        },
+        {
+          "collection": "Microban",
+          "author": "David W. Skinner",
+          "level": 146,
+          "title": "146",
+          "floor": 0.896,
+          "pieces": 0.264
+        },
+        {
+          "collection": "Mas Microban",
+          "author": "David W. Skinner",
+          "level": 75,
+          "title": "75",
+          "floor": 0.857,
+          "pieces": 0.247
+        },
+        {
+          "collection": "Sasquatch VII",
+          "author": "David W. Skinner",
+          "level": 6,
+          "title": "6",
+          "floor": 0.826,
+          "pieces": 0.355
+        }
+      ]
+    },
+    {
+      "room": 22,
+      "name": "Span",
+      "cellCount": 20,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": [
+        {
+          "collection": "Yoshio Murase Auto-Generated",
+          "author": "Yoshio Murase",
+          "level": 49,
+          "title": "Soko049",
+          "floor": 0.864,
+          "pieces": 0.464
+        },
+        {
+          "collection": "Mas Microban",
+          "author": "David W. Skinner",
+          "level": 13,
+          "title": "13",
+          "floor": 0.833,
+          "pieces": 0.419
+        },
+        {
+          "collection": "Microban",
+          "author": "David W. Skinner",
+          "level": 33,
+          "title": "33",
+          "floor": 0.826,
+          "pieces": 0.5
+        },
+        {
+          "collection": "Boxoban Medium 005",
+          "author": "Google DeepMind",
+          "level": 467,
+          "title": "466",
+          "floor": 0.826,
+          "pieces": 0.355
+        },
+        {
+          "collection": "Boxoban Medium 007",
+          "author": "Google DeepMind",
+          "level": 1000,
+          "title": "999",
+          "floor": 0.826,
+          "pieces": 0.448
+        }
+      ]
+    },
+    {
+      "room": 23,
+      "name": "Return Span",
+      "cellCount": 46,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": [
+        {
+          "collection": "Boxoban Medium 005",
+          "author": "Google DeepMind",
+          "level": 656,
+          "title": "655",
+          "floor": 0.824,
+          "pieces": 0.525
+        }
+      ]
+    },
+    {
+      "room": 24,
+      "name": "Freight Crossing",
+      "cellCount": 47,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 25,
+      "name": "Relay Foundry",
+      "cellCount": 36,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": [
+        {
+          "collection": "Boxoban Medium 002",
+          "author": "Google DeepMind",
+          "level": 793,
+          "title": "792",
+          "floor": 0.868,
+          "pieces": 0.511
+        },
+        {
+          "collection": "Boxoban Medium 005",
+          "author": "Google DeepMind",
+          "level": 653,
+          "title": "652",
+          "floor": 0.85,
+          "pieces": 0.48
+        },
+        {
+          "collection": "Boxoban Medium 004",
+          "author": "Google DeepMind",
+          "level": 147,
+          "title": "146",
+          "floor": 0.825,
+          "pieces": 0.49
+        }
+      ]
+    },
+    {
+      "room": 26,
+      "name": "Transfer Yard",
+      "cellCount": 30,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 27,
+      "name": "Coupled Circuit",
+      "cellCount": 35,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": [
+        {
+          "collection": "Boxoban Medium 004",
+          "author": "Google DeepMind",
+          "level": 147,
+          "title": "146",
+          "floor": 0.846,
+          "pieces": 0.469
+        },
+        {
+          "collection": "Boxoban Medium 002",
+          "author": "Google DeepMind",
+          "level": 793,
+          "title": "792",
+          "floor": 0.842,
+          "pieces": 0.556
+        },
+        {
+          "collection": "Boxoban Medium 005",
+          "author": "Google DeepMind",
+          "level": 653,
+          "title": "652",
+          "floor": 0.825,
+          "pieces": 0.49
+        }
+      ]
+    },
+    {
+      "room": 28,
+      "name": "Same Direction",
+      "cellCount": 29,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 29,
+      "name": "Separate Duties",
+      "cellCount": 30,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 30,
+      "name": "Shared Signal",
+      "cellCount": 36,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 31,
+      "name": "Hold the Line",
+      "cellCount": 36,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 32,
+      "name": "First Frost",
+      "cellCount": 20,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 33,
+      "name": "Crosscurrent",
+      "cellCount": 35,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 34,
+      "name": "Long Thaw",
+      "cellCount": 33,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 35,
+      "name": "Borrowed Brake",
+      "cellCount": 34,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 36,
+      "name": "Cold Storage",
+      "cellCount": 34,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 37,
+      "name": "Quarter Cargo",
+      "cellCount": 17,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 38,
+      "name": "Shared Deck",
+      "cellCount": 18,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 39,
+      "name": "Turn Order",
+      "cellCount": 19,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 40,
+      "name": "Off Axis",
+      "cellCount": 18,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 41,
+      "name": "Lift and Drift",
+      "cellCount": 23,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 42,
+      "name": "Remote Brake",
+      "cellCount": 21,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 43,
+      "name": "Turning Current",
+      "cellCount": 18,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    }
+  ],
+  "internalPairs": [
+    {
+      "a": {
+        "room": 3,
+        "name": "Ink Post"
+      },
+      "b": {
+        "room": 4,
+        "name": "Offset Pair"
+      },
+      "exactFloor": true,
+      "exactComplete": false,
+      "floor": 1,
+      "pieces": 0.758
+    },
+    {
+      "a": {
+        "room": 18,
+        "name": "Freight Lift"
+      },
+      "b": {
+        "room": 20,
+        "name": "Two Stops"
+      },
+      "exactFloor": true,
+      "exactComplete": false,
+      "floor": 1,
+      "pieces": 0.6
+    },
+    {
+      "a": {
+        "room": 18,
+        "name": "Freight Lift"
+      },
+      "b": {
+        "room": 22,
+        "name": "Span"
+      },
+      "exactFloor": false,
+      "exactComplete": false,
+      "floor": 0.833,
+      "pieces": 0.63
+    },
+    {
+      "a": {
+        "room": 19,
+        "name": "Side Loading"
+      },
+      "b": {
+        "room": 21,
+        "name": "Lift Exchange"
+      },
+      "exactFloor": false,
+      "exactComplete": false,
+      "floor": 0.979,
+      "pieces": 0.898
+    },
+    {
+      "a": {
+        "room": 20,
+        "name": "Two Stops"
+      },
+      "b": {
+        "room": 22,
+        "name": "Span"
+      },
+      "exactFloor": false,
+      "exactComplete": false,
+      "floor": 0.833,
+      "pieces": 0.571
+    },
+    {
+      "a": {
+        "room": 23,
+        "name": "Return Span"
+      },
+      "b": {
+        "room": 24,
+        "name": "Freight Crossing"
+      },
+      "exactFloor": false,
+      "exactComplete": false,
+      "floor": 0.979,
+      "pieces": 0.824
+    },
+    {
+      "a": {
+        "room": 25,
+        "name": "Relay Foundry"
+      },
+      "b": {
+        "room": 27,
+        "name": "Coupled Circuit"
+      },
+      "exactFloor": false,
+      "exactComplete": false,
+      "floor": 0.919,
+      "pieces": 0.732
+    }
+  ],
+  "nameOnlyCorrection": "Room 41 renamed after audit. Geometry and pieces unchanged."
+}
