@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
-import { CELL, TIER_HEIGHT, edge, fine, ink, paper } from './art';
+import { CELL, TIER_HEIGHT, edge, fine, ink, paper } from './art.ts';
 
 const red = new THREE.MeshBasicMaterial({ color: 0xc88683 });
 const green = new THREE.MeshBasicMaterial({ color: 0x80b99a });

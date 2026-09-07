@@ -3,7 +3,7 @@ import {readFileSync} from 'node:fs';
 import {LEVELS,createState,attemptMove,solve,isIce,type State} from '../src/puzzle.ts';
 const read=(name:string)=>JSON.parse(readFileSync(new URL(`./fixtures/${name}.json`,import.meta.url),'utf8'));
 const baseline=read('pre-ice-levels');
-assert.equal(LEVELS.length,48);
+assert.equal(LEVELS.length,58);
 for(let i=0;i<31;i++)assert.deepEqual(LEVELS[i],{...baseline[i],name:({11:'Cargo Exchange',26:'Coupled Circuit'} as Record<number,string>)[i]??baseline[i].name},`Room ${i+1} preserved`);
 for(const l of LEVELS)assert.ok(!/\b(final|last)\b/i.test(l.name));
 const dirs=[{x:0,z:-1},{x:1,z:0},{x:0,z:1},{x:-1,z:0}];

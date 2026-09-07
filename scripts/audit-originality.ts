@@ -13,6 +13,9 @@ const corpusDir = `${dataDir}corpus`;
 const sources: Source[] = JSON.parse(await readFile(`${dataDir}sources.json`, "utf8"));
 const offline = process.argv.includes("--offline");
 const failOnMatch = process.argv.includes("--fail-on-match");
+const roomsArg=process.argv.find(a=>a.startsWith("--rooms="))?.slice("--rooms=".length);
+const selectedRooms=roomsArg?new Set(roomsArg.split(",").map(Number)):null;
+if(selectedRooms)assert([...selectedRooms].every(n=>Number.isInteger(n)&&n>0),"--rooms uses positive room numbers");
 const candidatesArg=process.argv.find(a=>a.startsWith("--candidates="))?.slice("--candidates=".length);
 const trialsArg=process.argv.find(a=>a.startsWith("--trials="))?.slice("--trials=".length);
 const idsArg=process.argv.find(a=>a.startsWith("--ids="))?.slice("--ids=".length);
@@ -143,24 +146,26 @@ if(candidatesArg){
   const wantedIds=idsArg?new Set(idsArg.split(",")):null;
   auditLevels=candidates.filter((c:any)=>(!wanted||wanted.has(c.trial))&&(!wantedIds||wantedIds.has(c.id))).map((c:any)=>{const v=c.level||c;return{name:c.id||v.name||`trial ${c.trial}`,map:v.rows||v.map};});
 }
-const rooms=auditLevels.map((level,index)=>{
+const rooms=auditLevels.flatMap((level,index)=>{
+  if(selectedRooms&&!selectedRooms.has(index+1))return [];
   const cells=localCells(level.map); const exact:any={};
   for(const mode of modes) exact[mode]=(indexes[mode].get(canonical(cells,mode))||[]).map(p=>({collection:p.source.name,author:p.source.author,level:p.number,title:p.title}));
   const near=corpus.filter(p=>p.cells.length>0).map(p=>({
     collection:p.source.name,author:p.source.author,level:p.number,title:p.title,
     floor:similarity(cells,p.cells,"floor"), pieces:similarity(cells,p.cells,"pieces")
   })).filter(x=>x.floor>=0.82 || x.pieces>=0.82).sort((a,b)=>Math.max(b.floor,b.pieces)-Math.max(a.floor,a.pieces)).slice(0,8).map(x=>({...x,floor:Number(x.floor.toFixed(3)),pieces:Number(x.pieces.toFixed(3))}));
-  return {room:index+1,name:level.name,cellCount:cells.length,exact,near};
+  return [{room:index+1,name:level.name,cellCount:cells.length,exact,near}];
 });
 const uniqueComplete=new Set(corpus.map(p=>canonical(p.cells,"complete"))).size;
 const internalPairs:any[]=[];
 for(let i=0;i<auditLevels.length;i++)for(let j=i+1;j<auditLevels.length;j++){
+  if(selectedRooms&&!selectedRooms.has(i+1)&&!selectedRooms.has(j+1))continue;
   const a=localCells(auditLevels[i].map),b=localCells(auditLevels[j].map);
   const floorRaw=similarity(a,b,"floor"),piecesRaw=similarity(a,b,"pieces");
   const exactFloor=canonical(a,"floor")===canonical(b,"floor"),exactComplete=canonical(a,"complete")===canonical(b,"complete");
   if(exactFloor||exactComplete||floorRaw>=0.82||piecesRaw>=0.82)internalPairs.push({a:{room:i+1,name:auditLevels[i].name},b:{room:j+1,name:auditLevels[j].name},exactFloor,exactComplete,floor:Number(floorRaw.toFixed(3)),pieces:Number(piecesRaw.toFixed(3))});
 }
-const report={generatedAt:new Date().toISOString(),method:{symmetry:"translation plus all 8 rotations/reflections",exactModes:{floor:"playable-cell geometry only",structure:"geometry plus target positions",pieces:"geometry, targets, and crates",complete:"geometry, targets, crates, and player"},near:"Jaccard similarity after symmetry and translations up to one cell; normalized dimensions may differ by up to two cells; reported at an unrounded score >= 0.82",limitations:"Finite public corpus. A clean result does not prove internet-wide uniqueness."},corpus:{entries:corpus.length,uniqueComplete,sources:sourceStats},rooms,internalPairs};
+const report={generatedAt:new Date().toISOString(),method:{roomSelection:selectedRooms?[...selectedRooms]:"all",symmetry:"translation plus all 8 rotations/reflections",exactModes:{floor:"playable-cell geometry only",structure:"geometry plus target positions",pieces:"geometry, targets, and crates",complete:"geometry, targets, crates, and player"},near:"Jaccard similarity after symmetry and translations up to one cell; normalized dimensions may differ by up to two cells; reported at an unrounded score >= 0.82",limitations:"Finite public corpus. A clean result does not prove internet-wide uniqueness."},corpus:{entries:corpus.length,uniqueComplete,sources:sourceStats},rooms,internalPairs};
 await writeFile(`${dataDir}${reportPrefix}.json`,JSON.stringify(report,null,2)+"\n");
 const flagged=rooms.filter(r=>modes.some(m=>r.exact[m].length));
 let md=`# Ink Rooms originality audit\n\nGenerated ${report.generatedAt}. Compared ${rooms.length} rooms with ${corpus.length} entries (${uniqueComplete} unique complete layouts) from ${sources.length} attributed collections.\n\nExact comparison removes translation and checks all eight rotations/reflections. Floor matches ignore all pieces. Structure adds targets. Pieces adds crates. Complete adds player start. Near matches use Jaccard overlap after symmetry and translations of up to one cell. Dimensions may differ by up to two cells. The review threshold is an unrounded score of 0.82.\n\nThis is a finite-corpus collision check, not proof of internet-wide uniqueness.\n\n## Exact matches\n\n`;

@@ -1,7 +1,9 @@
 import * as THREE from 'three';
-import { CUBE_BASES, cubeFace, cubeCellPosition, cubeDirection } from './cube-topology.ts';
+import { CUBE_BASES, cubeFace, cubeCellPosition, cubeDirection, cubeChannelActive, cubeStep, traceCubeMove, type CubePathNode } from './cube-topology.ts';
 import { CELL, paper, edge, fine, createPad, batchArt, type PadArt } from './art.ts';
 import {buildCubeShellGeometry} from './cube-shell.ts';
+import {iceSurface} from './ice-art.ts';
+import {createSwitchArt,createBridgeArt} from './machinery-art.ts';
 import type { Level, Point, State } from './puzzle.ts';
 const vector=(v:readonly number[])=>new THREE.Vector3(v[0],v[1],v[2]);
 const up=new THREE.Vector3(0,1,0);
@@ -19,7 +21,7 @@ export function cubeOrientation(level:Level,state:State) {
 export function cubeWorldPoint(level:Level,p:Point,state:State) {
   return vector(cubeCellPosition(level.cube!.size,p,CELL)).applyQuaternion(cubeOrientation(level,state));
 }
-export type CubeMotion={direction:Point;crateOrientations:THREE.Quaternion[]};
+export type CubeMotion={direction:Point;crateOrientations:THREE.Quaternion[];playerPath:CubePathNode[];boxPaths:CubePathNode[][];duration:number};
 export function createCubeView(level:Level,parent:THREE.Group) {
   const size=level.cube!.size,half=size*CELL/2,root=new THREE.Group();parent.add(root);
   const geometry:THREE.BufferGeometry[]=[];
@@ -57,10 +59,13 @@ export function createCubeView(level:Level,parent:THREE.Group) {
   // coplanar line/fill competition without showing hidden edges through floors.
   const shellPaper=paper.clone();shellPaper.polygonOffset=true;shellPaper.polygonOffsetFactor=1;shellPaper.polygonOffsetUnits=1;materials.push(shellPaper);
   root.add(new THREE.Mesh(own(shell.surface),shellPaper));
+  const shellIce=iceSurface.clone();shellIce.polygonOffset=true;shellIce.polygonOffsetFactor=1;shellIce.polygonOffsetUnits=1;materials.push(shellIce);
+  root.add(new THREE.Mesh(own(shell.iceSurface),shellIce));
   root.add(new THREE.LineSegments(own(shell.fineEdges),fine));
   root.add(new THREE.LineSegments(own(shell.rimEdges),edge));
   const staticArt=new THREE.Group();root.add(staticArt);
   const pads:(PadArt&{point:Point})[]=[];let exit:PadArt|undefined;
+  const switches:{channel:number;art:ReturnType<typeof createSwitchArt>}[]=[],bridges:{channel:number;art:ReturnType<typeof createBridgeArt>}[]=[];
   const place=(object:THREE.Object3D,p:Point)=>{
     object.position.fromArray(cubeCellPosition(size,p,CELL));object.quaternion.copy(cubeFaceQuaternion(size,p));
   };
@@ -82,45 +87,71 @@ export function createCubeView(level:Level,parent:THREE.Group) {
     }
   }
 
+  for(const s of level.switches||[]){const art=createSwitchArt(s.channel);place(art.root,s);root.add(art.root);switches.push({channel:s.channel,art});}
+  for(const b of level.bridges||[]){
+    const art=createBridgeArt(b.channel);place(art.root,b);
+    const open=(dx:number,dz:number)=>{const q=cubeStep(size,b,dx,dz).point;return !['~','#'].includes(level.map[q.z]?.[q.x]??'#');};
+    if(Number(open(-1,0))+Number(open(1,0))>Number(open(0,-1))+Number(open(0,1)))art.root.rotateY(Math.PI/2);
+    root.add(art.root);bridges.push({channel:b.channel,art});
+  }
+
   batchArt(staticArt);
   if(!exit)throw Error('Cube room needs an exit');
+  function syncMechanisms(before:State,progress=1,after:State=before){const t=ease(progress);for(const s of switches)s.art.setActive(cubeChannelActive(level,s.channel,progress>0?after:before));for(const b of bridges){const a=Number(cubeChannelActive(level,b.channel,before)),z=Number(cubeChannelActive(level,b.channel,after));b.art.setProgress(a+(z-a)*t);}}
   function sync(state:State,player:THREE.Group,crates:THREE.Group[],heading:Point={x:0,z:-1}) {
     fallPose=null;player.scale.setScalar(1);crates.forEach(c=>c.scale.setScalar(1));
     root.quaternion.copy(cubeOrientation(level,state));
     player.position.copy(cubeWorldPoint(level,state.player,state));player.quaternion.setFromAxisAngle(up,Math.atan2(heading.x,heading.z));
     crates.forEach((crate,i)=>{crate.position.copy(cubeWorldPoint(level,state.boxes[i],state));crate.quaternion.copy(root.quaternion).multiply(cubeFaceQuaternion(size,state.boxes[i]));});
+    syncMechanisms(state);
   }
-  function begin(before:State,crates:THREE.Group[],direction:Point):CubeMotion {
+  function begin(before:State,crates:THREE.Group[],direction:Point,after?:State):CubeMotion {
     const inverse=cubeOrientation(level,before).invert();
-    return {direction,crateOrientations:crates.map(c=>inverse.clone().multiply(c.quaternion))};
+    const trace=traceCubeMove(level,before,direction.x,direction.z);
+    if(!trace||after&&(trace.state.player.x!==after.player.x||trace.state.player.z!==after.player.z))throw Error('Cube animation does not match move');
+    const steps=Math.max(trace.playerPath.length-1,...trace.boxPaths.map(p=>p.length-1));
+    const crossings=[trace.playerPath,...trace.boxPaths].flatMap(path=>path.slice(1).map((n,i)=>cubeFace(size,path[i].point)!==cubeFace(size,n.point))).filter(Boolean).length;
+    return {direction,crateOrientations:crates.map(c=>inverse.clone().multiply(c.quaternion)),playerPath:trace.playerPath,boxPaths:trace.boxPaths,duration:Math.max(.26,.2*steps+.32*crossings)};
   }
   function animate(before:State,after:State,t:number,m:CubeMotion,player:THREE.Group,crates:THREE.Group[]) {
     t=THREE.MathUtils.clamp(t,0,1);
-    const crossing=cubeFace(size,before.player)!==cubeFace(size,after.player);
-    const arc=ease((t-.25)/.5);
-    root.quaternion.copy(cubeOrientation(level,before)).slerp(cubeOrientation(level,after),crossing?arc:1);
-    function surfacePath(a:Point,b:Point,clearance:number) {
+    function surfacePath(a:Point,b:Point,clearance:number,progress:number) {
+      const arc=ease((progress-.25)/.5);
       const start=vector(cubeCellPosition(size,a,CELL)),end=vector(cubeCellPosition(size,b,CELL));
       const na=vector(CUBE_BASES[cubeFace(size,a)].normal),nb=vector(CUBE_BASES[cubeFace(size,b)].normal);
-      if(na.equals(nb))return {position:start.lerp(end,ease(t)),transport:new THREE.Quaternion()};
+      if(na.equals(nb))return {position:start.lerp(end,ease(progress)),transport:new THREE.Quaternion()};
       const corner=start.clone().addScaledVector(nb,CELL/2);
       const transport=new THREE.Quaternion().setFromUnitVectors(na,nb),turn=new THREE.Quaternion().slerp(transport,arc);
       let position:THREE.Vector3;
-      if(t<.25)position=start.lerp(corner.clone().addScaledVector(na,clearance),ease(t/.25));
-      else if(t>.75)position=corner.clone().addScaledVector(nb,clearance).lerp(end,ease((t-.75)/.25));
+      if(progress<.25)position=start.lerp(corner.clone().addScaledVector(na,clearance),ease(progress/.25));
+      else if(progress>.75)position=corner.clone().addScaledVector(nb,clearance).lerp(end,ease((progress-.75)/.25));
       else position=corner.clone().add(na.clone().applyQuaternion(turn).multiplyScalar(clearance));
       return {position,transport:turn};
     }
-    const local=cubeDirection(m.direction.x,m.direction.z,before.cubeTurn??0);
-    const path=surfacePath(before.player,after.player,.015);
-    const heading=cubeFaceQuaternion(size,before.player).multiply(new THREE.Quaternion().setFromAxisAngle(up,Math.atan2(local.x,local.z)));
+    const segment=(nodes:CubePathNode[])=>{const count=Math.max(1,nodes.length-1),scaled=t*count,index=Math.min(count-1,Math.floor(scaled));return{a:nodes[index],b:nodes[Math.min(index+1,nodes.length-1)],t:index===count-1&&t===1?1:scaled-index};};
+    const ps=segment(m.playerPath),crossing=cubeFace(size,ps.a.point)!==cubeFace(size,ps.b.point),arc=ease((ps.t-.25)/.5);
+    const aState={...before,player:ps.a.point,cubeTurn:ps.a.cubeTurn},bState={...before,player:ps.b.point,cubeTurn:ps.b.cubeTurn};
+    root.quaternion.copy(cubeOrientation(level,aState)).slerp(cubeOrientation(level,bState),crossing?arc:ps.t);
+    const local=cubeDirection(m.direction.x,m.direction.z,ps.a.cubeTurn);
+    const path=surfacePath(ps.a.point,ps.b.point,.015,ps.t);
+    const heading=cubeFaceQuaternion(size,ps.a.point).multiply(new THREE.Quaternion().setFromAxisAngle(up,Math.atan2(local.x,local.z)));
     player.position.copy(path.position).applyQuaternion(root.quaternion);
     player.quaternion.copy(root.quaternion).multiply(path.transport).multiply(heading);
     crates.forEach((crate,i)=>{
-      const a=before.boxes[i],b=after.boxes[i],path=surfacePath(a,b,.025);
+      const nodes=m.boxPaths[i],cs=segment(nodes),path=surfacePath(cs.a.point,cs.b.point,.025,cs.t);
       crate.position.copy(path.position).applyQuaternion(root.quaternion);
-      crate.quaternion.copy(root.quaternion).multiply(path.transport).multiply(m.crateOrientations[i]);
+      const segmentIndex=Math.min(nodes.length-2,Math.floor(t*Math.max(1,nodes.length-1))),orientation=cubeFaceQuaternion(size,nodes[0].point);
+      for(let j=0;j<Math.max(0,segmentIndex);j++)if(cubeFace(size,nodes[j].point)!==cubeFace(size,nodes[j+1].point)){
+        const na=vector(CUBE_BASES[cubeFace(size,nodes[j].point)].normal),nb=vector(CUBE_BASES[cubeFace(size,nodes[j+1].point)].normal);
+        orientation.premultiply(new THREE.Quaternion().setFromUnitVectors(na,nb));
+      }
+      if(cubeFace(size,cs.a.point)!==cubeFace(size,cs.b.point)){
+        const na=vector(CUBE_BASES[cubeFace(size,cs.a.point)].normal),nb=vector(CUBE_BASES[cubeFace(size,cs.b.point)].normal),transport=new THREE.Quaternion().setFromUnitVectors(na,nb);
+        orientation.premultiply(new THREE.Quaternion().slerp(transport,ease((cs.t-.25)/.5)));
+      }
+      crate.quaternion.copy(root.quaternion).multiply(orientation);
     });
+    syncMechanisms(before,t,after);
   }
   function beginFall(object:THREE.Group) {
     fallPose={position:object.position.clone(),quaternion:object.quaternion.clone(),scale:object.scale.clone(),normal:up.clone().applyQuaternion(object.quaternion)};
@@ -145,9 +176,9 @@ export function createCubeView(level:Level,parent:THREE.Group) {
     }
   }
   function update(time:number,fallProgress=0) {
-    shellPaper.color.copy(paper.color);
+    shellPaper.color.copy(paper.color);shellIce.color.copy(iceSurface.color);
     disk.rotation.y=time*.22;sparks.rotation.y=-time*.75;
     singularity.scale.setScalar(1+.045*Math.sin(Math.PI*THREE.MathUtils.clamp(fallProgress,0,1)));
   }
-  return {root,pads,exit,sync,begin,animate,beginFall,animateFall,update,dispose(){geometry.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());singularity.removeFromParent();root.removeFromParent();}};
+  return {root,pads,exit,sync,syncMechanisms,begin,animate,beginFall,animateFall,update,machinerySnapshot:(state:State)=>({switches:switches.map(s=>({channel:s.channel,active:cubeChannelActive(level,s.channel,state)})),bridges:bridges.map(b=>({channel:b.channel,active:cubeChannelActive(level,b.channel,state)}))}),dispose(){geometry.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());singularity.removeFromParent();root.removeFromParent();}};
 }

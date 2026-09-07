@@ -4,7 +4,7 @@ import {LEVELS,createState,attemptMove,solve,type State} from '../src/puzzle.ts'
 import {cubeFace,cubeCellPosition,cubeDirection,CUBE_BASES} from '../src/cube-topology.ts';
 const read=(f:string)=>JSON.parse(readFileSync(new URL(`./fixtures/${f}.json`,import.meta.url),'utf8'));
 const designs=read('cube-room-design').levels;
-assert.equal(LEVELS.length,48);
+assert.equal(LEVELS.length,58);
 assert.deepEqual(LEVELS.slice(0,44),read('pre-cube-levels'),'all previous44 layouts stay identical');
 assert.equal(new Set(LEVELS.map(l=>l.name)).size,LEVELS.length);
 const dirs:Record<string,{x:number;z:number}>={R:{x:1,z:0},D:{x:0,z:1},L:{x:-1,z:0},U:{x:0,z:-1}};

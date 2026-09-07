@@ -16,10 +16,16 @@ import {
 } from '../src/hub-world.ts';
 
 const levels = HUB_AREAS.flatMap((area) => area.levels).sort((a, b) => a - b);
+assert.equal(LEVELS.length, 58, 'campaign has 58 rooms');
 assert.deepEqual(levels, Array.from({ length: LEVELS.length }, (_, index) => index), 'areas cover each level exactly once');
-assert.deepEqual(HUB_GATES.map((gate) => gate.level).sort((a, b) => a - b), levels.filter(i=>!LEVELS[i].cube), 'flat rooms have one gate each');
+assert.deepEqual(HUB_AREAS.find((area) => area.id === 'challenge')?.levels, [40, 41, ...Array.from({ length: 10 }, (_, index) => 48 + index)], 'Challenge has exactly 12 doors');
+assert.equal(HUB_AREAS.some((area) => area.id === 'remix'), false, 'Remix was renamed Challenge');
+assert.deepEqual(createHubState('remix'), createHubState('challenge'), 'old Remix links still open Challenge');
+assert.deepEqual(HUB_GATES.map((gate) => gate.level).sort((a, b) => a - b), levels.filter(i => !LEVELS[i].cube || LEVELS[i].challenge), 'island rooms have one flat gate each');
 assert.equal(new Set(HUB_GATES.map((gate) => `${gate.point.x},${gate.point.z}`)).size, HUB_GATES.length, 'gate points are unique');
-assert.equal(HUB_GATES.some((gate) => LEVELS[gate.level].cube), false, 'cube rooms do not use flat gates');
+assert.equal(HUB_GATES.some((gate) => LEVELS[gate.level].cube && !LEVELS[gate.level].challenge), false, 'unassigned cube rooms do not use flat gates');
+assert.deepEqual(HUB_CUBE_GATES.map((gate) => gate.level), [44, 45, 46, 47], 'only the original cube chapter uses the cube pavilion');
+assert.deepEqual(HUB_GATES.filter((gate) => gate.area === 'challenge').map((gate) => gate.level), [40, 41, ...Array.from({ length: 10 }, (_, index) => 48 + index)], 'Challenge cube puzzles use island doors');
 
 const closed = createHubState();
 assert.equal(walk(closed, [0, -1], 9), null, 'closed bridge cannot be crossed');

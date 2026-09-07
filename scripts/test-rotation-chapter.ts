@@ -4,7 +4,7 @@ import {readFileSync} from 'node:fs';
 import {LEVELS,createState,attemptMove,solve,rotorIndex,tileAt,type State,type Level} from '../src/puzzle.ts';
 const read=(name:string)=>JSON.parse(readFileSync(new URL(`./fixtures/${name}.json`,import.meta.url),'utf8'));
 const clean=(v:unknown)=>JSON.parse(JSON.stringify(v));
-assert.equal(LEVELS.length,48);
+assert.equal(LEVELS.length,58);
 assert.deepEqual(LEVELS.slice(0,36),read('pre-rotation-levels'),'earlier 36 rooms remain identical');
 for(const [offset,level] of read('pre-rotation-difficulty').entries()) {
  if(offset!==2) assert.deepEqual(LEVELS[36+offset],level,'existing rotation tutorials and other rooms remain unchanged');

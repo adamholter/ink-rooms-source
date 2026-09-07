@@ -1,6 +1,6 @@
 # Ink Rooms
 
-A monochrome 3D puzzle game by Adam Holter, built with help from OpenAI Astra, using Three.js. Push crates onto marks across 48 rooms. Later rooms add height, switches, elevators, bridges, robots, ice, rotating sections, and cube worlds.
+A monochrome 3D puzzle game by Adam Holter, built with help from OpenAI Astra, using Three.js. Push crates onto marks across 58 rooms. Later rooms add height, switches, elevators, bridges, robots, ice, rotating sections, and cube worlds.
 
 [Play the game](https://adam-ink-playground.vercel.app/) · [Support Adam](https://buymeacoffee.com/adamholter)
 
@@ -36,7 +36,7 @@ npm run preview    # serve the production build locally
 - The area buttons take you to themed islands. One crate push opens the bridge island; the cube gate takes you onto the walkable cube.
 - In the level world, hold one direction for three steps to start accelerating, up to 2.4 times normal speed. Stopping or turning resets your speed.
 - Stand on the Rotation island switch to turn its floor. The Ice island uses a checkerboard with dry stopping tiles.
-- Use Levels again to resume your unfinished room. Finishing room 48 returns to the level world.
+- Use Levels again to resume your unfinished room. Finishing room 58 returns to the level world.
 - Walk into raised ledges to climb automatically. There is no jump button.
 - The speaker and theme buttons toggle sound and the white or black background.
 
@@ -66,7 +66,7 @@ Rooms 45 through 48 are cube worlds. Walk across an edge to roll the next face u
 - `public/audio/`: music and sound effects.
 - `scripts/test-*.ts` and `scripts/fixtures/`: rules, solution paths, and difficulty checks.
 
-The current layouts replaced early designs that reused public Sokoban puzzles. A finite audit of all 48 current room maps found no exact matches against 10,902 public entries. Rooms 37 through 44 also passed the [near-match checks](scripts/audit-data/rotation-expansion-audit.md). This does not prove worldwide uniqueness. Public puzzle collections are not bundled here. `npm run audit:originality` downloads the attributed collections listed in `scripts/audit-data/sources.json` and runs the comparison.
+The current layouts replaced early designs that reused public Sokoban puzzles. A finite audit of the earlier 48 room maps found no exact matches against 10,902 public entries. Rooms 37 through 44 also passed the [near-match checks](scripts/audit-data/rotation-expansion-audit.md). This does not prove worldwide uniqueness. Public puzzle collections are not bundled here. `npm run audit:originality` downloads the attributed collections listed in `scripts/audit-data/sources.json` and runs the comparison.
 
 The cube chapter has separate shortest-path, minimum-push, and required cargo-crossing proofs in `scripts/fixtures/cube-room-design.json`. The [cube audit](scripts/audit-data/cube-expansion-audit.md) compares the stored six-face map strips against the flat public corpus. It does not establish originality against other cube-world puzzles.
 
@@ -80,8 +80,10 @@ You may clone the repository and play or test the game locally under the asset t
 
 The public source release is [adamholter/ink-rooms-source](https://github.com/adamholter/ink-rooms-source). Its history begins with these separate license terms.
 
+The [Challenge chapter](scripts/audit-data/challenge-difficulty.md) adds rooms 49 through 58, mixing ice with rotation, robots, switches, bridges, and cube topology. Its solutions take 56 to 106 moves and require at least 12 to 17 pushes. Challenge replaces the Remix area name and keeps its existing rooms. Cube ice carries momentum over edges, while switches on cube faces control bridges on those faces. The [chapter audit](scripts/audit-data/challenge-expansion-audit.md) checks the ten final layouts against 10,902 public entries and the rest of the campaign.
+
 ## Adding rooms to the level world
 
-The hub catalog reads `LEVELS`. New flat rooms receive doors and miniatures on themed extension islands; new cube rooms receive doors on the cube. Validation requires exactly one hub entrance per campaign room and checks that extension paths reach each island without passing through a room door.
+The hub catalog reads `LEVELS`. New flat rooms receive doors and miniatures on themed extension islands; new cube rooms receive doors on the cube. Rooms marked `challenge: true` go to the Challenge area, including cube rooms. Validation requires exactly one hub entrance per campaign room and checks that extension paths reach each island without passing through a room door.
 
 The current cube pavilion has space for 24 cube rooms. Exceeding that capacity fails validation and requires expanding the pavilion before publishing.

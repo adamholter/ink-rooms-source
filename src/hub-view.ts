@@ -106,6 +106,7 @@ export function createHubView(parent:THREE.Group,player:THREE.Group,completed:nu
   type Motion={time:number;duration:number;from:THREE.Vector3;to:THREE.Vector3;crateFrom:THREE.Vector3;crateTo:THREE.Vector3;gate:number|null;enterCube?:boolean;slide?:boolean;before?:State;after?:State;cubeMotion?:CubeMotion;rotate?:boolean;fall?:boolean;safe?:HubState;stride?:boolean;linear?:boolean;strideTicket?:number};
   let motion:Motion|null=null;
   function travel(areaId:string){
+    if(areaId==='remix')areaId='challenge';
     const area=HUB_AREAS.find(a=>a.id===areaId)||HUB_AREAS[0];
     stride.hold(null);rotationMotion=null;recovery=null;onCube=false;root.add(player);player.scale.setScalar(1);player.rotation.set(0,0,0);cube.root.quaternion.identity();
     state={...state,player:{...(areaId==='bridges'&&!state.bridgeOpen?{x:0,z:-3}:area.spawn)}};

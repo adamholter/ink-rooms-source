@@ -2,7 +2,7 @@
   "name": "ink-rooms",
   "version": "1.0.0",
   "private": true,
-  "description": "A monochrome 3D puzzle game with 48 rooms, built with Three.js.",
+  "description": "A monochrome 3D puzzle game with 58 rooms, built with Three.js.",
   "license": "SEE LICENSE IN LICENSE",
   "type": "module",
   "engines": {
@@ -15,7 +15,7 @@
     "dev:game": "vite --config vite.game.config.ts",
     "build:game": "vite build --config vite.game.config.ts",
     "validate": "npm run test:puzzle && npm run test:hub && npm run typecheck:game && npm run build:game",
-    "test:puzzle": "node --experimental-strip-types scripts/test-puzzle.ts && node --experimental-strip-types scripts/test-elevation.ts && node --experimental-strip-types scripts/test-machinery.ts && node --experimental-strip-types scripts/test-design-quality.ts && node --experimental-strip-types scripts/test-robots.ts && node --experimental-strip-types scripts/test-robot-expansion.ts && node --experimental-strip-types scripts/test-ice.ts && node --experimental-strip-types scripts/test-ice-chapter.ts && node --experimental-strip-types scripts/test-rotation.ts && node --experimental-strip-types scripts/test-rotation-chapter.ts && node --experimental-strip-types scripts/test-cube.ts && node --experimental-strip-types scripts/test-cube-chapter.ts && node --experimental-strip-types scripts/test-cube-view.ts && node --experimental-strip-types scripts/test-cube-shell.ts",
+    "test:puzzle": "node --experimental-strip-types scripts/test-puzzle.ts && node --experimental-strip-types scripts/test-elevation.ts && node --experimental-strip-types scripts/test-machinery.ts && node --experimental-strip-types scripts/test-design-quality.ts && node --experimental-strip-types scripts/test-robots.ts && node --experimental-strip-types scripts/test-robot-expansion.ts && node --experimental-strip-types scripts/test-ice.ts && node --experimental-strip-types scripts/test-ice-chapter.ts && node --experimental-strip-types scripts/test-rotation.ts && node --experimental-strip-types scripts/test-rotation-chapter.ts && node --experimental-strip-types scripts/test-cube.ts && node --experimental-strip-types scripts/test-cube-chapter.ts && node --experimental-strip-types scripts/test-cube-view.ts && node --experimental-strip-types scripts/test-cube-shell.ts && node --experimental-strip-types scripts/test-cube-mixed.ts && node --experimental-strip-types scripts/test-challenge.ts",
     "typecheck:game": "tsc --noEmit --allowImportingTsExtensions --target es2022 --module esnext --moduleResolution bundler --skipLibCheck src/game.ts src/puzzle.ts src/hint-worker.ts",
     "audit:originality": "node --experimental-strip-types scripts/audit-originality.ts --fail-on-match",
     "test:hub": "node --experimental-strip-types scripts/test-hub-world.ts && node --experimental-strip-types scripts/test-level-miniature.ts && node --experimental-strip-types scripts/test-hub-stride.ts && node --experimental-strip-types scripts/test-hub-catalog.ts"

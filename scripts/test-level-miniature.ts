@@ -6,7 +6,7 @@ import { iceSurface } from '../src/ice-art.ts';
 import { createLevelMiniature } from '../src/level-miniature.ts';
 import { LEVELS } from '../src/puzzle.ts';
 
-assert.equal(LEVELS.length, 48, 'the hub has one miniature for every room');
+assert.equal(LEVELS.length, 58, 'the hub has one miniature for every room');
 const shared = [paper, ink, edge, fine, iceSurface];
 const sharedDisposals = new Map(shared.map(material => [material, 0]));
 for (const material of shared) material.addEventListener('dispose', () => sharedDisposals.set(material, sharedDisposals.get(material)! + 1));
@@ -63,4 +63,29 @@ for (const [index, level] of LEVELS.entries()) {
 }
 
 for (const [material, count] of sharedDisposals) assert.equal(count, 0, `${material.uuid}: shared material remains live`);
-console.log('Level miniatures passed: 48 bounded, nonempty, batched rooms; cube proportions and disposal ownership verified.');
+
+const mechanicsMap = Array.from({ length: 3 }, () => ' '.repeat(18));
+const cubeMechanics = {
+  name: 'Cube mechanics miniature', subtitle: '', hint: '', map: mechanicsMap, cube: { size: 3 },
+  ice: [{ x: 1, z: 1 }], switches: [{ x: 4, z: 1, channel: 1 }],
+  bridges: [{ x: 7, z: 1, height: 0, channel: 1 }],
+};
+const mechanicsMiniature = createLevelMiniature(cubeMechanics);
+const mechanicRenderables: (THREE.Mesh | THREE.LineSegments)[] = [];
+mechanicsMiniature.root.traverse(object => {
+  if (object instanceof THREE.Mesh || object instanceof THREE.LineSegments) mechanicRenderables.push(object);
+});
+assert(mechanicRenderables.some(object => object instanceof THREE.Mesh && object.material === iceSurface), 'cube ice uses the ice material batch');
+assert(mechanicRenderables.length <= 6, 'cube mechanism markers stay within the six-batch budget');
+const inkMesh = mechanicRenderables.find(object => object instanceof THREE.Mesh && object.material === ink) as THREE.Mesh;
+const inkPositions = inkMesh.geometry.getAttribute('position');
+for (const point of [...cubeMechanics.switches, ...cubeMechanics.bridges]) {
+  const center = new THREE.Vector3(...cubeCellPosition(3, point, .46));
+  let nearest = Infinity;
+  for (let vertex = 0; vertex < inkPositions.count; vertex++) {
+    nearest = Math.min(nearest, center.distanceTo(new THREE.Vector3(inkPositions.getX(vertex), inkPositions.getY(vertex), inkPositions.getZ(vertex))));
+  }
+  assert(nearest < .34, `cube ${point === cubeMechanics.switches[0] ? 'switch' : 'bridge'} marker follows its face`);
+}
+mechanicsMiniature.dispose();
+console.log('Level miniatures passed: 58 bounded, nonempty, batched rooms; cube proportions and disposal ownership verified.');

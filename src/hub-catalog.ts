@@ -65,7 +65,15 @@ export function buildHubCatalog(
   }
 
   const additions: HubCatalogArea[] = [];
-  const unassignedFlat = levels.flatMap((level, index) => !assigned.has(index) && !level.cube ? [{ level, index }] : []);
+  const challengeArea = areas.find((area) => area.id === 'challenge');
+  const explicitChallenge = levels.flatMap((level, index) => !assigned.has(index) && level.challenge ? [index] : []);
+  if (explicitChallenge.length) {
+    if (!challengeArea) throw new Error('Challenge levels require a challenge hub area');
+    const inMainArea = explicitChallenge.slice(0, AREA_CAPACITY - challengeArea.levels.length);
+    challengeArea.levels.push(...inMainArea);
+    inMainArea.forEach((level) => assigned.add(level));
+  }
+  const unassignedFlat = levels.flatMap((level, index) => !assigned.has(index) && (!level.cube || level.challenge) ? [{ level, index }] : []);
   const themes = new Map<string, { name: string; entries: number[] }>();
   for (const entry of unassignedFlat) {
     const theme = levelTheme(entry.level);
@@ -92,16 +100,17 @@ export function buildHubCatalog(
     }
   }
 
-  const cubeLevels = levels.flatMap((level, index) => level.cube ? [index] : []);
+  const newCubeLevels = levels.flatMap((level, index) => !assigned.has(index) && level.cube ? [index] : []);
   const cubeArea = areas.find((area) => area.id === 'cube');
-  if (cubeLevels.length && !cubeArea) throw new Error('Cube levels require a cube hub area');
+  if (newCubeLevels.length && !cubeArea) throw new Error('Cube levels require a cube hub area');
   const existingCube = cubeArea?.levels ?? [];
+  const cubeLevels = [...existingCube, ...newCubeLevels];
   if (cubeLevels.length > CUBE_CAPACITY) {
     throw new RangeError(`Cube pavilion supports ${CUBE_CAPACITY} levels; received ${cubeLevels.length}`);
   }
   if (existingCube.some((level) => !levels[level]?.cube)) throw new Error('Cube area contains a flat level');
-  for (const index of cubeLevels) if (!existingCube.includes(index)) cubeArea!.levels.push(index);
-  for (const index of cubeLevels) assigned.add(index);
+  for (const index of newCubeLevels) cubeArea!.levels.push(index);
+  for (const index of newCubeLevels) assigned.add(index);
 
   if (assigned.size !== levels.length) throw new Error('Hub catalog did not assign every level');
   const flatGates = areas
@@ -123,6 +132,7 @@ export function buildHubCatalog(
 }
 
 function levelTheme(level: Level): { id: string; name: string } {
+  if (level.challenge) return { id: 'challenge', name: 'Challenge' };
   const mechanics = [
     { active: Boolean(level.ice?.length), theme: { id: 'ice', name: 'Ice' } },
     { active: Boolean(level.rotators?.length), theme: { id: 'rotation', name: 'Rotation' } },
@@ -131,7 +141,7 @@ function levelTheme(level: Level): { id: string; name: string } {
     { active: Boolean(level.elevators?.length), theme: { id: 'lifts', name: 'Lifts' } },
     { active: Boolean(level.heights?.length || level.jumping), theme: { id: 'heights', name: 'Heights' } },
   ].filter((entry) => entry.active);
-  if (mechanics.length > 1) return { id: 'remix', name: 'Remix' };
+  if (mechanics.length > 1) return { id: 'challenge', name: 'Challenge' };
   if (mechanics.length === 1) return mechanics[0].theme;
   if (level.switches?.length) return { id: 'machinery', name: 'Machinery' };
   return { id: 'courtyard', name: 'Courtyard' };

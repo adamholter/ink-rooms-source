@@ -1,3 +1,5 @@
+import { CHALLENGE_FLAT_LEVELS } from './challenge-flat-levels.ts';
+import { CHALLENGE_CUBE_LEVELS } from './challenge-cube-levels.ts';
 import { CUBE_LEVELS } from './cube-levels.ts';
 import { attemptCubeMove } from './cube-topology.ts';
 import { ROTATION_LEVELS } from "./rotation-levels.ts";
@@ -32,6 +34,7 @@ export type Level = {
   hint: string;
   map: string[];
   cube?: { size: number };
+  challenge?: boolean;
   heights?: number[][];
   jumping?: boolean;
   rotators?: (Point & { radius: number; channel: number })[];
@@ -559,3 +562,5 @@ LEVELS.push(...ICE_LEVELS);
 LEVELS.push(...ROTATION_LEVELS);
 
 LEVELS.push(...CUBE_LEVELS);
+
+LEVELS.push(...CHALLENGE_FLAT_LEVELS.map(level=>({...level,challenge:true})),...CHALLENGE_CUBE_LEVELS);

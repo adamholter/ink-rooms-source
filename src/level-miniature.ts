@@ -28,6 +28,7 @@ export function createLevelMiniature(level: Level): { root: THREE.Group; dispose
   const scale = new THREE.Vector3(1, 1, 1);
 
   function add(key: string, geometry: THREE.BufferGeometry, transform = new THREE.Matrix4()) {
+    if (!geometry.getAttribute('position')?.count) { geometry.dispose(); return; }
     geometry.applyMatrix4(transform);
     geometry.deleteAttribute('normal');
     geometry.deleteAttribute('uv');
@@ -63,25 +64,47 @@ export function createLevelMiniature(level: Level): { root: THREE.Group; dispose
     const shell = buildCubeShellGeometry(level);
     const shellScale = new THREE.Matrix4().makeScale(cell / CELL, cell / CELL, cell / CELL);
     add('paper', shell.surface, shellScale);
+    add('ice', shell.iceSurface, shellScale);
     add('fine', shell.fineEdges, shellScale);
     add('edge', shell.rimEdges, shellScale);
-    for (let z = 0; z < n; z++) for (let x = 0; x < n * 6; x++) {
-      const tile = level.map[z]?.[x] ?? '~';
-      if (tile === '~' || tile === '#') continue;
-      const basis = CUBE_BASES[cubeFace(n, { x, z })];
-      const center = new THREE.Vector3(...cubeCellPosition(n, { x, z }, cell));
+    const facePose = (point: Point) => {
+      const basis = CUBE_BASES[cubeFace(n, point)];
+      const center = new THREE.Vector3(...cubeCellPosition(n, point, cell));
       const faceMatrix = new THREE.Matrix4().makeBasis(
         new THREE.Vector3(...basis.u), new THREE.Vector3(...basis.normal), new THREE.Vector3(...basis.v),
       );
       const q = new THREE.Quaternion().setFromRotationMatrix(faceMatrix);
-      const marker = center.clone().addScaledVector(new THREE.Vector3(...basis.normal), .09);
+      const normal = new THREE.Vector3(...basis.normal);
+      return { basis, q, normal, marker: center.addScaledVector(normal, .09) };
+    };
+    for (let z = 0; z < n; z++) for (let x = 0; x < n * 6; x++) {
+      const tile = level.map[z]?.[x] ?? '~';
+      if (tile === '~' || tile === '#') continue;
+      const { basis, q, marker } = facePose({ x, z });
       if (tile === '.') ring(marker.x, marker.y, marker.z, .105, q);
       if (tile === 'E') {
         box('ink', marker.x, marker.y, marker.z, .23, .025, .23, false, q);
-        box('paper', marker.x, marker.y + basis.normal[1] * .01, marker.z, .12, .03, .12, false, q);
+        const inset = marker.clone().addScaledVector(new THREE.Vector3(...basis.normal), .01);
+        box('paper', inset.x, inset.y, inset.z, .12, .03, .12, false, q);
       }
       if (tile === '$') box('paper', marker.x, marker.y, marker.z, .25, .25, .25, true, q);
       if (tile === '@') cylinder('ink', marker.x, marker.y, marker.z, .105, .28, 10, q);
+    }
+    for (const sw of level.switches ?? []) {
+      const { q, normal, marker } = facePose(sw);
+      cylinder('ink', marker.x, marker.y, marker.z, cell * .21, .035, 12, q);
+      const cap = marker.clone().addScaledVector(normal, .025);
+      cylinder('paper', cap.x, cap.y, cap.z, cell * .09, .045, 10, q);
+    }
+    for (const bridge of level.bridges ?? []) {
+      const { basis, q, normal, marker } = facePose(bridge);
+      const deck = marker.clone().addScaledVector(normal, -.04);
+      box('paper', deck.x, deck.y, deck.z, cell * .84, .055, cell * .90, true, q);
+      const u = new THREE.Vector3(...basis.u);
+      for (const side of [-1, 1]) {
+        const rail = marker.clone().addScaledVector(u, side * cell * .40).addScaledVector(normal, .045);
+        box('ink', rail.x, rail.y, rail.z, .025, .13, cell * .88, false, q);
+      }
     }
   } else {
     const cell = .30;

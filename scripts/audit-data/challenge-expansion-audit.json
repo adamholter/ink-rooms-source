@@ -1,0 +1,357 @@
+{
+  "generatedAt": "2026-09-07T20:56:39.364Z",
+  "method": {
+    "roomSelection": [
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58
+    ],
+    "symmetry": "translation plus all 8 rotations/reflections",
+    "exactModes": {
+      "floor": "playable-cell geometry only",
+      "structure": "geometry plus target positions",
+      "pieces": "geometry, targets, and crates",
+      "complete": "geometry, targets, crates, and player"
+    },
+    "near": "Jaccard similarity after symmetry and translations up to one cell; normalized dimensions may differ by up to two cells; reported at an unrounded score >= 0.82",
+    "limitations": "Finite public corpus. A clean result does not prove internet-wide uniqueness."
+  },
+  "corpus": {
+    "entries": 10902,
+    "uniqueComplete": 10902,
+    "sources": [
+      {
+        "id": "microban",
+        "name": "Microban",
+        "author": "David W. Skinner",
+        "url": "https://sokoban-game.com/packs/microban/download",
+        "entries": 155,
+        "sha256": "6506781b2a0d0de99e686c6c98e95540a1004251356ad263cccf1932dc1e9fb2"
+      },
+      {
+        "id": "mas-microban",
+        "name": "Mas Microban",
+        "author": "David W. Skinner",
+        "url": "https://sokoban-game.com/packs/mas-microban/download",
+        "entries": 135,
+        "sha256": "7d1eae1cf8e37b779e7886095938b5f5cfd67bcded3cd84280d92d5cfd389a06"
+      },
+      {
+        "id": "mas-sasquatch",
+        "name": "Mas Sasquatch",
+        "author": "David W. Skinner",
+        "url": "https://sokoban-game.com/packs/mas-sasquatch/download",
+        "entries": 50,
+        "sha256": "012163c4db80c759faf92cf1b219fd13ba51f4da4f28817828dfb91950aa6016"
+      },
+      {
+        "id": "sasquatch",
+        "name": "Sasquatch",
+        "author": "David W. Skinner",
+        "url": "https://sokoban-game.com/packs/sasquatch/download",
+        "entries": 50,
+        "sha256": "c21742f1bafdd574df09a07a64825d67b8039fac3c25247252963eb2b4131324"
+      },
+      {
+        "id": "sasquatch-iii",
+        "name": "Sasquatch III",
+        "author": "David W. Skinner",
+        "url": "https://sokoban-game.com/packs/sasquatch-iii/download",
+        "entries": 50,
+        "sha256": "5fe67fb573ab010e5083bd7a4e5cd382da4596f47ed7de23174221bc4d471582"
+      },
+      {
+        "id": "sasquatch-iv",
+        "name": "Sasquatch IV",
+        "author": "David W. Skinner",
+        "url": "https://sokoban-game.com/packs/sasquatch-iv/download",
+        "entries": 50,
+        "sha256": "ee41e94ad839b06e9b9f6a4284ca976b51977edde56c96e9d21a8c20ad078067"
+      },
+      {
+        "id": "sasquatch-v",
+        "name": "Sasquatch V",
+        "author": "David W. Skinner",
+        "url": "https://sokoban-game.com/packs/sasquatch-v/download",
+        "entries": 50,
+        "sha256": "2cf3fd94fe4b00dc5d8026e959cb828b05d148a64ef35f1b50267dde6222cfd6"
+      },
+      {
+        "id": "sasquatch-vi",
+        "name": "Sasquatch VI",
+        "author": "David W. Skinner",
+        "url": "https://sokoban-game.com/packs/sasquatch-vi/download",
+        "entries": 50,
+        "sha256": "0ebac92eca278b7f2902f492ee9ea9b73601405cfc7d34f7f80e367fcf4b68ac"
+      },
+      {
+        "id": "sasquatch-vii",
+        "name": "Sasquatch VII",
+        "author": "David W. Skinner",
+        "url": "https://sokoban-game.com/packs/sasquatch-vii/download",
+        "entries": 50,
+        "sha256": "ce957e4ea9f9a7796e8846489e8d8e84ade468739d9b320543a1db48887850e2"
+      },
+      {
+        "id": "micro-cosmos",
+        "name": "Micro Cosmos",
+        "author": "Aymeric du Peloux",
+        "url": "https://sokoban-game.com/packs/micro-cosmos/download",
+        "entries": 40,
+        "sha256": "ed099f072835646af0a4d425706dc78a3453efb30969389435f666fafee806e0"
+      },
+      {
+        "id": "mini-cosmos",
+        "name": "Mini Cosmos",
+        "author": "Aymeric du Peloux",
+        "url": "https://sokoban-game.com/packs/mini-cosmos/download",
+        "entries": 40,
+        "sha256": "b1acfcc744524f995bef428dcb527f98f51caa99f59ad70481f133e8fd6ce48d"
+      },
+      {
+        "id": "nabo-cosmos",
+        "name": "Nabo Cosmos",
+        "author": "Aymeric du Peloux",
+        "url": "https://sokoban-game.com/packs/nabo-cosmos/download",
+        "entries": 40,
+        "sha256": "41a4a0ff7a2a3713f12ae43222d22234b3a2e28f701d282587d0c8f5480ca1fc"
+      },
+      {
+        "id": "original-extra",
+        "name": "Original & Extra",
+        "author": "Thinking Rabbit",
+        "url": "https://sokoban-game.com/packs/original-extra/download",
+        "entries": 90,
+        "sha256": "5a181f60070448695d3fb328fb8cba8512fd613196a6a2071f03b5a3b562c826"
+      },
+      {
+        "id": "autogen-52",
+        "name": "Yoshio Murase Auto-Generated",
+        "author": "Yoshio Murase",
+        "url": "https://sokoban-game.com/packs/yoshio-murase-s-auto-generated/download",
+        "entries": 52,
+        "sha256": "4f7f4d9849e7df2be7eda0caf3d2f3084fa3579427f3f6124afe5c2f9edf8295"
+      },
+      {
+        "id": "boxoban-medium-000",
+        "name": "Boxoban Medium 000",
+        "author": "Google DeepMind",
+        "format": "xsb",
+        "url": "https://raw.githubusercontent.com/google-deepmind/boxoban-levels/master/medium/train/000.txt",
+        "entries": 1000,
+        "sha256": "b44e6dac95d03c0f29158252eafe7b1d97a3f3b447743a23617efa66e735167b"
+      },
+      {
+        "id": "boxoban-medium-001",
+        "name": "Boxoban Medium 001",
+        "author": "Google DeepMind",
+        "format": "xsb",
+        "url": "https://raw.githubusercontent.com/google-deepmind/boxoban-levels/master/medium/train/001.txt",
+        "entries": 1000,
+        "sha256": "8197b2e4438c05be3b9b91e7ec984c8b7acf09011272a196c2636402bc1b6d15"
+      },
+      {
+        "id": "boxoban-medium-002",
+        "name": "Boxoban Medium 002",
+        "author": "Google DeepMind",
+        "format": "xsb",
+        "url": "https://raw.githubusercontent.com/google-deepmind/boxoban-levels/master/medium/train/002.txt",
+        "entries": 1000,
+        "sha256": "42b5c21ea71ea2cb6c62ed0e828c5462aa0785561122d24058ab2f06fa35cd01"
+      },
+      {
+        "id": "boxoban-medium-003",
+        "name": "Boxoban Medium 003",
+        "author": "Google DeepMind",
+        "format": "xsb",
+        "url": "https://raw.githubusercontent.com/google-deepmind/boxoban-levels/master/medium/train/003.txt",
+        "entries": 1000,
+        "sha256": "61d67e4f18cbc2c27948e75c42d14fa18789712559af37c915d8650e9c5eae1a"
+      },
+      {
+        "id": "boxoban-medium-004",
+        "name": "Boxoban Medium 004",
+        "author": "Google DeepMind",
+        "format": "xsb",
+        "url": "https://raw.githubusercontent.com/google-deepmind/boxoban-levels/master/medium/train/004.txt",
+        "entries": 1000,
+        "sha256": "e56ce95ca8fb233ba9d7418d6474a61aab6122866023d9f1e4e97e4e1b7fa9ed"
+      },
+      {
+        "id": "boxoban-medium-005",
+        "name": "Boxoban Medium 005",
+        "author": "Google DeepMind",
+        "format": "xsb",
+        "url": "https://raw.githubusercontent.com/google-deepmind/boxoban-levels/master/medium/train/005.txt",
+        "entries": 1000,
+        "sha256": "3126f2f205ed425ae8038fe8ccdc3dc09031191b424b12ed4ca974ab436a89ed"
+      },
+      {
+        "id": "boxoban-medium-006",
+        "name": "Boxoban Medium 006",
+        "author": "Google DeepMind",
+        "format": "xsb",
+        "url": "https://raw.githubusercontent.com/google-deepmind/boxoban-levels/master/medium/train/006.txt",
+        "entries": 1000,
+        "sha256": "6c339df10bc4eba55ba191691b2ea54d632c7c366d1669525e03c85f514e9a6e"
+      },
+      {
+        "id": "boxoban-medium-007",
+        "name": "Boxoban Medium 007",
+        "author": "Google DeepMind",
+        "format": "xsb",
+        "url": "https://raw.githubusercontent.com/google-deepmind/boxoban-levels/master/medium/train/007.txt",
+        "entries": 1000,
+        "sha256": "f53f475626716bead820a42bbf8913f76ff3eac0d454f7ccfbfab26c1b509a95"
+      },
+      {
+        "id": "boxoban-medium-008",
+        "name": "Boxoban Medium 008",
+        "author": "Google DeepMind",
+        "format": "xsb",
+        "url": "https://raw.githubusercontent.com/google-deepmind/boxoban-levels/master/medium/train/008.txt",
+        "entries": 1000,
+        "sha256": "f6bfba9176975fe31fff1bb78cbe872689bd19dce6f178228a016544e79b85a8"
+      },
+      {
+        "id": "boxoban-medium-009",
+        "name": "Boxoban Medium 009",
+        "author": "Google DeepMind",
+        "format": "xsb",
+        "url": "https://raw.githubusercontent.com/google-deepmind/boxoban-levels/master/medium/train/009.txt",
+        "entries": 1000,
+        "sha256": "b70621047cfbd134b027c6855c0069e953a510120fb1f8088632332fac89e7bb"
+      }
+    ]
+  },
+  "rooms": [
+    {
+      "room": 49,
+      "name": "Rime Relay",
+      "cellCount": 22,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 50,
+      "name": "Frozen Ratchet",
+      "cellCount": 21,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 51,
+      "name": "Cold Exchange",
+      "cellCount": 22,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 52,
+      "name": "Remote Winter",
+      "cellCount": 34,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 53,
+      "name": "Signal Drift",
+      "cellCount": 34,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 54,
+      "name": "Crossed Dispatch",
+      "cellCount": 38,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 55,
+      "name": "Cold Meridian",
+      "cellCount": 74,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 56,
+      "name": "Polar Exchange",
+      "cellCount": 67,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 57,
+      "name": "Borrowed Passage",
+      "cellCount": 66,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    },
+    {
+      "room": 58,
+      "name": "Permafrost Circuit",
+      "cellCount": 70,
+      "exact": {
+        "floor": [],
+        "structure": [],
+        "pieces": [],
+        "complete": []
+      },
+      "near": []
+    }
+  ],
+  "internalPairs": []
+}

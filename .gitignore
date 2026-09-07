@@ -94,3 +94,10 @@ next-env.d.ts
 !/scripts/fixtures/pre-cube-levels.json
 !/scripts/audit-data/cube-expansion-audit.json
 !/scripts/audit-data/cube-expansion-audit.md
+
+!/scripts/fixtures/pre-challenge-levels.json
+!/scripts/fixtures/challenge-flat-design.json
+!/scripts/fixtures/challenge-cube-design.json
+!/scripts/audit-data/challenge-expansion-audit.json
+!/scripts/audit-data/challenge-expansion-audit.md
+!/scripts/audit-data/challenge-difficulty.md

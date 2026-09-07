@@ -29,7 +29,7 @@ export const BASE_HUB_AREAS: HubArea[] = [
   { id: 'robots', name: 'Robots', center: { x: -24, z: 24 }, spawn: { x: -24, z: 24 }, levels: range(27, 30) },
   { id: 'ice', name: 'Ice', center: { x: -24, z: -24 }, spawn: { x: -24, z: -24 }, levels: range(31, 35) },
   { id: 'rotation', name: 'Rotation', center: { x: 0, z: 24 }, spawn: { x: 0, z: 27 }, levels: [36, 37, 38, 39, 42, 43] },
-  { id: 'remix', name: 'Remix', center: { x: 24, z: 24 }, spawn: { x: 24, z: 24 }, levels: [40, 41] },
+  { id: 'challenge', name: 'Challenge', center: { x: 24, z: 24 }, spawn: { x: 24, z: 24 }, levels: [40, 41] },
   { id: 'cube', name: 'Cube', center: { x: 24, z: -24 }, spawn: { x: 24, z: -18 }, levels: range(44, 47) },
 ];
 
@@ -62,8 +62,8 @@ fillRect(11, 13, -1, 1, 'floor'); // courtyard to lifts
 fillRect(-1, 1, 8, 16, 'floor'); // courtyard to rotation
 fillRect(-25, -23, 8, 16, 'floor'); // heights to robots
 fillRect(-25, -23, -16, -8, 'floor'); // heights to ice
-fillRect(11, 13, 23, 25, 'floor'); // rotation to remix
-fillRect(23, 25, 8, 16, 'floor'); // lifts to remix
+fillRect(11, 13, 23, 25, 'floor'); // rotation to challenge
+fillRect(23, 25, 8, 16, 'floor'); // lifts to challenge
 fillRect(-13, -11, 23, 25, 'floor'); // robots to rotation
 fillRect(23, 25, -16, -8, 'floor'); // lifts to cube
 fillRect(-1, 1, -16, -8, 'bridge'); // courtyard to bridges
@@ -83,6 +83,7 @@ export function hubTile(x: number, z: number): HubTileKind | null {
 }
 
 export function createHubState(areaId = 'courtyard'): HubState {
+  if (areaId === 'remix') areaId = 'challenge';
   const area = HUB_AREAS.find((candidate) => candidate.id === areaId);
   if (!area) throw new Error(`Unknown hub area: ${areaId}`);
   return {

@@ -1,0 +1,424 @@
+[
+  {
+    "seed": 2258246404,
+    "level": {
+      "name": "Cold Meridian",
+      "subtitle": "The ice carries both cargo and your route around the cube.",
+      "hint": "Use the second crate as a brake before sending the first one across a seam.",
+      "cube": {
+        "size": 4
+      },
+      "map": [
+        " ~E~   @ .    ~ ~   .   ",
+        "   ~~            ~      ",
+        "   ~  ~~ ~   ~$$ ~~  ~~ ",
+        "  ~         ~    ~ ~~   "
+      ],
+      "ice": [
+        {
+          "x": 15,
+          "z": 1
+        },
+        {
+          "x": 5,
+          "z": 1
+        },
+        {
+          "x": 11,
+          "z": 2
+        },
+        {
+          "x": 11,
+          "z": 1
+        },
+        {
+          "x": 10,
+          "z": 1
+        },
+        {
+          "x": 21,
+          "z": 0
+        },
+        {
+          "x": 23,
+          "z": 2
+        }
+      ],
+      "challenge": true
+    },
+    "path": "UUURRRRURURURDLLLLRRDRDRURULLLLLULLDULLDRRDLURUULLULLURU",
+    "metrics": {
+      "moves": 56,
+      "pushes": 16,
+      "slides": 8,
+      "crateSlides": 5,
+      "crateCrossings": 6,
+      "playerCrossings": 13,
+      "faces": 6,
+      "switchChanges": 0,
+      "crateInterleavings": 7,
+      "floorCells": 75,
+      "final": {
+        "level": 54,
+        "player": {
+          "x": 2,
+          "z": 0
+        },
+        "boxes": [
+          {
+            "x": 20,
+            "z": 0
+          },
+          {
+            "x": 9,
+            "z": 0
+          }
+        ],
+        "cubeTurn": 2,
+        "moves": 56,
+        "pushes": 16,
+        "won": true,
+        "fall": null
+      }
+    },
+    "minimumPushes": 15,
+    "searchStates": 32073,
+    "dryMoves": null,
+    "crateCrossingRequired": true,
+    "room": 55,
+    "mechanics": [
+      "cube",
+      "ice"
+    ]
+  },
+  {
+    "trial": 1,
+    "level": {
+      "name": "Polar Exchange",
+      "subtitle": "A delivery on one face changes your approach to another.",
+      "hint": "Trade which crate you move. Committing either one too early closes the useful approaches.",
+      "cube": {
+        "size": 4
+      },
+      "map": [
+        ".  ~    ~ ~~  ~    ~~  ~",
+        " ~~  ~             ~~~ ~",
+        " ~@   ~  $ ~  ~~  ~ E $~",
+        "       ~ ~ ~~.     ~~   "
+      ],
+      "ice": [
+        {
+          "x": 13,
+          "z": 1
+        },
+        {
+          "x": 13,
+          "z": 2
+        },
+        {
+          "x": 3,
+          "z": 1
+        },
+        {
+          "x": 15,
+          "z": 3
+        },
+        {
+          "x": 19,
+          "z": 2
+        },
+        {
+          "x": 14,
+          "z": 3
+        },
+        {
+          "x": 12,
+          "z": 1
+        },
+        {
+          "x": 18,
+          "z": 3
+        }
+      ],
+      "challenge": true
+    },
+    "path": "RRUURRRDRDRUUUUURUURUUURUURRRURDDDDDRDLLLULDDLDRLLDLLDDDDLDRURDLLD",
+    "metrics": {
+      "moves": 66,
+      "pushes": 15,
+      "slides": 3,
+      "crateSlides": 2,
+      "crateCrossings": 6,
+      "playerCrossings": 16,
+      "faces": 6,
+      "switchChanges": 0,
+      "crateInterleavings": 3,
+      "floorCells": 68,
+      "final": {
+        "level": 55,
+        "player": {
+          "x": 20,
+          "z": 2
+        },
+        "boxes": [
+          {
+            "x": 13,
+            "z": 3
+          },
+          {
+            "x": 0,
+            "z": 0
+          }
+        ],
+        "cubeTurn": 1,
+        "moves": 66,
+        "pushes": 15,
+        "won": true,
+        "fall": null
+      }
+    },
+    "minimumPushes": 13,
+    "searchStates": 15271,
+    "dryMoves": null,
+    "crateCrossingRequired": true,
+    "room": 56,
+    "mechanics": [
+      "cube",
+      "ice"
+    ]
+  },
+  {
+    "trial": 2122,
+    "level": {
+      "name": "Borrowed Passage",
+      "subtitle": "The switch crate has another job after the crossing.",
+      "hint": "Borrow a crate to hold the bridges, move the other cargo through, then recover your bridge weight.",
+      "cube": {
+        "size": 4
+      },
+      "map": [
+        " ~ ~~    ~~. ~~ ~~  ~ ~ ",
+        "~   ~  ~ E~ ~~   ~~ ~   ",
+        " $$   ~~          @~   ~",
+        "   ~      ~ .      ~~~  "
+      ],
+      "ice": [
+        {
+          "x": 15,
+          "z": 2
+        },
+        {
+          "x": 17,
+          "z": 3
+        },
+        {
+          "x": 16,
+          "z": 3
+        },
+        {
+          "x": 15,
+          "z": 0
+        },
+        {
+          "x": 18,
+          "z": 3
+        },
+        {
+          "x": 8,
+          "z": 3
+        },
+        {
+          "x": 0,
+          "z": 2
+        },
+        {
+          "x": 1,
+          "z": 1
+        }
+      ],
+      "switches": [
+        {
+          "x": 1,
+          "z": 2,
+          "channel": 0
+        }
+      ],
+      "bridges": [
+        {
+          "x": 16,
+          "z": 1,
+          "channel": 0,
+          "height": 0
+        },
+        {
+          "x": 13,
+          "z": 3,
+          "channel": 0,
+          "height": 0
+        }
+      ],
+      "challenge": true
+    },
+    "path": "DRRRURURRUURULDDDDDRRDRRUUUULURURRRRRLLLLLDRRRRRLLLLLLULLLLULLDDDURRD",
+    "metrics": {
+      "moves": 69,
+      "pushes": 13,
+      "slides": 9,
+      "crateSlides": 2,
+      "crateCrossings": 3,
+      "playerCrossings": 17,
+      "faces": 6,
+      "switchChanges": 7,
+      "crateInterleavings": 4,
+      "floorCells": 67,
+      "final": {
+        "level": 56,
+        "player": {
+          "x": 9,
+          "z": 1
+        },
+        "boxes": [
+          {
+            "x": 12,
+            "z": 3
+          },
+          {
+            "x": 11,
+            "z": 0
+          }
+        ],
+        "cubeTurn": 2,
+        "moves": 69,
+        "pushes": 13,
+        "won": true,
+        "fall": null
+      }
+    },
+    "minimumPushes": 13,
+    "searchStates": 12564,
+    "dryMoves": null,
+    "crateCrossingRequired": true,
+    "room": 57,
+    "mechanics": [
+      "cube",
+      "ice",
+      "switches",
+      "bridges"
+    ]
+  },
+  {
+    "trial": 271,
+    "level": {
+      "name": "Permafrost Circuit",
+      "subtitle": "Keep the circuit alive while the cargo changes faces.",
+      "hint": "Use the frozen lanes to stage cargo before releasing the switch. Check which bridge you still need.",
+      "cube": {
+        "size": 4
+      },
+      "map": [
+        "~  ~   E~   ~      ~  ~ ",
+        "~@  ~~~~ $~  ~~ ~ ~.    ",
+        "     ~ $           . ~ ~",
+        "  ~          ~   ~~  ~ ~"
+      ],
+      "ice": [
+        {
+          "x": 18,
+          "z": 2
+        },
+        {
+          "x": 3,
+          "z": 1
+        },
+        {
+          "x": 17,
+          "z": 0
+        },
+        {
+          "x": 15,
+          "z": 2
+        },
+        {
+          "x": 7,
+          "z": 3
+        },
+        {
+          "x": 20,
+          "z": 3
+        },
+        {
+          "x": 11,
+          "z": 0
+        }
+      ],
+      "switches": [
+        {
+          "x": 7,
+          "z": 2,
+          "channel": 0
+        }
+      ],
+      "bridges": [
+        {
+          "x": 15,
+          "z": 1,
+          "channel": 0,
+          "height": 0
+        },
+        {
+          "x": 19,
+          "z": 3,
+          "channel": 0,
+          "height": 0
+        }
+      ],
+      "challenge": true
+    },
+    "path": "URUUULUURUURURDLRUUUULLDDDDLDRUULDRRRDDLRULLDDRULURRDRULDDLDLDDRRUR",
+    "metrics": {
+      "moves": 67,
+      "pushes": 12,
+      "slides": 5,
+      "crateSlides": 2,
+      "crateCrossings": 7,
+      "playerCrossings": 14,
+      "faces": 5,
+      "switchChanges": 7,
+      "crateInterleavings": 5,
+      "floorCells": 71,
+      "final": {
+        "level": 57,
+        "player": {
+          "x": 7,
+          "z": 0
+        },
+        "boxes": [
+          {
+            "x": 19,
+            "z": 1
+          },
+          {
+            "x": 19,
+            "z": 2
+          }
+        ],
+        "cubeTurn": 1,
+        "moves": 67,
+        "pushes": 12,
+        "won": true,
+        "fall": null
+      }
+    },
+    "minimumPushes": 12,
+    "searchStates": 10481,
+    "dryMoves": null,
+    "crateCrossingRequired": true,
+    "room": 58,
+    "mechanics": [
+      "cube",
+      "ice",
+      "switches",
+      "bridges"
+    ]
+  }
+]

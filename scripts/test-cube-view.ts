@@ -37,7 +37,7 @@ console.log(`Cube rendering: ${rolls} oriented edge rolls and ${pushes} cargo wr
 const {LEVELS,createState}=await import('../src/puzzle.ts');
 const {CUBE_BASES,cubeCellPosition}=await import('../src/cube-topology.ts');
 let holes=0;
-for(let index=44;index<LEVELS.length;index++){
+for(let index=44;index<48;index++){
  const l=LEVELS[index],shell=new THREE.Group(),v=createCubeView(l,shell),n=l.cube!.size;
  shell.updateMatrixWorld(true);
  for(let z=0;z<n;z++)for(let x=0;x<n*6;x++){

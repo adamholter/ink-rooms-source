@@ -1,0 +1,604 @@
+[
+  {
+    "id": "fresh-flat-2",
+    "level": {
+      "name": "Rime Relay",
+      "subtitle": "",
+      "hint": "The three left-hand marks need different approaches. Use repeated turns to bring each crate out of the square.",
+      "map": [
+        "~~~~~~~~",
+        "~.     ~",
+        "~@##$# ~",
+        "~  $ ##~",
+        "~. $#  ~",
+        "~.   #E~",
+        "~~~~~~~~"
+      ],
+      "rotators": [
+        {
+          "x": 3,
+          "z": 3,
+          "radius": 1,
+          "channel": 1
+        }
+      ],
+      "switches": [
+        {
+          "x": 1,
+          "z": 3,
+          "channel": 1
+        }
+      ],
+      "ice": [
+        {
+          "x": 3,
+          "z": 1
+        },
+        {
+          "x": 2,
+          "z": 3
+        },
+        {
+          "x": 1,
+          "z": 4
+        },
+        {
+          "x": 2,
+          "z": 5
+        },
+        {
+          "x": 4,
+          "z": 5
+        }
+      ]
+    },
+    "path": "DUDUURRDDLLDDLUUUDUDRLRRLLURLDDRUULLLDUDRRLLUDDRRULLLDRRDRRRD",
+    "moves": 61,
+    "pushes": 13,
+    "states": 14761,
+    "ablations": {
+      "withoutIce": {
+        "path": "DDDRRUULDLDLUUDUDDRRULLLDRRDDLRURRRD",
+        "moves": 36,
+        "pushes": 8,
+        "states": 58363,
+        "capped": false,
+        "cap": 150000,
+        "exhaustive": false
+      },
+      "withoutPrimary": {
+        "unsolvable": true,
+        "states": 81,
+        "capped": false,
+        "cap": 150000,
+        "exhaustive": true
+      }
+    },
+    "productionMoves": 61,
+    "pathMetrics": {
+      "turns": 13,
+      "playerLongMoves": 5,
+      "robotPushes": 0,
+      "crateInterleaving": 6,
+      "boxSlides": 1,
+      "robotLongMoves": 0
+    },
+    "minimumPushes": 13,
+    "minimumPushProofStates": 14785,
+    "permanentGoalProof": {
+      "unsolvable": false,
+      "states": 14761,
+      "capped": false
+    },
+    "pathEncoding": "URDL are up, right, down, left",
+    "shortestMoveProof": {
+      "algorithm": "Breadth-first search over complete engine states",
+      "states": 14761,
+      "exhaustiveThroughWinningDepth": true
+    }
+  },
+  {
+    "id": "fresh-flat-345",
+    "level": {
+      "name": "Frozen Ratchet",
+      "subtitle": "",
+      "hint": "A filled mark is temporary storage. Return that crate to the square before making the lower deliveries.",
+      "map": [
+        "~~~~~~~~",
+        "~.# # E~",
+        "~ $    ~",
+        "~@ #$  ~",
+        "~#$# .#~",
+        "~# #  .~",
+        "~~~~~~~~"
+      ],
+      "rotators": [
+        {
+          "x": 3,
+          "z": 3,
+          "radius": 1,
+          "channel": 1
+        }
+      ],
+      "switches": [
+        {
+          "x": 1,
+          "z": 2,
+          "channel": 1
+        }
+      ],
+      "ice": [
+        {
+          "x": 5,
+          "z": 1
+        },
+        {
+          "x": 5,
+          "z": 3
+        },
+        {
+          "x": 6,
+          "z": 3
+        }
+      ]
+    },
+    "path": "UUDUDRRLLUDUDDRDRRLLULUUDUDRRLLUDUDRLRRRRDDLUDRULLLDDLLULUDURDDRRDRUULLRRDLLLULURLRRRRDDLURULLLLRDDRRUURRU",
+    "moves": 106,
+    "pushes": 17,
+    "states": 16243,
+    "ablations": {
+      "withoutIce": {
+        "path": "UUDUDRRRLLLUDUDRDDRRURDLDRULLLUULRDDRRLLUULUDRRRDRRULLLLDDLLULURLRRRRUR",
+        "moves": 71,
+        "pushes": 11,
+        "states": 40829,
+        "capped": false,
+        "cap": 150000,
+        "exhaustive": false
+      },
+      "withoutPrimary": {
+        "unsolvable": true,
+        "states": 293,
+        "capped": false,
+        "cap": 150000,
+        "exhaustive": true
+      }
+    },
+    "productionMoves": 106,
+    "pathMetrics": {
+      "turns": 18,
+      "playerLongMoves": 5,
+      "robotPushes": 0,
+      "crateInterleaving": 8,
+      "boxSlides": 0,
+      "robotLongMoves": 0
+    },
+    "minimumPushes": 17,
+    "minimumPushProofStates": 16207,
+    "permanentGoalProof": {
+      "unsolvable": true,
+      "states": 8029,
+      "capped": false
+    },
+    "pathEncoding": "URDL are up, right, down, left",
+    "shortestMoveProof": {
+      "algorithm": "Breadth-first search over complete engine states",
+      "states": 16243,
+      "exhaustiveThroughWinningDepth": true
+    }
+  },
+  {
+    "level": {
+      "name": "Cold Exchange",
+      "subtitle": "",
+      "hint": "Move the crates between the square and the outside lane. Leave room to reach the upper plate again.",
+      "map": [
+        "~~~~~~~~",
+        "~.# #  ~",
+        "~@$#  E~",
+        "~  #$# ~",
+        "~. $ .#~",
+        "~#     ~",
+        "~~~~~~~~"
+      ],
+      "rotators": [
+        {
+          "x": 3,
+          "z": 3,
+          "radius": 1,
+          "channel": 1
+        }
+      ],
+      "switches": [
+        {
+          "x": 1,
+          "z": 1,
+          "channel": 1
+        }
+      ],
+      "ice": [
+        {
+          "x": 5,
+          "z": 2
+        },
+        {
+          "x": 1,
+          "z": 3
+        },
+        {
+          "x": 2,
+          "z": 3
+        },
+        {
+          "x": 5,
+          "z": 4
+        },
+        {
+          "x": 5,
+          "z": 5
+        }
+      ]
+    },
+    "path": "UDUDRRLLUDDRLUUDDRRRLLLUUDUDUDDRDRRUUULLRRDDDLLURLLUUDRDRRULLRRUUR",
+    "moves": 66,
+    "pushes": 12,
+    "states": 10594,
+    "productionMoves": 66,
+    "ablations": {
+      "withoutIce": {
+        "path": "DRDRRLLULUUDUDUDDDRDRRUUULLRRDDDLLURLLUUDDRDRRULLRRUURR",
+        "moves": 55,
+        "pushes": 10,
+        "states": 18482,
+        "capped": false,
+        "cap": 150000,
+        "exhaustive": false
+      },
+      "withoutPrimary": {
+        "unsolvable": true,
+        "states": 135,
+        "capped": false,
+        "cap": 150000,
+        "exhaustive": true
+      }
+    },
+    "seed": 3842515665,
+    "pathMetrics": {
+      "turns": 8,
+      "playerLongMoves": 7,
+      "robotPushes": 0,
+      "crateInterleaving": 4,
+      "boxSlides": 0,
+      "robotLongMoves": 0
+    },
+    "minimumPushes": 12,
+    "minimumPushProofStates": 10584,
+    "permanentGoalProof": {
+      "unsolvable": false,
+      "states": 10594,
+      "capped": false
+    },
+    "pathEncoding": "URDL are up, right, down, left",
+    "shortestMoveProof": {
+      "algorithm": "Breadth-first search over complete engine states",
+      "states": 10594,
+      "exhaustiveThroughWinningDepth": true
+    }
+  },
+  {
+    "level": {
+      "name": "Remote Winter",
+      "subtitle": "",
+      "hint": "The robot must work around the icy plate while moving both crates. Line up your exit crossing before releasing the plate.",
+      "map": [
+        "~~~~~~~~~~~~",
+        "~    #~ #  ~",
+        "~#$   ~ $$ ~",
+        "~    #~.   ~",
+        "~   @.~# # ~",
+        "~E####~ .  ~",
+        "~~~~~~~~~~~~"
+      ],
+      "robots": [
+        {
+          "x": 9,
+          "z": 3,
+          "direction": 0
+        }
+      ],
+      "bridges": [
+        {
+          "x": 1,
+          "z": 4,
+          "height": 0,
+          "channel": 2
+        }
+      ],
+      "switches": [
+        {
+          "x": 8,
+          "z": 3,
+          "channel": 2
+        }
+      ],
+      "ice": [
+        {
+          "x": 4,
+          "z": 2
+        },
+        {
+          "x": 10,
+          "z": 2
+        },
+        {
+          "x": 3,
+          "z": 3
+        },
+        {
+          "x": 8,
+          "z": 3
+        },
+        {
+          "x": 10,
+          "z": 5
+        }
+      ]
+    },
+    "path": "LLRRUULDULLRDDRDRLLUULDURDDRUULDULDRDRUULDDRUULDURDLLDRRRLULUDDURDLLD",
+    "moves": 69,
+    "pushes": 12,
+    "states": 20137,
+    "productionMoves": 69,
+    "ablations": {
+      "withoutIce": {
+        "unsolvable": true,
+        "states": 66781,
+        "capped": false,
+        "cap": 150000,
+        "exhaustive": true
+      },
+      "withoutPrimary": {
+        "unsolvable": true,
+        "states": 77,
+        "capped": false,
+        "cap": 150000,
+        "exhaustive": true
+      }
+    },
+    "seed": 764934379,
+    "pathMetrics": {
+      "turns": 0,
+      "playerLongMoves": 13,
+      "robotPushes": 7,
+      "crateInterleaving": 6,
+      "boxSlides": 1,
+      "robotLongMoves": 8
+    },
+    "minimumPushes": 12,
+    "minimumPushProofStates": 22944,
+    "permanentGoalProof": {
+      "unsolvable": false,
+      "states": 20105,
+      "capped": false
+    },
+    "pathEncoding": "URDL are up, right, down, left",
+    "shortestMoveProof": {
+      "algorithm": "Breadth-first search over complete engine states",
+      "states": 20137,
+      "exhaustiveThroughWinningDepth": true
+    }
+  },
+  {
+    "level": {
+      "name": "Signal Drift",
+      "subtitle": "",
+      "hint": "Use the upper ice to change your timing against the robot. Finish its right-hand delivery before crossing the bridge.",
+      "map": [
+        "~~~~~~~~~~~~",
+        "~     ~  . ~",
+        "~  #.#~ # #~",
+        "~ $# #~ $$#~",
+        "~    #~   .~",
+        "~E#@  ~   #~",
+        "~~~~~~~~~~~~"
+      ],
+      "robots": [
+        {
+          "x": 9,
+          "z": 5,
+          "direction": 0
+        }
+      ],
+      "bridges": [
+        {
+          "x": 1,
+          "z": 4,
+          "height": 0,
+          "channel": 2
+        }
+      ],
+      "switches": [
+        {
+          "x": 10,
+          "z": 4,
+          "channel": 2
+        }
+      ],
+      "ice": [
+        {
+          "x": 4,
+          "z": 1
+        },
+        {
+          "x": 8,
+          "z": 1
+        },
+        {
+          "x": 1,
+          "z": 2
+        }
+      ]
+    },
+    "path": "RULLULURDDUULDRUULRDDUURRLLDDLURDDLRUURLLDDRRDRULLUUULDRDRDRUUDLLLD",
+    "moves": 67,
+    "pushes": 12,
+    "states": 17720,
+    "productionMoves": 67,
+    "ablations": {
+      "withoutIce": {
+        "path": "RULLULUURRRRLDDUULLLDDRDRRUUULLDDLDRRDRUUDLLLD",
+        "moves": 46,
+        "pushes": 12,
+        "states": 48662,
+        "capped": false,
+        "cap": 150000,
+        "exhaustive": false
+      },
+      "withoutPrimary": {
+        "unsolvable": true,
+        "states": 75,
+        "capped": false,
+        "cap": 150000,
+        "exhaustive": true
+      }
+    },
+    "seed": 2847049652,
+    "pathMetrics": {
+      "turns": 0,
+      "playerLongMoves": 7,
+      "robotPushes": 5,
+      "crateInterleaving": 4,
+      "boxSlides": 0,
+      "robotLongMoves": 2
+    },
+    "minimumPushes": 12,
+    "minimumPushProofStates": 17703,
+    "permanentGoalProof": {
+      "unsolvable": false,
+      "states": 13913,
+      "capped": false
+    },
+    "pathEncoding": "URDL are up, right, down, left",
+    "shortestMoveProof": {
+      "algorithm": "Breadth-first search over complete engine states",
+      "states": 17720,
+      "exhaustiveThroughWinningDepth": true
+    }
+  },
+  {
+    "level": {
+      "name": "Crossed Dispatch",
+      "subtitle": "",
+      "hint": "The lower ice sends cargo across the robot bay. Catch each crate before lining up the robot with the plate.",
+      "map": [
+        "~~~~~~~~~~~~",
+        "~     ~  # ~",
+        "~ $#. ~    ~",
+        "~  #  ~ $  ~",
+        "~   @#~ $# ~",
+        "~E#   ~.  .~",
+        "~~~~~~~~~~~~"
+      ],
+      "robots": [
+        {
+          "x": 8,
+          "z": 5,
+          "direction": 0
+        }
+      ],
+      "bridges": [
+        {
+          "x": 1,
+          "z": 4,
+          "height": 0,
+          "channel": 2
+        }
+      ],
+      "switches": [
+        {
+          "x": 10,
+          "z": 4,
+          "channel": 2
+        }
+      ],
+      "ice": [
+        {
+          "x": 3,
+          "z": 1
+        },
+        {
+          "x": 1,
+          "z": 2
+        },
+        {
+          "x": 10,
+          "z": 2
+        },
+        {
+          "x": 3,
+          "z": 4
+        },
+        {
+          "x": 10,
+          "z": 4
+        },
+        {
+          "x": 8,
+          "z": 5
+        },
+        {
+          "x": 9,
+          "z": 5
+        }
+      ]
+    },
+    "path": "URLDUUULRRDLULDDLURRRDLULDULRRDURDULLDDLDRRDRUURUUDDLDLLD",
+    "moves": 57,
+    "pushes": 12,
+    "states": 21278,
+    "productionMoves": 57,
+    "ablations": {
+      "withoutIce": {
+        "unsolvable": false,
+        "states": 287633,
+        "expandedStates": 282302,
+        "capped": false,
+        "cap": 350000,
+        "productionSolved": true,
+        "productionMoves": 56,
+        "moves": 56,
+        "pushes": 16,
+        "exhaustive": false
+      },
+      "withoutPrimary": {
+        "unsolvable": true,
+        "states": 115,
+        "capped": false,
+        "cap": 150000,
+        "exhaustive": true
+      }
+    },
+    "seed": 2644516516,
+    "pathMetrics": {
+      "turns": 0,
+      "playerLongMoves": 9,
+      "robotPushes": 7,
+      "crateInterleaving": 3,
+      "boxSlides": 2,
+      "robotLongMoves": 8
+    },
+    "minimumPushes": 12,
+    "minimumPushProofStates": 21731,
+    "permanentGoalProof": {
+      "unsolvable": false,
+      "states": 21202,
+      "capped": false
+    },
+    "pathEncoding": "URDL are up, right, down, left",
+    "shortestMoveProof": {
+      "algorithm": "Breadth-first search over complete engine states",
+      "states": 21278,
+      "exhaustiveThroughWinningDepth": true
+    }
+  }
+]

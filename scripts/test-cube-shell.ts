@@ -9,7 +9,7 @@ const precision=1e5;
 const key=(v:THREE.Vector3)=>v.toArray().map(n=>Math.round(n*precision)).join(',');
 const edgeKey=(a:THREE.Vector3,b:THREE.Vector3)=>[key(a),key(b)].sort().join('|');
 const triangleKey=(a:THREE.Vector3,b:THREE.Vector3,c:THREE.Vector3)=>[key(a),key(b),key(c)].sort().join('|');
-const safe=(level:Level,p:Point)=>!['~','#'].includes(level.map[p.z]?.[p.x]??'#');
+const safe=(level:Level,p:Point)=>!['~','#'].includes(level.map[p.z]?.[p.x]??'#')&&!level.bridges?.some(b=>b.x===p.x&&b.z===p.z);
 const directions=[[0,-1],[1,0],[0,1],[-1,0]] as const;
 
 function vectors(geometry:THREE.BufferGeometry):THREE.Vector3[] {
@@ -24,7 +24,7 @@ function verify(level:Level,label:string) {
   assert.ok(n,`${label}: cube size exists`);
   assert.equal(level.map.length,n,`${label}: cube map has the declared height`);
   assert.ok(level.map.every(row=>row.length===n*6),`${label}: cube map has six complete faces`);
-  const shell=buildCubeShellGeometry(level),vertices=vectors(shell.surface);
+  const shell=buildCubeShellGeometry(level),vertices=[...vectors(shell.surface),...vectors(shell.iceSurface)];
   assert.equal(vertices.length%3,0,`${label}: surface contains complete triangles`);
 
   let cells=0,exposed=0;
@@ -87,7 +87,7 @@ function fixture(n:number,occupied:Point[],name:string):Level {
 
 const results=[];
 for(const [index,level] of LEVELS.entries())if(level.cube)results.push(verify(level,`room ${index+1} ${level.name}`));
-assert.equal(results.length,4,'current cube chapter has rooms 45 through 48');
+assert.equal(results.length,8,'four introductory and four challenge cube rooms');
 
 const n=3,all=Array.from({length:n},(_,z)=>Array.from({length:n*6},(_,x)=>({x,z}))).flat();
 results.push(verify(fixture(n,all,'full cube'),'full cube'));
