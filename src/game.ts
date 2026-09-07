@@ -1,4 +1,6 @@
 import './style.css';
+import {createCubeView,cubeWorldPoint,type CubeMotion} from './cube-view';
+import {cubeFace} from './cube-topology';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { createRestAnimation, type RestAnimation } from './rest';
@@ -19,6 +21,7 @@ const camera = new THREE.PerspectiveCamera(38, innerWidth / innerHeight, .1, 180
 const room = new THREE.Group(), player = new THREE.Group(); scene.add(room, player);
 let dark = false, ready = false, state: State = createState(0), history: State[] = [];
 let crates: THREE.Group[] = [], pads: (PadArt & { point: Point; authoredPoint?:Point })[] = [], exit: PadArt;
+let cubeView:ReturnType<typeof createCubeView>|null=null;
 let rotatorArt: {content:THREE.Group;art:ReturnType<typeof createRotatorArt>;center:THREE.Vector3}[]=[];
 type ComplexPhase={kind:'move'|'machines'|'rotate';before:State;after:State;duration:number};
 let robotArt: ReturnType<typeof createRobotArt>[] = [];
@@ -37,7 +40,7 @@ $('sound').onclick=()=>{sound.unlock();sound.toggle();soundButton();};
 window.addEventListener('pointerdown',()=>sound.unlock(),{passive:true});
 window.addEventListener('keydown',()=>sound.unlock());
 document.addEventListener('visibilitychange',()=>sound.visibilityChanged());
-let motion: { from: THREE.Vector3; to: THREE.Vector3; boxes: THREE.Vector3[]; time: number; duration: number; moveDuration:number; before:State; mechanisms:boolean; boxTos:THREE.Vector3[]; jump: boolean; drop: boolean; complex?:{phases:ComplexPhase[];heading:number;boxAngles:number[]}; iceMotion?:{playerDuration:number;boxDurations:number[];playerGlide:boolean}; robotTurn?: {middle:State; together:boolean; firstMachine:number; robotDuration:number; secondMachine:number} } | null = null;
+let motion: { from: THREE.Vector3; to: THREE.Vector3; boxes: THREE.Vector3[]; time: number; duration: number; moveDuration:number; before:State; mechanisms:boolean; boxTos:THREE.Vector3[]; jump: boolean; drop: boolean; cubeMotion?:CubeMotion; complex?:{phases:ComplexPhase[];heading:number;boxAngles:number[]}; iceMotion?:{playerDuration:number;boxDurations:number[];playerGlide:boolean}; robotTurn?: {middle:State; together:boolean; firstMachine:number; robotDuration:number; secondMachine:number} } | null = null;
 let fallingTime = 0, falls = 0, fallStartY = 0;
 let facing: Point = {x:0,z:-1};
 const jumpBones: {bone:THREE.Object3D; base:THREE.Quaternion; angle:number}[] = [];
@@ -45,8 +48,8 @@ let yaw = .12, pitch = .82, zoom = 1, overview = false, drag = false, lastX = 0,
 function resetCameraAngle() {
   // See the lower landing pockets beside the new upper decks.
   const originalTerrace = state.level >= 14 && state.level <= 16;
-  yaw = originalTerrace ? -1 : .12;
-  pitch = state.level >= 27 ? .9 : state.level >= 24 ? 1.18 : originalTerrace ? 1.1 : .82;
+  yaw = LEVELS[state.level].cube ? .52 : originalTerrace ? -1 : .12;
+  pitch = LEVELS[state.level].cube ? .64 : state.level >= 27 ? .9 : state.level >= 24 ? 1.18 : originalTerrace ? 1.1 : .82;
 }
 let hintWorker: Worker | null = null;
 const pressed = new Set<string>(); let touchDir: Point | null = null;
@@ -66,7 +69,7 @@ function worldTier(p:Point, pose:State=state) {
   if(!level.jumping||tileAt(level,p.x,p.z)!=='#')return heightAt(level,p,pose);
   return Math.max(heightAt(level,p),...[[0,-1],[1,0],[0,1],[-1,0]].map(([dx,dz])=>heightAt(level,{x:p.x+dx,z:p.z+dz})));
 }
-function point(p: Point, pose:State=state) { const map = LEVELS[pose.level].map; return new THREE.Vector3((p.x - (Math.max(...map.map(r => r.length)) - 1) / 2) * CELL, worldTier(p,pose)*TIER_HEIGHT, (p.z - (map.length - 1) / 2) * CELL); }
+function point(p: Point, pose:State=state) { if(LEVELS[pose.level].cube)return cubeWorldPoint(LEVELS[pose.level],p,pose); const map = LEVELS[pose.level].map; return new THREE.Vector3((p.x - (Math.max(...map.map(r => r.length)) - 1) / 2) * CELL, worldTier(p,pose)*TIER_HEIGHT, (p.z - (map.length - 1) / 2) * CELL); }
 function syncMachinery(before:State=state, progress=1, after:State=state) {
   const level=LEVELS[state.level], smooth=progress*progress*(3-2*progress);
   for(const m of machineArt){const a=Number(channelActive(level,m.channel,before)),b=Number(channelActive(level,m.channel,after));m.art.setProgress(a+(b-a)*smooth);}
@@ -99,9 +102,13 @@ function loadLevel(index: number) {
   state = createState(index); history = []; motion = null; fallingTime = 0; clearInput(); hintId++;
   hintWorker?.terminate(); hintWorker = null; $<HTMLButtonElement>('hint').disabled = false;
   setMoving(false); $('win').hidden = true; $('toast').classList.remove('visible');
+  cubeView?.dispose();cubeView=null;
   rotatorArt.forEach(r=>r.art.dispose());rotatorArt=[];
   robotArt.forEach(a=>a.dispose()); robotArt=[];robotPushWeights=[];robotMileage=[];robotLast=[];
   room.clear(); disposeRoomArt(); disposeMachineryArt(); switchArt=[];machineArt=[];crates = []; pads = []; const level = LEVELS[index]; const staticArt = new THREE.Group();room.add(staticArt);
+  if(level.cube){
+    cubeView=createCubeView(level,room);pads=cubeView.pads;exit=cubeView.exit;
+  }else{
   for(const r of level.rotators||[]){const center=point(r);center.y=0;const content=new THREE.Group();content.position.copy(center);room.add(content);const art=createRotatorArt(r.radius,r.channel);art.root.position.copy(center);room.add(art.root);rotatorArt.push({content,art,center});}
   const rotatingPads:{root:THREE.Group;index:number}[]=[];
   for (let z = 0; z < level.map.length; z++) for (let x = 0; x < level.map[z].length; x++) {
@@ -127,9 +134,11 @@ function loadLevel(index: number) {
   for(const b of level.bridges||[]){const art=createBridgeArt(b.channel);art.root.position.copy(point(b));const solid=(x:number,z:number)=>!['~','#'].includes(tileAt(level,x,z));if(Number(solid(b.x-1,b.z))+Number(solid(b.x+1,b.z))>Number(solid(b.x,b.z-1))+Number(solid(b.x,b.z+1)))art.root.rotation.y=Math.PI/2;room.add(art.root);machineArt.push({channel:b.channel,art});}
   syncMachinery();
   for(const r of state.robots||[]){const art=createRobotArt();art.root.position.copy(point(r));art.root.rotation.y=robotAngle(r.direction);room.add(art.root);robotArt.push(art);robotPushWeights.push(0);robotMileage.push(0);robotLast.push(art.root.position.clone());}
+  }
   const template = batchArt(createCrate());
   for (const b of state.boxes) { const crate = template.clone(true); crate.position.copy(point(b)); room.add(crate); crates.push(crate); }
   player.position.copy(point(state.player)); player.rotation.set(0, 0, 0);
+  cubeView?.sync(state,player,crates);
   levelSelect.value = String(index); document.querySelector('h1 small')!.textContent = String(index + 1).padStart(2, '0');
   zoom = 1; resetCameraAngle(); facing={x:0,z:-1};
   $('lesson').textContent = level.lesson || ''; $('lesson').hidden = !level.lesson;
@@ -147,6 +156,7 @@ function cameraDirection(dir:Point):Point {
   return {x:Math.abs(x)>Math.abs(z)?Math.sign(x):0,z:Math.abs(x)>Math.abs(z)?0:Math.sign(z)};
 }
 function cameraStep(dir: Point) {
+  if(LEVELS[state.level].cube&&pitch<.35)pitch=.64;
   const d=cameraDirection(dir);takeStep(d.x,d.z);
 }
 function syncRotators(pose:State=state) {
@@ -218,6 +228,19 @@ function takeStep(dx: number, dz: number) {
     setMoving(false);
     return;
   }
+  if(cubeView){
+    const size=LEVELS[state.level].cube!.size;
+    const crossing=cubeFace(size,before.player)!==cubeFace(size,next.player);
+    const cargoCrossing=before.boxes.some((b,i)=>cubeFace(size,b)!==cubeFace(size,next.boxes[i]));
+    const duration=crossing?1.05:cargoCrossing?.85:next.pushes>before.pushes?.34:.26;
+    const cubeMotion=cubeView.begin(before,crates,{x:dx,z:dz});
+    history.push(before);state=next;cancelHint();
+    motion={from:player.position.clone(),to:point(next.player),boxes:crates.map(c=>c.position.clone()),boxTos:next.boxes.map(p=>point(p)),time:0,duration,moveDuration:duration,before,jump:false,drop:false,mechanisms:false,cubeMotion};
+    sound.play(next.pushes>before.pushes?'push':'step');
+    if(crossing){sound.play('push',.25,.35);sound.play('land',duration-.05,.4);}
+    if(next.won)sound.play('exit',duration);
+    setMoving(true);updateHUD();return;
+  }
   if(LEVELS[before.level].rotators?.length||before.level>=36){takeComplexStep(before,next,dx,dz);return;}
   history.push(before); state = next; cancelHint();
   const middle=before.robots?.length ? attemptMove(before,dx,dz,false)! : next;
@@ -263,6 +286,7 @@ function undo() {
   player.position.copy(point(state.player)); player.rotation.x = player.rotation.z = 0;
   crates.forEach((c, i) => { c.position.copy(point(state.boxes[i])); c.rotation.set(0, 0, 0); });
   robotArt.forEach((a,i)=>{a.root.position.copy(point(state.robots![i]));a.root.rotation.set(0,robotAngle(state.robots![i].direction),0);robotLast[i].copy(a.root.position);});
+  cubeView?.sync(state,player,crates,facing);
   syncMachinery(); syncRotators(); $('win').hidden = true; updateHUD();
 }
 function hint() {
@@ -299,7 +323,7 @@ window.addEventListener('keydown', e => {
 });
 window.addEventListener('keyup', e => pressed.delete(e.code)); window.addEventListener('blur', clearInput);
 renderer.domElement.addEventListener('pointerdown', e => { drag = true; lastX = e.clientX; lastY = e.clientY; renderer.domElement.setPointerCapture(e.pointerId); });
-renderer.domElement.addEventListener('pointermove', e => { if (!drag) return; yaw -= (e.clientX - lastX) * .005; pitch = THREE.MathUtils.clamp(pitch + (e.clientY - lastY) * .004, .48, 1.3); lastX = e.clientX; lastY = e.clientY; });
+renderer.domElement.addEventListener('pointermove', e => { if (!drag) return; yaw -= (e.clientX - lastX) * .005; pitch = THREE.MathUtils.clamp(pitch + (e.clientY - lastY) * .004, LEVELS[state.level].cube ? -1.3 : .48, 1.3); lastX = e.clientX; lastY = e.clientY; });
 renderer.domElement.addEventListener('pointerup', () => drag = false); renderer.domElement.addEventListener('pointercancel', () => drag = false);
 renderer.domElement.addEventListener('wheel', e => { e.preventDefault(); zoom = THREE.MathUtils.clamp(zoom + e.deltaY * .001, .55, 1.7); }, { passive: false });
 for (const button of document.querySelectorAll<HTMLButtonElement>('#touch button[data-dir]')) {
@@ -378,7 +402,8 @@ function render(now: number) {
     if (motion) {
       motion.time += dt; const t = Math.min(motion.time / motion.moveDuration, 1);
       const m=motion;
-      if(m.complex) animateComplexTurn(m); else if(m.robotTurn) animateRobotTurn(m); else {
+      if(m.cubeMotion){cubeView!.animate(m.before,state,m.time/m.duration,m.cubeMotion,player,crates);setMoving(m.time<m.duration);}
+      else if(m.complex) animateComplexTurn(m); else if(m.robotTurn) animateRobotTurn(m); else {
       const playerT=m.iceMotion?Math.min(1,m.time/Math.max(.01,m.iceMotion.playerDuration)):t;
       const progress=m.drop?Math.min(playerT/.55,1):playerT;
       player.position.lerpVectors(m.from,m.to,progress*progress*(3-2*progress));
@@ -426,6 +451,13 @@ function render(now: number) {
     rest?.update({time:simulationTime,delta:dt,standing:!moving&&!motion&&!state.fall});
     for(const pose of jumpBones){pose.base.copy(pose.bone.quaternion);if(motion?.jump){const t=Math.min(motion.time/motion.moveDuration,1);pose.bone.rotateX(pose.angle*Math.sin(Math.PI*t));}}
   }
+  if(LEVELS[state.level].cube){
+    const span=LEVELS[state.level].cube!.size*CELL;
+    const distance=(span*1.8+2)/(Math.min(1,camera.aspect)*.66)*zoom*(overview?1.18:1)*(camera.aspect<.8?1:1.15);
+    lookAt.lerp(new THREE.Vector3(0,.6,0),1-Math.exp(-4*dt));
+    desired.set(Math.sin(yaw)*Math.cos(pitch)*distance,Math.sin(pitch)*distance,Math.cos(yaw)*Math.cos(pitch)*distance).add(lookAt);
+    camera.position.lerp(desired,1-Math.exp(-7*dt));camera.lookAt(lookAt);
+  }else{
   const map = LEVELS[state.level].map, width = Math.max(...map.map(r => r.length)) * CELL, height = map.length * CELL;
   const fit = Math.max(width / (camera.aspect * .63), height / .67) * 1.24;
   const mobileTerrace = camera.aspect < .8 && !!LEVELS[state.level].jumping;
@@ -439,9 +471,10 @@ function render(now: number) {
   lookAt.lerp(new THREE.Vector3(player.position.x * follow, .35 + (robotRoom?0:heightAt(LEVELS[state.level],state.player,state)*TIER_HEIGHT*.55), player.position.z * follow), 1 - Math.exp(-4 * dt));
   desired.set(Math.sin(yaw) * Math.cos(pitch) * distance, Math.sin(pitch) * distance, Math.cos(yaw) * Math.cos(pitch) * distance).add(lookAt);
   camera.position.lerp(desired, 1 - Math.exp(-7 * dt)); camera.lookAt(lookAt);
+  }
   if(filmCamera){const c=filmCamera,target=new THREE.Vector3(...c.target as [number,number,number]);camera.position.set(Math.sin(c.yaw)*Math.cos(c.pitch)*c.distance,Math.sin(c.pitch)*c.distance,Math.cos(c.yaw)*Math.cos(c.pitch)*c.distance).add(target);camera.lookAt(target);}
   renderer.render(scene, camera);
 }
 camera.position.set(0, 15, 13); frameHandle=requestAnimationFrame(render);
 window.addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); });
-(window as any).__INK_GAME__ = { state: () => JSON.parse(JSON.stringify(state)), ready: () => ready, animating: () => !!motion || !!state.fall, loadLevel, step: takeStep, undo, playerWorld:()=>player.position.toArray(), robotsWorld:()=>robotArt.map(a=>a.root.position.toArray()), robotRotations:()=>robotArt.map(a=>a.root.rotation.y), cratesWorld:()=>crates.map(c=>c.position.toArray()), solved: () => solved(state), theme: () => dark ? 'black' : 'white', restWeight:()=>rest?.weight??0, soundReady:()=>sound.ready, soundMuted:()=>sound.muted, captureStart:()=>{filming=true;cancelAnimationFrame(frameHandle);clearInput();sound.stop();renderer.setPixelRatio(1);document.body.classList.add('filming');}, captureTick:(dt:number)=>render(previous+dt*1000), captureCamera:(c:typeof filmCamera)=>{filmCamera=c;}, captureTheme:(value:boolean)=>{dark=value;theme();}, capturePose:(rotation:number)=>{player.rotation.y=rotation;}, captureRestBones:()=>['Spine02','Spine01','Spine','Head','LeftFoot','RightFoot'].map(name=>{const b=player.getObjectByName(name)!;return {name,q:b.quaternion.toArray(),position:b.getWorldPosition(new THREE.Vector3()).toArray()};}), captureBones:()=>jumpBones.map(p=>({name:p.bone.name,q:p.bone.quaternion.toArray()})), machinery:()=>({switches:switchArt.map(s=>({channel:s.channel,active:channelActive(LEVELS[state.level],s.channel,state)})),devices:machineArt.length}), levelCount: LEVELS.length, iceTiles:()=>(LEVELS[state.level].ice||[]).map(p=>rotationPoint(LEVELS[state.level],p,state)), rotatorsWorld:()=>rotatorArt.map(r=>({position:r.content.position.toArray(),angle:r.content.rotation.y})),padsWorld:()=>pads.map(p=>({point:p.point,world:p.root.getWorldPosition(new THREE.Vector3()).toArray()})), falls: () => falls, art: () => ({ pads: pads.map(p => ({ point: p.point, active: state.boxes.some(b => b.x === p.point.x && b.z === p.point.z) })), exit: solved(state), meshes: renderer.info.render.calls }) };
+(window as any).__INK_GAME__ = { state: () => JSON.parse(JSON.stringify(state)), ready: () => ready, animating: () => !!motion || !!state.fall, loadLevel, step: takeStep, undo, playerWorld:()=>player.position.toArray(), robotsWorld:()=>robotArt.map(a=>a.root.position.toArray()), robotRotations:()=>robotArt.map(a=>a.root.rotation.y), cratesWorld:()=>crates.map(c=>c.position.toArray()), solved: () => solved(state), theme: () => dark ? 'black' : 'white', restWeight:()=>rest?.weight??0, soundReady:()=>sound.ready, soundMuted:()=>sound.muted, captureStart:()=>{filming=true;cancelAnimationFrame(frameHandle);clearInput();sound.stop();renderer.setPixelRatio(1);document.body.classList.add('filming');}, captureTick:(dt:number)=>render(previous+dt*1000), captureCamera:(c:typeof filmCamera)=>{filmCamera=c;}, captureTheme:(value:boolean)=>{dark=value;theme();}, capturePose:(rotation:number)=>{player.rotation.y=rotation;}, captureRestBones:()=>['Spine02','Spine01','Spine','Head','LeftFoot','RightFoot'].map(name=>{const b=player.getObjectByName(name)!;return {name,q:b.quaternion.toArray(),position:b.getWorldPosition(new THREE.Vector3()).toArray()};}), captureBones:()=>jumpBones.map(p=>({name:p.bone.name,q:p.bone.quaternion.toArray()})), machinery:()=>({switches:switchArt.map(s=>({channel:s.channel,active:channelActive(LEVELS[state.level],s.channel,state)})),devices:machineArt.length}), levelCount: LEVELS.length, cubeWorld:()=>cubeView?{quaternion:cubeView.root.quaternion.toArray(),face:cubeFace(LEVELS[state.level].cube!.size,state.player),playerQuaternion:player.quaternion.toArray(),crateQuaternions:crates.map(c=>c.quaternion.toArray())}:null, iceTiles:()=>(LEVELS[state.level].ice||[]).map(p=>rotationPoint(LEVELS[state.level],p,state)), rotatorsWorld:()=>rotatorArt.map(r=>({position:r.content.position.toArray(),angle:r.content.rotation.y})),padsWorld:()=>pads.map(p=>({point:p.point,world:p.root.getWorldPosition(new THREE.Vector3()).toArray()})), falls: () => falls, art: () => ({ pads: pads.map(p => ({ point: p.point, active: state.boxes.some(b => b.x === p.point.x && b.z === p.point.z) })), exit: solved(state), meshes: renderer.info.render.calls }) };

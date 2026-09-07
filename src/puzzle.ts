@@ -1,3 +1,5 @@
+import { CUBE_LEVELS } from './cube-levels.ts';
+import { attemptCubeMove } from './cube-topology.ts';
 import { ROTATION_LEVELS } from "./rotation-levels.ts";
 import { ICE_LEVELS } from './ice-levels.ts';
 import { ROOM26 } from './room26-replacement.ts';
@@ -17,6 +19,7 @@ export type State = {
   boxes: Point[];
   robots?: RobotState[];
   rotations?: number[];
+  cubeTurn?: number;
   moves: number;
   pushes: number;
   won: boolean;
@@ -28,6 +31,7 @@ export type Level = {
   subtitle: string;
   hint: string;
   map: string[];
+  cube?: { size: number };
   heights?: number[][];
   jumping?: boolean;
   rotators?: (Point & { radius: number; channel: number })[];
@@ -127,7 +131,7 @@ export function createState(index: number): State {
     if (cell === "$") boxes.push({ x, z });
   }));
   if (!player) throw new Error(`Level ${index} has no player`);
-  return { level: index, player, boxes, ...(level.rotators?.length ? {rotations: level.rotators.map(()=>0)} : {}), ...(level.robots?.length ? { robots: level.robots.map(r => ({...r, blocked:false})) } : {}), moves: 0, pushes: 0, won: false, fall: null };
+  return { level: index, player, boxes, ...(level.cube ? {cubeTurn:0} : {}), ...(level.rotators?.length ? {rotations: level.rotators.map(()=>0)} : {}), ...(level.robots?.length ? { robots: level.robots.map(r => ({...r, blocked:false})) } : {}), moves: 0, pushes: 0, won: false, fall: null };
 }
 
 export function solved(state: State): boolean {
@@ -168,6 +172,7 @@ export function attemptMove(state: State, dx: number, dz: number, advanceRobots 
   if (state.won || state.fall || !Number.isInteger(dx) || !Number.isInteger(dz) || Math.abs(dx) + Math.abs(dz) !== 1) return null;
   const level = LEVELS[state.level];
   if (!level) return null;
+  if (level.cube) return attemptCubeMove(level,state,dx,dz);
   const nextPlayer = { x: state.player.x + dx, z: state.player.z + dz };
   if (state.robots?.some(r => same(r, nextPlayer))) return null;
   const nextTile = tileAt(level, nextPlayer.x, nextPlayer.z, state);
@@ -296,7 +301,7 @@ export function solve(state: State): Move[] | null {
   if (state.won) return [];
   const level = LEVELS[state.level];
   if (!level) return null;
-  if (level.rotators?.length || level.switches?.length || level.robots?.length || level.ice?.length) return solveMachinery(state);
+  if (level.cube || level.rotators?.length || level.switches?.length || level.robots?.length || level.ice?.length) return solveMachinery(state);
   type Node = { player: Point; boxes: Point[]; parent: number; edge: Move[] };
   const start: Node = { player: { ...state.player }, boxes: state.boxes.map((box) => ({ ...box })), parent: -1, edge: [] };
   const queue: Node[] = [start];
@@ -525,7 +530,7 @@ LEVELS.push(...ORIGINAL_TERRACES);
 // Switch occupancy changes walkable routes and heights even without a crate push.
 // Search complete moves here; the original static-room push solver remains unchanged.
 function solveMachinery(initial: State): Move[] | null {
-  const key = (s: State) => `${pointKey(s.player)}|${boxKey(s.boxes)}|${(s.robots||[]).map(r=>pointKey(r)).join(";")}|${(s.rotations||[]).join(",")}`;
+  const key = (s: State) => `${pointKey(s.player)}|${boxKey(s.boxes)}|${(s.robots||[]).map(r=>pointKey(r)).join(";")}|${(s.rotations||[]).join(",")}|${s.cubeTurn??0}`;
   const queue: {state: State; parent: number; direction: Move | null}[] = [{state: initial, parent: -1, direction: null}];
   const seen = new Set([key(initial)]);
   for (let cursor = 0; cursor < queue.length && queue.length < 350_000; cursor++) {
@@ -552,3 +557,5 @@ LEVELS.push(...ROBOT_LEVELS);
 
 LEVELS.push(...ICE_LEVELS);
 LEVELS.push(...ROTATION_LEVELS);
+
+LEVELS.push(...CUBE_LEVELS);

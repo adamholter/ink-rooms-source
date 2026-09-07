@@ -89,3 +89,8 @@ next-env.d.ts
 
 !/scripts/fixtures/pre-rotation-difficulty.json
 !/scripts/audit-data/rotation-difficulty.md
+
+!/scripts/fixtures/cube-room-design.json
+!/scripts/fixtures/pre-cube-levels.json
+!/scripts/audit-data/cube-expansion-audit.json
+!/scripts/audit-data/cube-expansion-audit.md

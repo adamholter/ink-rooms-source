@@ -3,7 +3,7 @@ import {readFileSync} from 'node:fs';
 import {LEVELS,createState,attemptMove,solve,channelActive,type State} from '../src/puzzle.ts';
 const read=(name:string)=>JSON.parse(readFileSync(new URL(`./fixtures/${name}.json`,import.meta.url),'utf8'));
 const baseline=read('mirror-robot-baseline');
-assert.equal(LEVELS.length,44);
+assert.equal(LEVELS.length,48);
 for(let i=0;i<27;i++)assert.deepEqual(LEVELS[i],{...baseline[i],name:({11:'Cargo Exchange',26:'Coupled Circuit'} as Record<number,string>)[i]??baseline[i].name},`Room ${i+1} preserved`);
 const replacement=read('room26-design'),r26=LEVELS[25];assert.deepEqual(r26,replacement.level);
 let transfer=createState(25);const transferPath=solve(transfer)!;assert.ok(transferPath);assert.equal(transferPath.length,45);

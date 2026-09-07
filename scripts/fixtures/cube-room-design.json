@@ -1,0 +1,437 @@
+{
+  "method": "Original seeded wall grids on the six-face topology, legal forward crate walks, exact shortest-move breadth-first search, difficulty selection, and engine replay. No public level layouts were input. Independent push-state breadth-first search records minimum pushes. Exhaustive searches also disable all edge crossings, then only crate wrapping, to prove the mechanic is necessary.",
+  "directionEncoding": "R D L U are world-space inputs. canonicalPath indexes local face directions R D L U.",
+  "levels": [
+    {
+      "trial": 40,
+      "map": [
+        "#####  # #   # # ##     ",
+        "#### @###   ##### #  #  ",
+        "     ######$  ##   #E###",
+        " #  ######  # ##.#######"
+      ],
+      "canonicalPath": [
+        3,
+        0,
+        3,
+        2,
+        3,
+        2,
+        2,
+        3,
+        1,
+        1,
+        1,
+        3,
+        3,
+        3,
+        3,
+        1,
+        1
+      ],
+      "moves": 17,
+      "pushes": 2,
+      "playerCrossings": 3,
+      "crateCrossings": 1,
+      "playerFacesVisited": [
+        1,
+        5,
+        2
+      ],
+      "searchStates": 75,
+      "withoutEdgeCrossings": {
+        "unsolvable": true,
+        "states": 5
+      },
+      "initialBoxes": [
+        43
+      ],
+      "goalCells": [
+        76
+      ],
+      "floorTiles": 42,
+      "engineVerified": true,
+      "winningPath": "URUURUURRRRLLLLLL",
+      "room": 45,
+      "name": "Over the Edge",
+      "finalState": {
+        "level": 44,
+        "player": {
+          "x": 20,
+          "z": 2
+        },
+        "boxes": [
+          {
+            "x": 16,
+            "z": 3
+          }
+        ],
+        "cubeTurn": 3,
+        "moves": 17,
+        "pushes": 2,
+        "won": true,
+        "fall": null
+      },
+      "minimumPushes": 2,
+      "withoutCrateCrossings": {
+        "unsolvable": true,
+        "minimumPushes": null,
+        "states": 2
+      },
+      "designDescription": "One crate begins on the bottom face and finishes across its edge on the front face. The player rolls through the right, back and bottom faces before returning to the exit.",
+      "allSixFacesTraversablyConnected": true
+    },
+    {
+      "trial": 3085,
+      "map": [
+        "      #    #. # ##  .$  ",
+        " #####  ##     ### #   #",
+        "###E # ### ## $@ #    ##",
+        "#   ## #### #  #  ##  # "
+      ],
+      "canonicalPath": [
+        2,
+        1,
+        2,
+        3,
+        3,
+        3,
+        1,
+        2,
+        2,
+        2,
+        3,
+        2,
+        3,
+        2,
+        2,
+        0,
+        1,
+        1,
+        2,
+        3,
+        0,
+        0,
+        3,
+        0,
+        0,
+        1,
+        2,
+        1,
+        1,
+        1,
+        2,
+        3,
+        3,
+        0,
+        3,
+        3
+      ],
+      "moves": 36,
+      "pushes": 7,
+      "playerCrossings": 5,
+      "crateCrossings": 2,
+      "playerFacesVisited": [
+        3,
+        2,
+        5,
+        1,
+        4,
+        0
+      ],
+      "searchStates": 5673,
+      "withoutEdgeCrossings": {
+        "unsolvable": true,
+        "states": 43
+      },
+      "initialBoxes": [
+        58,
+        81
+      ],
+      "goalCells": [
+        48,
+        80
+      ],
+      "floorTiles": 55,
+      "engineVerified": true,
+      "winningPath": "LDLUUUDLLLULURRLUURDLLDLLLULLLLUURUU",
+      "room": 46,
+      "name": "Six Sides In",
+      "finalState": {
+        "level": 45,
+        "player": {
+          "x": 3,
+          "z": 2
+        },
+        "boxes": [
+          {
+            "x": 12,
+            "z": 0
+          },
+          {
+            "x": 20,
+            "z": 0
+          }
+        ],
+        "cubeTurn": 0,
+        "moves": 36,
+        "pushes": 7,
+        "won": true,
+        "fall": null
+      },
+      "minimumPushes": 7,
+      "withoutCrateCrossings": {
+        "unsolvable": true,
+        "minimumPushes": null,
+        "states": 21
+      },
+      "designDescription": "Two crates begin on the left and back faces. Both goals also occupy those faces, but neither crate delivery is possible without crate wrapping. The shortest route visits every face.",
+      "allSixFacesTraversablyConnected": true
+    },
+    {
+      "trial": 56194,
+      "map": [
+        "    ###  #  # E## #    #",
+        " ##    @#   # $  ##   # ",
+        " ## # $# ##      #      ",
+        "  # #  #.##  ## .   #  #"
+      ],
+      "canonicalPath": [
+        2,
+        1,
+        1,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        3,
+        0,
+        0,
+        0,
+        3,
+        2,
+        0,
+        0,
+        3,
+        0,
+        3,
+        3,
+        2,
+        3,
+        2,
+        1,
+        0,
+        1,
+        2,
+        2,
+        0,
+        3,
+        3,
+        3,
+        3,
+        3,
+        1,
+        1,
+        1,
+        0,
+        3,
+        0,
+        0,
+        3,
+        3
+      ],
+      "moves": 46,
+      "pushes": 10,
+      "playerCrossings": 8,
+      "crateCrossings": 4,
+      "playerFacesVisited": [
+        1,
+        4,
+        3,
+        0,
+        5,
+        2
+      ],
+      "searchStates": 10867,
+      "withoutEdgeCrossings": {
+        "unsolvable": true,
+        "states": 29
+      },
+      "initialBoxes": [
+        26,
+        54
+      ],
+      "goalCells": [
+        44,
+        76
+      ],
+      "floorTiles": 64,
+      "engineVerified": true,
+      "winningPath": "LDDLDRRDDDDDLLLDRLLDLDDRDRRURDDULLLDDDDDRURRUU",
+      "room": 47,
+      "name": "Round Trip",
+      "finalState": {
+        "level": 46,
+        "player": {
+          "x": 14,
+          "z": 0
+        },
+        "boxes": [
+          {
+            "x": 16,
+            "z": 3
+          },
+          {
+            "x": 8,
+            "z": 3
+          }
+        ],
+        "cubeTurn": 0,
+        "moves": 46,
+        "pushes": 10,
+        "won": true,
+        "fall": null
+      },
+      "minimumPushes": 10,
+      "withoutCrateCrossings": {
+        "unsolvable": true,
+        "minimumPushes": null,
+        "states": 36
+      },
+      "designDescription": "The two starting crates occupy the right and left faces; goals occupy the bottom and front faces. Four crate transfers and eight player crossings carry the solution around all six faces.",
+      "allSixFacesTraversablyConnected": true
+    },
+    {
+      "trial": 70359,
+      "map": [
+        " #   ##   #    #.#   #E ",
+        "    # # ## #   ####  @##",
+        "  #   $ ##  # #    #   #",
+        "      #      $  #   # #."
+      ],
+      "canonicalPath": [
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        1,
+        3,
+        2,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        3,
+        0,
+        1,
+        2,
+        2,
+        2,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        3,
+        2,
+        2,
+        2,
+        1,
+        2,
+        3,
+        3,
+        3,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        3,
+        3,
+        3,
+        2
+      ],
+      "moves": 50,
+      "pushes": 12,
+      "playerCrossings": 12,
+      "crateCrossings": 6,
+      "playerFacesVisited": [
+        5,
+        3,
+        2,
+        4,
+        0,
+        1
+      ],
+      "searchStates": 6256,
+      "withoutEdgeCrossings": {
+        "unsolvable": true,
+        "states": 7
+      },
+      "initialBoxes": [
+        26,
+        61
+      ],
+      "goalCells": [
+        64,
+        95
+      ],
+      "floorTiles": 67,
+      "engineVerified": true,
+      "winningPath": "LLLLLUUULLDURRDDDDDRDLUUULLLULLLDDDRDLLLRRUUUULLLL",
+      "room": 48,
+      "name": "Seam Allowance",
+      "finalState": {
+        "level": 47,
+        "player": {
+          "x": 22,
+          "z": 0
+        },
+        "boxes": [
+          {
+            "x": 23,
+            "z": 3
+          },
+          {
+            "x": 16,
+            "z": 0
+          }
+        ],
+        "cubeTurn": 0,
+        "moves": 50,
+        "pushes": 12,
+        "won": true,
+        "fall": null
+      },
+      "minimumPushes": 11,
+      "withoutCrateCrossings": {
+        "unsolvable": true,
+        "minimumPushes": null,
+        "states": 1
+      },
+      "designDescription": "The right and left faces hold the crates; the front and back faces hold the goals. Six crate transfers and twelve player crossings require repeated approaches from different faces.",
+      "allSixFacesTraversablyConnected": true
+    }
+  ],
+  "chapterRooms": [
+    45,
+    46,
+    47,
+    48
+  ],
+  "searchStoppedAfterSelection": true
+}
