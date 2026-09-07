@@ -1,6 +1,7 @@
 import * as THREE from 'three';
-import { CUBE_BASES, cubeFace, cubeCellPosition, cubeDirection, cubeStep } from './cube-topology.ts';
-import { CELL, fine, floorTile, createPad, batchArt, type PadArt } from './art.ts';
+import { CUBE_BASES, cubeFace, cubeCellPosition, cubeDirection } from './cube-topology.ts';
+import { CELL, paper, edge, fine, createPad, batchArt, type PadArt } from './art.ts';
+import {buildCubeShellGeometry} from './cube-shell.ts';
 import type { Level, Point, State } from './puzzle.ts';
 const vector=(v:readonly number[])=>new THREE.Vector3(v[0],v[1],v[2]);
 const up=new THREE.Vector3(0,1,0);
@@ -51,6 +52,13 @@ export function createCubeView(level:Level,parent:THREE.Group) {
     spark.position.set(Math.cos(a)*r,.035,Math.sin(a)*r);sparks.add(spark);
   }
   let fallPose:{position:THREE.Vector3;quaternion:THREE.Quaternion;scale:THREE.Vector3;normal:THREE.Vector3}|null=null;
+  const shell=buildCubeShellGeometry(level);
+  // Keep strokes depth-tested. Offset only their supporting fill, avoiding
+  // coplanar line/fill competition without showing hidden edges through floors.
+  const shellPaper=paper.clone();shellPaper.polygonOffset=true;shellPaper.polygonOffsetFactor=1;shellPaper.polygonOffsetUnits=1;materials.push(shellPaper);
+  root.add(new THREE.Mesh(own(shell.surface),shellPaper));
+  root.add(new THREE.LineSegments(own(shell.fineEdges),fine));
+  root.add(new THREE.LineSegments(own(shell.rimEdges),edge));
   const staticArt=new THREE.Group();root.add(staticArt);
   const pads:(PadArt&{point:Point})[]=[];let exit:PadArt|undefined;
   const place=(object:THREE.Object3D,p:Point)=>{
@@ -59,10 +67,7 @@ export function createCubeView(level:Level,parent:THREE.Group) {
   for(let z=0;z<size;z++)for(let x=0;x<size*6;x++){
     const p={x,z},tile=level.map[z][x];if(tile==='~'||tile==='#')continue;
     const cell=new THREE.Group();place(cell,p);staticArt.add(cell);
-    const neighbors=[[0,-1],[1,0],[0,1],[-1,0]].map(([dx,dz])=>{
-      const q=cubeStep(size,p,dx,dz).point;return !['~','#'].includes(level.map[q.z][q.x]);
-    });
-    cell.add(floorTile(neighbors));
+
     if(tile==='.'||tile==='E'){
       const art=createPad(tile==='E');place(art.root,p);root.add(art.root);
       if(tile==='.')pads.push({...art,point:p});else exit=art;
@@ -140,6 +145,7 @@ export function createCubeView(level:Level,parent:THREE.Group) {
     }
   }
   function update(time:number,fallProgress=0) {
+    shellPaper.color.copy(paper.color);
     disk.rotation.y=time*.22;sparks.rotation.y=-time*.75;
     singularity.scale.setScalar(1+.045*Math.sin(Math.PI*THREE.MathUtils.clamp(fallProgress,0,1)));
   }
