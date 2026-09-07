@@ -101,7 +101,7 @@ function updateHUD() {
   for (const p of pads) p.setActive(state.boxes.some(b => b.x === p.point.x && b.z === p.point.z));
   exit?.setActive(solved(state));
 }
-function clearInput() { pressed.clear(); touchDir = null; }
+function clearInput() { pressed.clear(); touchDir = null;hub?.setInput(null); }
 function cancelHint() { hintId++; hintWorker?.terminate(); hintWorker = null; $<HTMLButtonElement>('hint').disabled = false; }
 function clearRoom() {
   cubeView?.dispose();cubeView=null;
@@ -123,7 +123,7 @@ function openHub(areaId?:string) {
   clearInput();cancelHint();motion=null;fallingTime=0;sound.stop();setMoving(false);rest?.reset(simulationTime);
   $('win').hidden=true;$('lesson').hidden=true;$('toast').classList.remove('visible');
   clearRoom();
-  hub=createHubView(room,player,levelCompleted,areaId||HUB_AREAS.find(a=>a.levels.includes(state.level))?.id,rememberedHub);
+  hub=createHubView(room,player,levelCompleted,areaId||HUB_AREAS.find(a=>a.levels.includes(state.level))?.id,rememberedHub,camera);
   hubFrame=hub.update(0,simulationTime);hubUI(true);overview=false;zoom=1;yaw=.12;pitch=.82;
   $('overview').setAttribute('aria-pressed','false');document.querySelector('h1 small')!.textContent='World';
 }
@@ -195,7 +195,7 @@ function cameraDirection(dir:Point):Point {
   return {x:Math.abs(x)>Math.abs(z)?Math.sign(x):0,z:Math.abs(x)>Math.abs(z)?0:Math.sign(z)};
 }
 function cameraStep(dir: Point) {
-  if(hub){const d=cameraDirection(dir);if(hub.step(d.x,d.z))sound.play('step');return;}
+  if(hub){const d=cameraDirection(dir);hub.setInput(d);if(hub.step(d.x,d.z))sound.play('step');return;}
   if(LEVELS[state.level].cube&&pitch<.35)pitch=.64;
   const d=cameraDirection(dir);takeStep(d.x,d.z);
 }
@@ -362,7 +362,7 @@ window.addEventListener('keydown', e => {
   if (e.code === 'KeyZ') { e.preventDefault(); undo(); } if (e.code === 'KeyR' && ready && !hub) loadLevel(state.level); if (e.code === 'KeyH') hint();
   if (e.code === 'KeyV') toggleOverview();
 });
-window.addEventListener('keyup', e => pressed.delete(e.code)); window.addEventListener('blur', clearInput);
+window.addEventListener('keyup', e => {pressed.delete(e.code);const dir=touchDir??directions[[...pressed].at(-1)||''];hub?.setInput(dir?cameraDirection(dir):null);}); window.addEventListener('blur', clearInput);
 renderer.domElement.addEventListener('pointerdown', e => { drag = true; lastX = e.clientX; lastY = e.clientY; renderer.domElement.setPointerCapture(e.pointerId); });
 renderer.domElement.addEventListener('pointermove', e => { if (!drag) return; yaw -= (e.clientX - lastX) * .005; pitch = THREE.MathUtils.clamp(pitch + (e.clientY - lastY) * .004, !hub&&LEVELS[state.level].cube ? -1.3 : .48, 1.3); lastX = e.clientX; lastY = e.clientY; });
 renderer.domElement.addEventListener('pointerup', () => drag = false); renderer.domElement.addEventListener('pointercancel', () => drag = false);
@@ -370,7 +370,7 @@ renderer.domElement.addEventListener('wheel', e => { e.preventDefault(); zoom = 
 for (const button of document.querySelectorAll<HTMLButtonElement>('#touch button[data-dir]')) {
   const key = { up: 'KeyW', down: 'KeyS', left: 'KeyA', right: 'KeyD' }[button.dataset.dir!]!;
   button.onpointerdown = e => { button.setPointerCapture(e.pointerId); touchDir = directions[key]; cameraStep(touchDir); repeatAt = performance.now() + 240; };
-  button.onpointerup = button.onpointercancel = () => { touchDir = null; };
+  button.onpointerup = button.onpointercancel = () => { touchDir = null;const dir=directions[[...pressed].at(-1)||''];hub?.setInput(dir?cameraDirection(dir):null); };
 }
 new GLTFLoader().loadAsync('/character.glb', e => { if (e.total) $('progress').textContent = `${Math.round(e.loaded / e.total * 100)}%`; }).then(character => {
   character.scene.traverse(o => {
@@ -441,6 +441,7 @@ function render(now: number) {
   simulationTime+=dt;
   if (ready) {
     if(hub){
+      const held=touchDir??directions[[...pressed].at(-1)||''];hub.setInput(held?cameraDirection(held):null);
       if(!hub.busy()&&now>repeatAt){const dir=touchDir??directions[[...pressed].at(-1)||''];if(dir){cameraStep(dir);repeatAt=now+100;}}
       const wasCube=hubFrame?.cube;hubFrame=hub.update(dt,simulationTime);if(hubFrame.cube&&!wasCube){pitch=.57;yaw=.5;}setMoving(hubFrame.moving);
       for(const button of document.querySelectorAll<HTMLButtonElement>('#hub-nav button'))button.setAttribute('aria-current',String(button.dataset.area===hubFrame.area));
@@ -498,15 +499,16 @@ function render(now: number) {
     }
     for(const pose of jumpBones)pose.bone.quaternion.copy(pose.base);
     rest?.restore();
-    mixer.update(dt);
+    run.setEffectiveTimeScale(hubFrame?.runSpeed??1);mixer.update(dt);
     rest?.update({time:simulationTime,delta:dt,standing:!moving&&!motion&&(!!hub||!state.fall)});
     for(const pose of jumpBones){pose.base.copy(pose.bone.quaternion);if(motion?.jump){const t=Math.min(motion.time/motion.moveDuration,1);pose.bone.rotateX(pose.angle*Math.sin(Math.PI*t));}}
   }
   cubeView?.update(simulationTime,state.fall?fallingTime/1.25:0);
   if(hub&&hubFrame){
     const cubeApproach=hubFrame.area==='cube'&&!hubFrame.cube;
-    const target=overview?new THREE.Vector3(0,0,0):hubFrame.target.clone().add(cubeApproach?new THREE.Vector3(0,2,-8):new THREE.Vector3());
-    const distance=(overview?175:hubFrame.cube?32:cubeApproach?34:24)*zoom/(Math.min(1,overview||hubFrame.cube?camera.aspect:Math.max(.75,camera.aspect))*.9);
+    const target=overview?hubFrame.overview.target:hubFrame.target.clone().add(cubeApproach?new THREE.Vector3(0,2,-8):new THREE.Vector3());
+    const distance=overview?Math.max(hubFrame.overview.width/(camera.aspect*.63),hubFrame.overview.depth/.67)*1.15*zoom:(hubFrame.cube?32:cubeApproach?34:24)*zoom/(Math.min(1,hubFrame.cube?camera.aspect:Math.max(.75,camera.aspect))*.9);
+    const far=Math.max(600,distance+hubFrame.overview.width+hubFrame.overview.depth);if(camera.far!==far){camera.far=far;camera.updateProjectionMatrix();}
     lookAt.lerp(target,1-Math.exp(-5*dt));
     desired.set(Math.sin(yaw)*Math.cos(pitch)*distance,Math.sin(pitch)*distance,Math.cos(yaw)*Math.cos(pitch)*distance).add(lookAt);
     camera.position.lerp(desired,1-Math.exp(-5*dt));camera.lookAt(lookAt);

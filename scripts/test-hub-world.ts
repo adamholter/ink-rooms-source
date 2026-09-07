@@ -1,9 +1,14 @@
 import assert from 'node:assert/strict';
+import {LEVELS} from '../src/puzzle.ts';
 import {
   HUB_AREAS,
   HUB_CUBE_ENTRY,
   HUB_GATES,
   HUB_SWITCH,
+  HUB_ROTATION_SWITCH,
+  traceHubIce,
+  HUB_TILES,
+  HUB_CUBE_GATES,
   createHubState,
   hubTile,
   stepHub,
@@ -11,10 +16,10 @@ import {
 } from '../src/hub-world.ts';
 
 const levels = HUB_AREAS.flatMap((area) => area.levels).sort((a, b) => a - b);
-assert.deepEqual(levels, Array.from({ length: 48 }, (_, index) => index), 'areas cover each level exactly once');
-assert.deepEqual(HUB_GATES.map((gate) => gate.level).sort((a, b) => a - b), levels.slice(0, 44), 'flat rooms have one gate each');
-assert.equal(new Set(HUB_GATES.map((gate) => `${gate.point.x},${gate.point.z}`)).size, 44, 'gate points are unique');
-assert.equal(HUB_GATES.some((gate) => gate.level >= 44), false, 'cube rooms do not use flat gates');
+assert.deepEqual(levels, Array.from({ length: LEVELS.length }, (_, index) => index), 'areas cover each level exactly once');
+assert.deepEqual(HUB_GATES.map((gate) => gate.level).sort((a, b) => a - b), levels.filter(i=>!LEVELS[i].cube), 'flat rooms have one gate each');
+assert.equal(new Set(HUB_GATES.map((gate) => `${gate.point.x},${gate.point.z}`)).size, HUB_GATES.length, 'gate points are unique');
+assert.equal(HUB_GATES.some((gate) => LEVELS[gate.level].cube), false, 'cube rooms do not use flat gates');
 
 const closed = createHubState();
 assert.equal(walk(closed, [0, -1], 9), null, 'closed bridge cannot be crossed');
@@ -47,15 +52,26 @@ assert.equal(cubeResult.gate, null, 'cube entrance is not a flat-room gate');
 
 const iceSouth = createHubState('ice');
 const iceMove = mustStep(iceSouth, 0, 1);
-assert.equal(iceMove.slide, true, 'ice glides gently');
-assert.equal(iceMove.state.player.z, iceSouth.player.z + 3, 'ice glide is capped at a few cells');
-let iceExit = iceSouth;
-for (let i = 0; i < 20; i += 1) {
-  const move = stepHub(iceExit, 0, 1);
-  if (!move) break;
-  iceExit = move.state;
+assert.equal(iceMove.slide,true);
+assert.equal(iceMove.state.player.z,iceSouth.player.z+2,'one ice tile slides onto its dry neighbor');
+const island=HUB_AREAS.find(a=>a.id==='ice')!;
+const isOnIceIsland=(p:{x:number;z:number})=>Math.abs(p.x-island.center.x)<=10&&Math.abs(p.z-island.center.z)<=7;
+for(const tile of HUB_TILES.filter(isOnIceIsland)){
+ const border=Math.abs(tile.x-island.center.x)===10||Math.abs(tile.z-island.center.z)===7;
+ assert.equal(tile.kind,border?'floor':(tile.x+tile.z)%2!==0?'ice':'floor','checkerboard has a dry perimeter');
+ for(const [dx,dz] of [[1,0],[-1,0],[0,1],[0,-1]]){
+  const moved=stepHub({...iceSouth,player:{x:tile.x,z:tile.z}},dx,dz);
+  if(moved)assert(!moved.fall,'all hub ice routes stop safely before the edge');
+ }
 }
-assert(hubTile(iceExit.player.x, iceExit.player.z) !== 'ice', 'walking south can leave the ice');
+const longIce=(x:number,z:number)=>z===0&&x>=0&&x<=20?(x<20?'ice':'floor'):null;
+assert.deepEqual(traceHubIce({x:0,z:0},1,0,longIce),{point:{x:20,z:0},fall:false},'ice never stops after an artificial step count');
+assert.deepEqual(traceHubIce({x:0,z:0},1,0,(x,z)=>longIce(x,z)==='floor'?null:longIce(x,z)),{point:{x:20,z:0},fall:true},'unbroken ice can slide into the void');
+let rotation=createHubState('rotation');
+rotation=mustStep(rotation,0,-1).state;rotation=mustStep(rotation,0,-1).state;
+const activation=mustStep(rotation,0,-1);assert(activation.rotate);assert.equal(activation.state.rotation,1);assert.deepEqual(activation.state.player,HUB_ROTATION_SWITCH);
+const away=mustStep(activation.state,1,0);assert(!away.rotate);const again=mustStep(away.state,-1,0);assert(again.rotate);assert.equal(again.state.rotation,2);
+assert.deepEqual([...HUB_GATES,...HUB_CUBE_GATES].map(g=>g.level).sort((a,b)=>a-b),levels,'every campaign room has a rendered door');
 
 for (const start of [createHubState(), createHubState('heights'), createHubState('cube')]) {
   const edge = findEdge(reachable(start));

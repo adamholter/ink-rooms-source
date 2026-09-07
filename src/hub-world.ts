@@ -1,3 +1,5 @@
+import {LEVELS} from './puzzle.ts';
+import {buildHubCatalog} from './hub-catalog.ts';
 export type Point = { x: number; z: number };
 
 export interface HubArea {
@@ -15,35 +17,39 @@ export interface HubState {
   player: Point;
   crate: Point;
   bridgeOpen: boolean;
+  rotation?:number;
+  fall?:boolean;
 }
 
-export const HUB_AREAS: HubArea[] = [
+export const BASE_HUB_AREAS: HubArea[] = [
   { id: 'courtyard', name: 'Courtyard', center: { x: 0, z: 0 }, spawn: { x: 0, z: 1 }, levels: range(0, 11) },
   { id: 'heights', name: 'Heights', center: { x: -24, z: 0 }, spawn: { x: -24, z: 0 }, levels: range(12, 16) },
   { id: 'lifts', name: 'Lifts', center: { x: 24, z: 0 }, spawn: { x: 24, z: 0 }, levels: range(17, 20) },
   { id: 'bridges', name: 'Bridges', center: { x: 0, z: -24 }, spawn: { x: 0, z: -24 }, levels: range(21, 26) },
   { id: 'robots', name: 'Robots', center: { x: -24, z: 24 }, spawn: { x: -24, z: 24 }, levels: range(27, 30) },
   { id: 'ice', name: 'Ice', center: { x: -24, z: -24 }, spawn: { x: -24, z: -24 }, levels: range(31, 35) },
-  { id: 'rotation', name: 'Rotation', center: { x: 0, z: 24 }, spawn: { x: 0, z: 24 }, levels: [36, 37, 38, 39, 42, 43] },
+  { id: 'rotation', name: 'Rotation', center: { x: 0, z: 24 }, spawn: { x: 0, z: 27 }, levels: [36, 37, 38, 39, 42, 43] },
   { id: 'remix', name: 'Remix', center: { x: 24, z: 24 }, spawn: { x: 24, z: 24 }, levels: [40, 41] },
   { id: 'cube', name: 'Cube', center: { x: 24, z: -24 }, spawn: { x: 24, z: -18 }, levels: range(44, 47) },
 ];
 
+export const HUB_ROTATION_CENTER:Point={x:0,z:24};
+export const HUB_ROTATION_SWITCH:Point={x:0,z:24};
+export function onHubRotator(p:Point){return Math.abs(p.x-HUB_ROTATION_CENTER.x)<=1&&Math.abs(p.z-HUB_ROTATION_CENTER.z)<=1;}
+
 export const HUB_SWITCH: Point = { x: 0, z: -6 };
 export const HUB_CUBE_ENTRY: Point = { x: 24, z: -19 };
 
-export const HUB_GATES: Array<{ level: number; point: Point; area: string }> = HUB_AREAS
-  .filter((area) => area.id !== 'cube')
-  .flatMap((area) => doorPoints(area.levels.length, area.center).map((point, index) => ({
-    level: area.levels[index],
-    point,
-    area: area.id,
-  })));
+const catalog=buildHubCatalog(LEVELS,BASE_HUB_AREAS);
+export const HUB_AREAS=catalog.areas;
+export const HUB_GATES=catalog.flatGates;
+export const HUB_CUBE_GATES=catalog.cubeGates;
 
 const tileMap = new Map<string, HubTileKind>();
 
 for (const area of HUB_AREAS.filter((candidate) => candidate.id !== 'cube')) {
-  fillRect(area.center.x - 10, area.center.x + 10, area.center.z - 7, area.center.z + 7, area.id === 'ice' ? 'ice' : 'floor');
+  fillRect(area.center.x - 10, area.center.x + 10, area.center.z - 7, area.center.z + 7, 'floor');
+  if(area.id==='ice'||area.id.startsWith('ice-extension-'))for(let z=area.center.z-6;z<=area.center.z+6;z++)for(let x=area.center.x-9;x<=area.center.x+9;x++)if((x+z)%2!==0)tileMap.set(key(x,z),'ice');
 }
 
 // The cube pavilion floats north of its arrival plaza, with clearance for
@@ -61,6 +67,8 @@ fillRect(23, 25, 8, 16, 'floor'); // lifts to remix
 fillRect(-13, -11, 23, 25, 'floor'); // robots to rotation
 fillRect(23, 25, -16, -8, 'floor'); // lifts to cube
 fillRect(-1, 1, -16, -8, 'bridge'); // courtyard to bridges
+
+for(const tile of catalog.additions.connectingTiles)tileMap.set(key(tile.x,tile.z),tile.kind);
 
 export const HUB_TILES: HubTile[] = [...tileMap]
   .map(([key, kind]) => {
@@ -81,6 +89,7 @@ export function createHubState(areaId = 'courtyard'): HubState {
     player: { ...area.spawn },
     crate: { x: 0, z: -5 },
     bridgeOpen: false,
+    rotation:0,
   };
 }
 
@@ -88,7 +97,8 @@ export function stepHub(
   state: HubState,
   dx: number,
   dz: number,
-): { state: HubState; gate: number | null; enterCube: boolean; slide: boolean } | null {
+): { state: HubState; gate: number | null; enterCube: boolean; slide: boolean; rotate:boolean; fall:boolean } | null {
+  if(state.fall)return null;
   if (!Number.isInteger(dx) || !Number.isInteger(dz) || Math.abs(dx) + Math.abs(dz) !== 1) return null;
 
   const first = { x: state.player.x + dx, z: state.player.z + dz };
@@ -99,6 +109,7 @@ export function stepHub(
       player: first,
       crate: crateTarget,
       bridgeOpen: true,
+      rotation:state.rotation??0,
     };
     return resultAt(pushed, false);
   }
@@ -109,20 +120,13 @@ export function stepHub(
   let enterCube = samePoint(first, HUB_CUBE_ENTRY);
   let slid = false;
 
-  // Ice adds a short, predictable glide. Stop at gates, the cube door, or open ground.
-  if (hubTile(first.x, first.z) === 'ice' && gate === null && !enterCube) {
-    for (let extra = 0; extra < 2; extra += 1) {
-      const target = { x: nextState.player.x + dx, z: nextState.player.z + dz };
-      if (!canEnter(target, nextState) || samePoint(target, nextState.crate)) break;
-      nextState = { ...nextState, player: target };
-      slid = true;
-      gate = gateAt(target);
-      enterCube = samePoint(target, HUB_CUBE_ENTRY);
-      if (gate !== null || enterCube || hubTile(target.x, target.z) !== 'ice') break;
-    }
-  }
-
-  return { state: nextState, gate, enterCube, slide: slid };
+  // Ice has no distance cap. A dry checkerboard and rim make this island safe.
+  const landing=traceHubIce(first,dx,dz,hubTile,p=>samePoint(p,state.crate)||hubTile(p.x,p.z)==='bridge'&&!state.bridgeOpen,p=>gateAt(p)!==null||samePoint(p,HUB_CUBE_ENTRY));
+  nextState={...state,player:landing.point,...(landing.fall?{fall:true}:{})};
+  gate=gateAt(landing.point);enterCube=samePoint(landing.point,HUB_CUBE_ENTRY);slid=!samePoint(first,landing.point);
+  const rotate=samePoint(nextState.player,HUB_ROTATION_SWITCH)&&!samePoint(state.player,HUB_ROTATION_SWITCH);
+  if(rotate)nextState.rotation=(state.rotation??0)+1;
+  return {state:nextState,gate,enterCube,slide:slid,rotate,fall:landing.fall};
 }
 
 function resultAt(state: HubState, slide: boolean) {
@@ -131,6 +135,8 @@ function resultAt(state: HubState, slide: boolean) {
     gate: gateAt(state.player),
     enterCube: samePoint(state.player, HUB_CUBE_ENTRY),
     slide,
+    rotate:false,
+    fall:false,
   };
 }
 
@@ -151,19 +157,6 @@ function range(start: number, end: number): number[] {
   return Array.from({ length: end - start + 1 }, (_, index) => start + index);
 }
 
-function doorPoints(count: number, center: Point): Point[] {
-  const firstRow = Math.ceil(count / 2);
-  const secondRow = count - firstRow;
-  return [
-    ...centeredXs(firstRow).map((x) => ({ x: center.x + x, z: center.z - 5 })),
-    ...centeredXs(secondRow).map((x) => ({ x: center.x + x, z: center.z + 5 })),
-  ];
-}
-
-function centeredXs(count: number): number[] {
-  return Array.from({ length: count }, (_, index) => (index - (count - 1) / 2) * 4);
-}
-
 function fillRect(minX: number, maxX: number, minZ: number, maxZ: number, kind: HubTileKind): void {
   for (let z = minZ; z <= maxZ; z += 1) {
     for (let x = minX; x <= maxX; x += 1) tileMap.set(key(x, z), kind);
@@ -172,4 +165,15 @@ function fillRect(minX: number, maxX: number, minZ: number, maxZ: number, kind: 
 
 function key(x: number, z: number): string {
   return `${x},${z}`;
+}
+
+/** Continue until dry ground, a blocker, a door, or the void, just like room ice. */
+export function traceHubIce(start:Point,dx:number,dz:number,tile:(x:number,z:number)=>HubTileKind|null,blocked:(p:Point)=>boolean=()=>false,door:(p:Point)=>boolean=()=>false):{point:Point;fall:boolean}{
+  if(!Number.isInteger(dx)||!Number.isInteger(dz)||Math.abs(dx)+Math.abs(dz)!==1)throw Error('Ice direction must be cardinal');
+  let p={...start};
+  while(tile(p.x,p.z)==='ice'&&!door(p)){
+    const next={x:p.x+dx,z:p.z+dz};if(blocked(next))break;
+    p=next;if(tile(p.x,p.z)===null)return {point:p,fall:true};
+  }
+  return {point:p,fall:false};
 }

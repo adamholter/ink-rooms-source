@@ -34,6 +34,8 @@ npm run preview    # serve the production build locally
 - Drag to orbit and scroll to zoom.
 - Use Levels to visit the level world. Walk into a door beneath its miniature to enter that room. The dropdown remains available.
 - The area buttons take you to themed islands. One crate push opens the bridge island; the cube gate takes you onto the walkable cube.
+- In the level world, hold one direction for three steps to start accelerating, up to 2.4 times normal speed. Stopping or turning resets your speed.
+- Stand on the Rotation island switch to turn its floor. The Ice island uses a checkerboard with dry stopping tiles.
 - Use Levels again to resume your unfinished room. Finishing room 48 returns to the level world.
 - Walk into raised ledges to climb automatically. There is no jump button.
 - The speaker and theme buttons toggle sound and the white or black background.
@@ -77,3 +79,9 @@ Source code is MIT-licensed under [LICENSE-CODE](LICENSE-CODE). The character, l
 You may clone the repository and play or test the game locally under the asset terms. To publish your own game or reuse the character elsewhere, replace the reserved assets or obtain Adam's separate written permission. These asset restrictions do not restrict reuse of the MIT-licensed code.
 
 The public source release is [adamholter/ink-rooms-source](https://github.com/adamholter/ink-rooms-source). Its history begins with these separate license terms.
+
+## Adding rooms to the level world
+
+The hub catalog reads `LEVELS`. New flat rooms receive doors and miniatures on themed extension islands; new cube rooms receive doors on the cube. Validation requires exactly one hub entrance per campaign room and checks that extension paths reach each island without passing through a room door.
+
+The current cube pavilion has space for 24 cube rooms. Exceeding that capacity fails validation and requires expanding the pavilion before publishing.
