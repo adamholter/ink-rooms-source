@@ -47,7 +47,7 @@ On ice, the player or a pushed crate slides straight until reaching dry floor or
 
 A newly activated turntable switch rotates its section clockwise by 90 degrees, carrying its floor, walls, targets, and occupants. Release and reactivate the switch for another turn. Undo works during the animation.
 
-Rooms 45 through 48 are cube worlds. Walk across an edge to roll the next face upward. Crates can cross an edge, but a crate on the landing tile blocks you from following. Drag to inspect the other faces, including underneath.
+Rooms 45 through 48 are cube worlds. Walk across an edge to roll the next face upward. Crates can cross an edge, but a crate on the landing tile blocks you from following. Missing tiles open into a black hole at the center. Walking or pushing a crate into a hole plays an inward fall, then restores the last safe move. Drag to inspect the other faces, including underneath.
 
 ## Source map
 

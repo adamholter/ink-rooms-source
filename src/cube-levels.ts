@@ -6,15 +6,15 @@ export const CUBE_LEVELS: Level[] = [
     "name": "Over the Edge",
     "subtitle": "A crate can leave the face beneath your feet.",
     "hint": "Push the crate across the edge, then approach it from the next face.",
-    "lesson": "Walk over an edge to roll onto the next face. Crates wrap too; occupied landing tiles block crossings.",
+    "lesson": "Walk over an edge to roll onto the next face. Crates wrap too; occupied landing tiles block crossings. Holes return you to your last safe move.",
     "cube": {
       "size": 4
     },
     "map": [
-      "#####  # #   # # ##     ",
-      "#### @###   ##### #  #  ",
-      "     ######$  ##   #E###",
-      " #  ######  # ##.#######"
+      "~~~~~  ~ ~   ~ ~ ~~     ",
+      "~~~~ @~~~   ~~~~~ ~  ~  ",
+      "     ~~~~~~$  ~~   ~E~~~",
+      " ~  ~~~~~~  ~ ~~.~~~~~~~"
     ]
   },
   {
@@ -25,10 +25,10 @@ export const CUBE_LEVELS: Level[] = [
       "size": 4
     },
     "map": [
-      "      #    #. # ##  .$  ",
-      " #####  ##     ### #   #",
-      "###E # ### ## $@ #    ##",
-      "#   ## #### #  #  ##  # "
+      "      ~    ~. ~ ~~  .$  ",
+      " ~~~~~  ~~     ~~~ ~   ~",
+      "~~~E ~ ~~~ ~~ $@ ~    ~~",
+      "~   ~~ ~~~~ ~  ~  ~~  ~ "
     ]
   },
   {
@@ -39,10 +39,10 @@ export const CUBE_LEVELS: Level[] = [
       "size": 4
     },
     "map": [
-      "    ###  #  # E## #    #",
-      " ##    @#   # $  ##   # ",
-      " ## # $# ##      #      ",
-      "  # #  #.##  ## .   #  #"
+      "    ~~~  ~  ~ E~~ ~    ~",
+      " ~~    @~   ~ $  ~~   ~ ",
+      " ~~ ~ $~ ~~      ~      ",
+      "  ~ ~  ~.~~  ~~ .   ~  ~"
     ]
   },
   {
@@ -53,10 +53,10 @@ export const CUBE_LEVELS: Level[] = [
       "size": 4
     },
     "map": [
-      " #   ##   #    #.#   #E ",
-      "    # # ## #   ####  @##",
-      "  #   $ ##  # #    #   #",
-      "      #      $  #   # #."
+      " ~   ~~   ~    ~.~   ~E ",
+      "    ~ ~ ~~ ~   ~~~~  @~~",
+      "  ~   $ ~~  ~ ~    ~   ~",
+      "      ~      $  ~   ~ ~."
     ]
   }
 ];

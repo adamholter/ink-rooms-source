@@ -42,17 +42,20 @@ export function attemptCubeMove(level: Level, state: State, dx: number, dz: numb
   const step=cubeStep(size,state.player,local.x,local.z), at=(p:Point)=>level.map[p.z]?.[p.x]??'#';
   const solved=(boxes:Point[])=>boxes.length>0&&boxes.every(p=>at(p)==='.');
   const tile=at(step.point);
-  if(tile==='#'||tile==='~'||(tile==='E'&&!solved(state.boxes))||state.robots?.some(r=>same(r,step.point)))return null;
+  if(tile==='#'||(tile==='E'&&!solved(state.boxes))||state.robots?.some(r=>same(r,step.point)))return null;
   const boxIndex=state.boxes.findIndex(p=>same(p,step.point));
   // A player cannot initiate a push onto a different face, even if space exists beyond it.
   if(step.crossed&&boxIndex>=0)return null;
   const boxes=state.boxes.map(p=>({...p}));
+  let fall:State['fall']=tile==='~'?{kind:'player',index:-1}:null;
   if(boxIndex>=0){
     const landing=cubeStep(size,step.point,local.x,local.z).point;
-    if(['#','~','E'].includes(at(landing))||boxes.some((p,i)=>i!==boxIndex&&same(p,landing))||state.robots?.some(r=>same(r,landing))||same(state.player,landing))return null;
+    const landingTile=at(landing);
+    if(['#','E'].includes(landingTile)||boxes.some((p,i)=>i!==boxIndex&&same(p,landing))||state.robots?.some(r=>same(r,landing))||same(state.player,landing))return null;
     boxes[boxIndex]=landing;
+    if(landingTile==='~')fall={kind:'box',index:boxIndex};
   }
   let cubeTurn=state.cubeTurn??0;
   if(step.crossed) cubeTurn=[0,1,2,3].find(t=>same(cubeDirection(dx,dz,t),step.direction))!;
-  return {...state,player:step.point,boxes,cubeTurn,moves:state.moves+1,pushes:state.pushes+(boxIndex>=0?1:0),fall:null,won:tile==='E'&&solved(boxes)};
+  return {...state,player:step.point,boxes,cubeTurn,moves:state.moves+1,pushes:state.pushes+(boxIndex>=0?1:0),fall,won:!fall&&tile==='E'&&solved(boxes)};
 }

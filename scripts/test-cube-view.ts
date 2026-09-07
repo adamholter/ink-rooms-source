@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import * as THREE from 'three';
-import {createCubeView,cubeWorldPoint,cubeOrientation} from '../src/cube-view.ts';
+import {createCubeView,cubeWorldPoint,cubeOrientation,cubeFaceQuaternion} from '../src/cube-view.ts';
 import {cubeStep,cubeDirection,cubeFace,attemptCubeMove} from '../src/cube-topology.ts';
 import {CELL,disposeRoomArt} from '../src/art.ts';
 import type {Level,State} from '../src/puzzle.ts';
@@ -32,3 +32,33 @@ for(let face=0;face<6;face++)for(const local of [{x:1,z:0},{x:-1,z:0},{x:0,z:1},
 }
 view.dispose();disposeRoomArt();assert.equal(rolls,96);assert.equal(pushes,96);
 console.log(`Cube rendering: ${rolls} oriented edge rolls and ${pushes} cargo wraps; upright character, exact endpoints, no interior clipping across nine animation samples.`);
+
+// A missing tile must be empty geometry, not a floor painted to resemble a hole.
+const {LEVELS,createState}=await import('../src/puzzle.ts');
+const {CUBE_BASES,cubeCellPosition}=await import('../src/cube-topology.ts');
+let holes=0;
+for(let index=44;index<LEVELS.length;index++){
+ const l=LEVELS[index],shell=new THREE.Group(),v=createCubeView(l,shell),n=l.cube!.size;
+ shell.updateMatrixWorld(true);
+ for(let z=0;z<n;z++)for(let x=0;x<n*6;x++){
+  const p={x,z},normal=new THREE.Vector3(...CUBE_BASES[cubeFace(n,p)].normal),position=new THREE.Vector3(...cubeCellPosition(n,p,CELL));
+  const ray=new THREE.Raycaster(position.clone().addScaledVector(normal,.3),normal.clone().negate());
+  const hit=ray.intersectObject(v.root,true).find(h=>h.object instanceof THREE.Mesh);
+  if(l.map[z][x]==='~'){holes++;assert.ok(!hit||hit.distance>.65,'no shell geometry across a hole');}
+  else assert.ok(hit&&hit.distance<.4,'safe cells retain solid floor');
+ }
+ // Falling works inward from any cube face, for both upright and side-facing cargo.
+ const state=createState(index),actor=new THREE.Group(),cargo=state.boxes.map(()=>new THREE.Group());
+ for(let face=0;face<6;face++){
+  const p={x:face*n+1,z:1};actor.position.fromArray(cubeCellPosition(n,p,CELL));
+  actor.quaternion.copy(cubeFaceQuaternion(n,p));actor.scale.setScalar(1);
+  const start=actor.position.clone();v.beginFall(actor);v.animateFall(actor,0);near(actor.position,start);
+  v.animateFall(actor,.25);assert.ok(actor.position.length()<start.length());assert.ok(actor.scale.x>0&&actor.scale.x<1);
+  v.animateFall(actor,.75);assert.ok(actor.position.length()<start.length());assert.ok(actor.scale.x<.78);
+  v.animateFall(actor,1);near(actor.position,new THREE.Vector3());assert.equal(actor.scale.x,0);
+  v.sync(state,actor,cargo);near(actor.scale,new THREE.Vector3(1,1,1));
+  cargo.forEach(c=>near(c.scale,new THREE.Vector3(1,1,1)));
+ }
+ v.dispose();assert.equal(shell.children.length,0,'black hole is disposed with the room');disposeRoomArt();
+}
+assert.ok(holes>100);console.log(`Cube holes: ${holes} empty apertures raycast, safe floors, inward falls on all faces, actor restoration, room cleanup passed.`);

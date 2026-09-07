@@ -28,7 +28,7 @@ function pushProof(initial:State,disableCargoEdges=false) {
 }
 for(const f of designs){
  const index=f.room-1,l=LEVELS[index],size=l.cube!.size;
- assert.ok(size>=3);assert.equal(l.map.length,size);assert.ok(l.map.every(row=>row.length===size*6&&/^[ #.$@E]+$/.test(row)));
+ assert.ok(size>=3);assert.equal(l.map.length,size);assert.ok(l.map.every(row=>row.length===size*6&&/^[ ~.$@E]+$/.test(row)));assert.ok(!l.map.join('').includes('#'),'cube blockers are holes');
  assert.deepEqual(l.map,f.map);assert.equal(l.name,f.name);assert.equal(l.map.join('').split('@').length-1,1);assert.equal(l.map.join('').split('E').length-1,1);
  assert.ok(!l.rotators&&!l.ice&&!l.elevators&&!l.robots,'cube chapter introduces its own mechanic');
  const initial=createState(index);assert.equal(initial.cubeTurn,0);
@@ -49,7 +49,7 @@ function cubeSignature(index:number,pieces:boolean) {
   const r=cubeDirection(1,0,turn),d=cubeDirection(0,1,turn);
   const right=basis.u.map((v,i)=>v*r.x+basis.v[i]*r.z),down=basis.u.map((v,i)=>v*d.x+basis.v[i]*d.z);
   const cells:string[]=[];
-  for(let z=0;z<n;z++)for(let x=0;x<n*6;x++)if(l.map[z][x]!=='#'){
+  for(let z=0;z<n;z++)for(let x=0;x<n*6;x++)if(!['#','~'].includes(l.map[z][x])){
    const p=cubeCellPosition(n,{x,z});
    const dot=(axis:readonly number[])=>Math.round(2*axis.reduce((sum,v,i)=>sum+v*p[i],0));
    cells.push(`${dot(right)},${dot(basis.normal)},${dot(down)}:${pieces?l.map[z][x]:' '}`);

@@ -1,6 +1,6 @@
 import * as THREE from 'three';
-import { CUBE_BASES, cubeFace, cubeCellPosition, cubeDirection } from './cube-topology.ts';
-import { CELL, paper, fine, floorTile, obstacle, createPad, batchArt, type PadArt } from './art.ts';
+import { CUBE_BASES, cubeFace, cubeCellPosition, cubeDirection, cubeStep } from './cube-topology.ts';
+import { CELL, fine, floorTile, createPad, batchArt, type PadArt } from './art.ts';
 import type { Level, Point, State } from './puzzle.ts';
 const vector=(v:readonly number[])=>new THREE.Vector3(v[0],v[1],v[2]);
 const up=new THREE.Vector3(0,1,0);
@@ -23,17 +23,46 @@ export function createCubeView(level:Level,parent:THREE.Group) {
   const size=level.cube!.size,half=size*CELL/2,root=new THREE.Group();parent.add(root);
   const geometry:THREE.BufferGeometry[]=[];
   const own=<T extends THREE.BufferGeometry>(g:T)=>{geometry.push(g);return g;};
-  // Recess the core behind the tiled shell, avoiding coplanar overlapping faces.
-  root.add(new THREE.Mesh(own(new THREE.BoxGeometry(half*2-.14,half*2-.14,half*2-.14)),paper));
+  // The shell is open: holes reveal the other faces and a small central singularity.
+  const singularity=new THREE.Group();parent.add(singularity);singularity.name='black-hole';
+  const black=new THREE.MeshBasicMaterial({color:0x030305});
+  const light=new THREE.MeshBasicMaterial({color:0xeaeaf0});
+  const orbitInk=new THREE.LineBasicMaterial({color:0x6d6d7a,transparent:true,opacity:.7});
+  const materials=[black,light,orbitInk];
+  const core=new THREE.Mesh(own(new THREE.SphereGeometry(.88,40,24)),black);singularity.add(core);
+  const disk=new THREE.Group();disk.rotation.set(.35,0,.28);singularity.add(disk);
+  // A bright inner rim reads against the black theme; the ink edge reads on white.
+  for(const [radius,tube,material] of [[1.025,.028,light],[1.066,.011,black],[.984,.011,black],[1.34,.014,black]] as const){
+    const ring=new THREE.Mesh(own(new THREE.TorusGeometry(radius,tube,8,96)),material);
+    ring.rotation.x=Math.PI/2;disk.add(ring);
+  }
+  for(let arm=0;arm<5;arm++){
+    const points:THREE.Vector3[]=[];
+    for(let i=0;i<=64;i++){
+      const u=i/64,a=arm*Math.PI*2/5+u*2.7,r=1.02+.48*u;
+      points.push(new THREE.Vector3(Math.cos(a)*r,.018*Math.sin(a*2),Math.sin(a)*r));
+    }
+    disk.add(new THREE.Line(own(new THREE.BufferGeometry().setFromPoints(points)),orbitInk));
+  }
+  const sparks=new THREE.Group();disk.add(sparks);
+  for(let i=0;i<10;i++){
+    const a=i*Math.PI*2/10,r=1.13+(i%3)*.1;
+    const spark=new THREE.Mesh(own(new THREE.SphereGeometry(i%2?.018:.025,6,4)),light);
+    spark.position.set(Math.cos(a)*r,.035,Math.sin(a)*r);sparks.add(spark);
+  }
+  let fallPose:{position:THREE.Vector3;quaternion:THREE.Quaternion;scale:THREE.Vector3;normal:THREE.Vector3}|null=null;
   const staticArt=new THREE.Group();root.add(staticArt);
   const pads:(PadArt&{point:Point})[]=[];let exit:PadArt|undefined;
   const place=(object:THREE.Object3D,p:Point)=>{
     object.position.fromArray(cubeCellPosition(size,p,CELL));object.quaternion.copy(cubeFaceQuaternion(size,p));
   };
   for(let z=0;z<size;z++)for(let x=0;x<size*6;x++){
-    const p={x,z},tile=level.map[z][x],cell=new THREE.Group();place(cell,p);staticArt.add(cell);
-    cell.add(floorTile([true,true,true,true]));
-    if(tile==='#')cell.add(obstacle());
+    const p={x,z},tile=level.map[z][x];if(tile==='~'||tile==='#')continue;
+    const cell=new THREE.Group();place(cell,p);staticArt.add(cell);
+    const neighbors=[[0,-1],[1,0],[0,1],[-1,0]].map(([dx,dz])=>{
+      const q=cubeStep(size,p,dx,dz).point;return !['~','#'].includes(level.map[q.z][q.x]);
+    });
+    cell.add(floorTile(neighbors));
     if(tile==='.'||tile==='E'){
       const art=createPad(tile==='E');place(art.root,p);root.add(art.root);
       if(tile==='.')pads.push({...art,point:p});else exit=art;
@@ -47,12 +76,11 @@ export function createCubeView(level:Level,parent:THREE.Group) {
       const g=own(new THREE.BufferGeometry());g.setAttribute('position',new THREE.Float32BufferAttribute(coords,3));marks.add(new THREE.LineSegments(g,fine));
     }
   }
-  // Thin corner joints make the six connected faces read as a single object.
-  const outline=new THREE.LineSegments(own(new THREE.EdgesGeometry(own(new THREE.BoxGeometry(half*2-.095,half*2-.095,half*2-.095)))),fine);
-  root.add(outline);
+
   batchArt(staticArt);
   if(!exit)throw Error('Cube room needs an exit');
   function sync(state:State,player:THREE.Group,crates:THREE.Group[],heading:Point={x:0,z:-1}) {
+    fallPose=null;player.scale.setScalar(1);crates.forEach(c=>c.scale.setScalar(1));
     root.quaternion.copy(cubeOrientation(level,state));
     player.position.copy(cubeWorldPoint(level,state.player,state));player.quaternion.setFromAxisAngle(up,Math.atan2(heading.x,heading.z));
     crates.forEach((crate,i)=>{crate.position.copy(cubeWorldPoint(level,state.boxes[i],state));crate.quaternion.copy(root.quaternion).multiply(cubeFaceQuaternion(size,state.boxes[i]));});
@@ -89,5 +117,31 @@ export function createCubeView(level:Level,parent:THREE.Group) {
       crate.quaternion.copy(root.quaternion).multiply(path.transport).multiply(m.crateOrientations[i]);
     });
   }
-  return {root,pads,exit,sync,begin,animate,dispose(){geometry.forEach(g=>g.dispose());root.removeFromParent();}};
+  function beginFall(object:THREE.Group) {
+    fallPose={position:object.position.clone(),quaternion:object.quaternion.clone(),scale:object.scale.clone(),normal:up.clone().applyQuaternion(object.quaternion)};
+  }
+  function animateFall(object:THREE.Group,progress:number) {
+    if(!fallPose)return;
+    const t=THREE.MathUtils.clamp(progress,0,1),pose=fallPose;
+    // Descend straight through the aperture before curving, so limbs clear its rim.
+    const entry=pose.position.clone().addScaledVector(pose.normal,-Math.min(2.3,half*.74));
+    if(t<.45){
+      object.position.copy(pose.position).lerp(entry,(t/.45)**1.5);
+      object.scale.copy(pose.scale).multiplyScalar(1-.22*ease(t/.45));
+      object.quaternion.copy(pose.quaternion);
+    }else{
+      const u=(t-.45)/.55,radial=entry.clone().normalize();
+      const tangent=new THREE.Vector3().crossVectors(radial,pose.normal);
+      if(tangent.lengthSq()<.01)tangent.crossVectors(radial,new THREE.Vector3(1,0,0));
+      tangent.normalize();
+      object.position.copy(entry).multiplyScalar(1-ease(u)).addScaledVector(tangent,Math.sin(u*Math.PI)*.28);
+      object.quaternion.copy(pose.quaternion).multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(.3,.6,1).normalize(),u*Math.PI*1.4));
+      object.scale.copy(pose.scale).multiplyScalar(.78*(1-ease(u)));
+    }
+  }
+  function update(time:number,fallProgress=0) {
+    disk.rotation.y=time*.22;sparks.rotation.y=-time*.75;
+    singularity.scale.setScalar(1+.045*Math.sin(Math.PI*THREE.MathUtils.clamp(fallProgress,0,1)));
+  }
+  return {root,pads,exit,sync,begin,animate,beginFall,animateFall,update,dispose(){geometry.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());singularity.removeFromParent();root.removeFromParent();}};
 }

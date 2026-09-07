@@ -48,8 +48,45 @@ const crate={x:2,z:1}, destination=cubeStep(size,crate,1,0).point;
  const moved=attemptCubeMove(level,state,1,0)!;assert.deepEqual(moved.player,crate);assert.deepEqual(moved.boxes,[destination,{x:12,z:0}]);assert.equal(moved.pushes,1);assert.equal(moved.moves,1);assert.equal(moved.cubeTurn,0);assert.equal(moved.fall,null);assert.equal(JSON.stringify(state),before);
  assert.equal(attemptCubeMove(level,moved,1,0),null,'cannot follow crate across seam');
 }
-for(const t of ['#','~','E']){const {level,state}=fixture({x:1,z:1},[crate],[{p:destination,t}]);assert.equal(attemptCubeMove(level,state,1,0),null);}
+for(const t of ['#','E']){const {level,state}=fixture({x:1,z:1},[crate],[{p:destination,t}]);assert.equal(attemptCubeMove(level,state,1,0),null);}
 {const {level,state}=fixture({x:1,z:1},[crate,destination]);assert.equal(attemptCubeMove(level,state,1,0),null);}
 {const {level,state}=fixture(crate,[],[{p:destination,t:'#'}]);assert.equal(attemptCubeMove(level,state,1,0),null);}
 {const goal={x:12,z:2}, {level,state}=fixture(crate,[goal],[{p:goal,t:'.'},{p:destination,t:'E'}]);const won=attemptCubeMove(level,state,1,0)!;assert.equal(won.won,true);assert.equal(attemptCubeMove(level,won,1,0),null);state.boxes=[{x:13,z:2}];assert.equal(attemptCubeMove(level,state,1,0),null);}
-console.log(`Cube topology/rules passed: ${seams} directed seam cells, reversible transport, circuits, camera turns, cross-face crates, walls, exits, purity.`);
+
+function assertTerminalFall(level:Level,before:State,after:State,kind:'player'|'box',index:number){
+  assert.deepEqual(after.fall,{kind,index});
+  assert.equal(after.won,false);
+  assert.equal(attemptCubeMove(level,after,1,0),null,'terminal fall rejects further moves');
+  assert.equal(attemptCubeMove(level,after,0,1),null,'terminal fall rejects further moves in every direction');
+  assert.equal(before.fall,null,'source state remains unchanged');
+}
+// Same-face player and crate holes obey every camera orientation.
+for(let t=0;t<4;t++){
+  const local={x:1,z:0},world=cubeDirection(local.x,local.z,-t),hole={x:1,z:1};
+  {
+    const {level,state}=fixture({x:0,z:1},[],[{p:hole,t:'~'}]);state.cubeTurn=t;const before=structuredClone(state);
+    const fallen=attemptCubeMove(level,state,world.x,world.z)!;
+    assert.deepEqual(state,before,'player fall is immutable');assert.deepEqual(fallen.player,hole);assert.equal(fallen.moves,1);assert.equal(fallen.pushes,0);assert.equal(fallen.cubeTurn,t);assertTerminalFall(level,state,fallen,'player',-1);
+  }
+  {
+    const landing={x:2,z:1},{level,state}=fixture({x:0,z:1},[hole],[{p:landing,t:'~'}]);state.cubeTurn=t;const before=structuredClone(state);
+    const fallen=attemptCubeMove(level,state,world.x,world.z)!;
+    assert.deepEqual(state,before,'crate fall is immutable');assert.deepEqual(fallen.player,hole);assert.deepEqual(fallen.boxes,[landing]);assert.equal(fallen.moves,1);assert.equal(fallen.pushes,1);assert.equal(fallen.cubeTurn,t);assertTerminalFall(level,state,fallen,'box',0);
+  }
+}
+// Every directed seam, under every camera orientation, can land either actor in a hole.
+for(let f=0;f<6;f++)for(const local of dirs)for(let t=0;t<4;t++){
+  const edge={x:f*size+(local.x===1?2:local.x===-1?0:1),z:local.z===1?2:local.z===-1?0:1};
+  const landing=cubeStep(size,edge,local.x,local.z).point,world=cubeDirection(local.x,local.z,-t);
+  {
+    const {level,state}=fixture(edge,[],[{p:landing,t:'~'}]);state.cubeTurn=t;const before=structuredClone(state);
+    const fallen=attemptCubeMove(level,state,world.x,world.z)!;
+    assert.deepEqual(state,before,'seam player fall is immutable');assert.deepEqual(fallen.player,landing);assertTerminalFall(level,state,fallen,'player',-1);
+  }
+  {
+    const player={x:edge.x-local.x,z:edge.z-local.z},{level,state}=fixture(player,[edge],[{p:landing,t:'~'}]);state.cubeTurn=t;const before=structuredClone(state);
+    const fallen=attemptCubeMove(level,state,world.x,world.z)!;
+    assert.deepEqual(state,before,'seam crate fall is immutable');assert.deepEqual(fallen.player,edge);assert.deepEqual(fallen.boxes,[landing]);assertTerminalFall(level,state,fallen,'box',0);
+  }
+}
+console.log(`Cube topology/rules passed: ${seams} directed seam cells, reversible transport, circuits, camera turns, cross-face crates, walls, holes, exits, purity.`);

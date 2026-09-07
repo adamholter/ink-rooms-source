@@ -137,7 +137,7 @@ function loadLevel(index: number) {
   }
   const template = batchArt(createCrate());
   for (const b of state.boxes) { const crate = template.clone(true); crate.position.copy(point(b)); room.add(crate); crates.push(crate); }
-  player.position.copy(point(state.player)); player.rotation.set(0, 0, 0);
+  player.position.copy(point(state.player)); player.rotation.set(0, 0, 0); player.scale.setScalar(1);
   cubeView?.sync(state,player,crates);
   levelSelect.value = String(index); document.querySelector('h1 small')!.textContent = String(index + 1).padStart(2, '0');
   zoom = 1; resetCameraAngle(); facing={x:0,z:-1};
@@ -425,13 +425,16 @@ function render(now: number) {
       }else syncMachinery();
       if(m.iceMotion)setMoving(m.time<Math.min(m.iceMotion.playerDuration,m.iceMotion.playerGlide?.22:999));
       }
-      if (m.time >= m.duration) { motion = null; if (state.fall) { clearInput(); setMoving(false); fallingTime = 0; fallStartY=fallObject().position.y; } else if (state.won) { setMoving(false); win(); } }
+      if (m.time >= m.duration) { motion = null; if (state.fall) { clearInput(); setMoving(false); fallingTime = 0; fallStartY=fallObject().position.y; cubeView?.beginFall(fallObject()); } else if (state.won) { setMoving(false); win(); } }
     } else if (state.fall) {
       fallingTime += dt;
       const object = fallObject();
-      object.position.y = fallStartY - 7 * fallingTime * fallingTime;
-      object.rotation.z = Math.min(fallingTime * 1.5, 1.3);
-      if (fallingTime > .8) { falls++; undo(); notify('Back on solid ground.'); }
+      if(cubeView)cubeView.animateFall(object,fallingTime/1.25);
+      else{
+        object.position.y = fallStartY - 7 * fallingTime * fallingTime;
+        object.rotation.z = Math.min(fallingTime * 1.5, 1.3);
+      }
+      if (fallingTime > (cubeView?1.25:.8)) { falls++; undo(); notify('Back on solid ground.'); }
     }
     if (!motion && !state.won && !state.fall && now > repeatAt) {
       const dir=touchDir??directions[[...pressed].at(-1)||''];if(dir){cameraStep(dir);repeatAt=now+100;}else setMoving(false);
@@ -451,6 +454,7 @@ function render(now: number) {
     rest?.update({time:simulationTime,delta:dt,standing:!moving&&!motion&&!state.fall});
     for(const pose of jumpBones){pose.base.copy(pose.bone.quaternion);if(motion?.jump){const t=Math.min(motion.time/motion.moveDuration,1);pose.bone.rotateX(pose.angle*Math.sin(Math.PI*t));}}
   }
+  cubeView?.update(simulationTime,state.fall?fallingTime/1.25:0);
   if(LEVELS[state.level].cube){
     const span=LEVELS[state.level].cube!.size*CELL;
     const distance=(span*1.8+2)/(Math.min(1,camera.aspect)*.66)*zoom*(overview?1.18:1)*(camera.aspect<.8?1:1.15);
@@ -477,4 +481,4 @@ function render(now: number) {
 }
 camera.position.set(0, 15, 13); frameHandle=requestAnimationFrame(render);
 window.addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); });
-(window as any).__INK_GAME__ = { state: () => JSON.parse(JSON.stringify(state)), ready: () => ready, animating: () => !!motion || !!state.fall, loadLevel, step: takeStep, undo, playerWorld:()=>player.position.toArray(), robotsWorld:()=>robotArt.map(a=>a.root.position.toArray()), robotRotations:()=>robotArt.map(a=>a.root.rotation.y), cratesWorld:()=>crates.map(c=>c.position.toArray()), solved: () => solved(state), theme: () => dark ? 'black' : 'white', restWeight:()=>rest?.weight??0, soundReady:()=>sound.ready, soundMuted:()=>sound.muted, captureStart:()=>{filming=true;cancelAnimationFrame(frameHandle);clearInput();sound.stop();renderer.setPixelRatio(1);document.body.classList.add('filming');}, captureTick:(dt:number)=>render(previous+dt*1000), captureCamera:(c:typeof filmCamera)=>{filmCamera=c;}, captureTheme:(value:boolean)=>{dark=value;theme();}, capturePose:(rotation:number)=>{player.rotation.y=rotation;}, captureRestBones:()=>['Spine02','Spine01','Spine','Head','LeftFoot','RightFoot'].map(name=>{const b=player.getObjectByName(name)!;return {name,q:b.quaternion.toArray(),position:b.getWorldPosition(new THREE.Vector3()).toArray()};}), captureBones:()=>jumpBones.map(p=>({name:p.bone.name,q:p.bone.quaternion.toArray()})), machinery:()=>({switches:switchArt.map(s=>({channel:s.channel,active:channelActive(LEVELS[state.level],s.channel,state)})),devices:machineArt.length}), levelCount: LEVELS.length, cubeWorld:()=>cubeView?{quaternion:cubeView.root.quaternion.toArray(),face:cubeFace(LEVELS[state.level].cube!.size,state.player),playerQuaternion:player.quaternion.toArray(),crateQuaternions:crates.map(c=>c.quaternion.toArray())}:null, iceTiles:()=>(LEVELS[state.level].ice||[]).map(p=>rotationPoint(LEVELS[state.level],p,state)), rotatorsWorld:()=>rotatorArt.map(r=>({position:r.content.position.toArray(),angle:r.content.rotation.y})),padsWorld:()=>pads.map(p=>({point:p.point,world:p.root.getWorldPosition(new THREE.Vector3()).toArray()})), falls: () => falls, art: () => ({ pads: pads.map(p => ({ point: p.point, active: state.boxes.some(b => b.x === p.point.x && b.z === p.point.z) })), exit: solved(state), meshes: renderer.info.render.calls }) };
+(window as any).__INK_GAME__ = { state: () => JSON.parse(JSON.stringify(state)), ready: () => ready, animating: () => !!motion || !!state.fall, loadLevel, step: takeStep, undo, playerWorld:()=>player.position.toArray(), robotsWorld:()=>robotArt.map(a=>a.root.position.toArray()), robotRotations:()=>robotArt.map(a=>a.root.rotation.y), cratesWorld:()=>crates.map(c=>c.position.toArray()), solved: () => solved(state), theme: () => dark ? 'black' : 'white', restWeight:()=>rest?.weight??0, soundReady:()=>sound.ready, soundMuted:()=>sound.muted, captureStart:()=>{filming=true;cancelAnimationFrame(frameHandle);clearInput();sound.stop();renderer.setPixelRatio(1);document.body.classList.add('filming');}, captureTick:(dt:number)=>render(previous+dt*1000), captureCamera:(c:typeof filmCamera)=>{filmCamera=c;}, captureTheme:(value:boolean)=>{dark=value;theme();}, capturePose:(rotation:number)=>{player.rotation.y=rotation;}, captureRestBones:()=>['Spine02','Spine01','Spine','Head','LeftFoot','RightFoot'].map(name=>{const b=player.getObjectByName(name)!;return {name,q:b.quaternion.toArray(),position:b.getWorldPosition(new THREE.Vector3()).toArray()};}), captureBones:()=>jumpBones.map(p=>({name:p.bone.name,q:p.bone.quaternion.toArray()})), machinery:()=>({switches:switchArt.map(s=>({channel:s.channel,active:channelActive(LEVELS[state.level],s.channel,state)})),devices:machineArt.length}), levelCount: LEVELS.length, cubeWorld:()=>cubeView?{quaternion:cubeView.root.quaternion.toArray(),face:cubeFace(LEVELS[state.level].cube!.size,state.player),playerQuaternion:player.quaternion.toArray(),crateQuaternions:crates.map(c=>c.quaternion.toArray()),playerScale:player.scale.toArray(),crateScales:crates.map(c=>c.scale.toArray())}:null, iceTiles:()=>(LEVELS[state.level].ice||[]).map(p=>rotationPoint(LEVELS[state.level],p,state)), rotatorsWorld:()=>rotatorArt.map(r=>({position:r.content.position.toArray(),angle:r.content.rotation.y})),padsWorld:()=>pads.map(p=>({point:p.point,world:p.root.getWorldPosition(new THREE.Vector3()).toArray()})), falls: () => falls, art: () => ({ pads: pads.map(p => ({ point: p.point, active: state.boxes.some(b => b.x === p.point.x && b.z === p.point.z) })), exit: solved(state), meshes: renderer.info.render.calls }) };
